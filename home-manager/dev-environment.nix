@@ -35,6 +35,8 @@
     pkgs.python310Packages.pipx
     pkgs.busybox
     pkgs.ripgrep
+    pkgs.kubectl
+    pkgs.argocd
   ];
 
   home.file.".config/kitty/kitty.conf".source = ./config/kitty/kitty.conf;

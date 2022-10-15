@@ -1,0 +1,39 @@
+{ config, pkgs, ... }:
+
+{
+  home.packages = [
+    pkgs.git
+    pkgs.neofetch
+    pkgs.gnumake
+    pkgs.vim
+    pkgs.jq
+    pkgs.yq
+    pkgs.sshpass
+    pkgs.gnupg
+    pkgs.traceroute
+    pkgs.zsh
+    pkgs.neovim
+    pkgs.hadolint
+    pkgs.plantuml
+    pkgs.tmux
+    pkgs.sipcalc
+    pkgs.virtualenv
+    pkgs.wireshark
+    pkgs.tldr
+    pkgs.kind
+    pkgs.helm
+    pkgs.docker
+    pkgs.hugo
+    pkgs.bfg-repo-cleaner
+    pkgs.shfmt
+    pkgs.shellcheck
+    pkgs.rustup
+    pkgs.nnn
+    pkgs.github-cli
+    pkgs.glab
+    pkgs.entr
+    pkgs.btop
+    pkgs.python310Packages.pipx
+    pkgs.busybox
+  ];
+}

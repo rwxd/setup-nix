@@ -27,6 +27,7 @@
     pkgs.bfg-repo-cleaner
     pkgs.shfmt
     pkgs.shellcheck
+    pkgs.fzf
     pkgs.rustup
     pkgs.nnn
     pkgs.github-cli
@@ -35,5 +36,6 @@
     pkgs.btop
     pkgs.python310Packages.pipx
     pkgs.busybox
+    pkgs.ripgrep
   ];
 }

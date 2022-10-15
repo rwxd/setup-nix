@@ -12,8 +12,6 @@
     pkgs.less
     pkgs.cron
     pkgs.findutils
-    pkgs.coreutils
-    pkgs.unixtools.netstat
     pkgs.nmap
     pkgs.pwgen
     pkgs.pass

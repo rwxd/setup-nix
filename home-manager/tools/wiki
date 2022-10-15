@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+# Wiki search with Neovim & Telescope
+
+set -e -o pipefail
+
+WIKI_PATH="$HOME/wiki"
+SEARCH="$*"
+
+if [ -z "$SEARCH" ]; then
+	echo "Missing a search :("
+	exit 1
+fi
+
+nvim -c "lua require('telescope.builtin').grep_string({ search = \"$SEARCH\"; cwd = \"$WIKI_PATH\"  })"

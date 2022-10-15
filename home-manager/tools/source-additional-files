@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# sources all files with shebangs in the "$dirs" var
+
+dirs=(
+	"$HOME/.dotfiles/arch/.config/arch/"
+	"$HOME/.dotfiles/personal/.config/personal/"
+	"$HOME/.dotfiles/akq/.config/akq/"
+)
+
+for dir in "${dirs[@]}"; do
+	if [ -d "$dir" ]; then
+		# shellcheck disable=SC2044
+		for file in $(find "$dir" -maxdepth 1 -mindepth 1 -type f); do
+			first_line=$(head -n 1 "$file")
+			if [[ $first_line =~ "#!" ]]; then
+				# shellcheck disable=SC1090
+				source "$file"
+			fi
+		done
+	fi
+done

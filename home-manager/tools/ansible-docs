@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# fuzzy search ansible documentation
+
+if ! command -v ansible-doc; then
+	echo "ansible-doc not found, maybe source your venv?!"
+	exit 1
+fi
+
+export ANSIBLE_FORCE_COLOR="True"
+
+selected=$(ansible-doc --list -j 2>/dev/null | jq 'keys[]' | sed 's/"//g' | fzf-tmux -p 85% --reverse --preview 'ansible-doc {}')
+
+if [[ -z $selected ]]; then
+	exit 0
+fi
+
+docs_command="ansible-doc $selected \"$*\""
+
+if [ -n "$TMUX" ]; then
+	tmux neww -n "$selected" bash -c "PATH=$PATH $docs_command"
+else
+	eval "$docs_command"
+fi

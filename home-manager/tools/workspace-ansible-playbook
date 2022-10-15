@@ -1,0 +1,159 @@
+#!/usr/bin/env bash
+"exec" "$HOME/.dotfiles/.venv/bin/python3" "$0" "$@"
+
+# creates a vs code workspace for ansible playbooks
+# git roles in the requirements.yml will be cloned, checked out, added to the workspace
+# & a symlink will be created to the role repository path
+
+from pathlib import Path
+import yaml
+import json
+import re
+from subprocess import check_output
+from configparser import ConfigParser
+from os import getenv
+from subprocess import check_output
+
+DEV_PATH = Path(getenv('DEV_PATH') or Path().home().joinpath('dev/'))
+CWD = Path().cwd()
+CURRENT_DIR_NAME = CWD.name
+REGEX_SRC_TO_NAME = re.compile(r'([^\/]+$)')
+
+VENV_PATH = CWD.joinpath('.venv/')
+
+ROLES_PATH = Path.home().joinpath('dev/ansible-roles/')
+ANSIBLE_ROLES_PATH = Path(
+    getenv('ANSIBLE_ROLES_PATH') or Path().home().joinpath('.ansible/roles/')
+)
+
+VSCODE_WORKSPACES_PATH = Path.home().joinpath('dev/vscode-workspaces/')
+VSCODE_WORKSPACE_FILE_PATH = VSCODE_WORKSPACES_PATH.joinpath(
+    f'{CURRENT_DIR_NAME}.code-workspace'
+)
+
+TMUX_WORKSPACE_PATH = Path.home().joinpath('dev/tmux-workspaces')
+TMUX_WORKSPACE_FILE_PATH = TMUX_WORKSPACE_PATH.joinpath(f'{CURRENT_DIR_NAME}.tmux-workspace.yml')
+
+ANSIBLE_CFG = CWD.joinpath('ansible.cfg')
+if ANSIBLE_CFG.exists():
+    print('Found ansible.cfg in current directory')
+    config = ConfigParser()
+    config.read(str(ANSIBLE_CFG))
+    if 'defaults' in config and 'roles_path' in config['defaults']:
+        ANSIBLE_ROLES_PATH = CWD.joinpath(config['defaults']['roles_path'])
+
+vscode_workspace = {
+    'folders': [{'name': CURRENT_DIR_NAME, 'path': str(CWD)}],
+    'settings': {
+        '[yaml]': {'editor.defaultFormatter': 'redhat.ansible'},
+        '[yml]': {'editor.defaultFormatter': 'redhat.ansible'},
+        '[ansible]': {'editor.defaultFormatter': 'redhat.ansible'},
+        'files.associations': {'yaml': 'ansible', 'yml': 'ansible'},
+        'ansible.python.interpreterPath': str(VENV_PATH.joinpath('bin/activate')),
+        'python.terminal.activateEnvInCurrentTerminal': True,
+        'python.terminal.activateEnvironment': True,
+    },
+    'extensions': {'recommendations': ['redhat.ansible']},
+}
+
+tmux_workspace = {
+    'session_name': CURRENT_DIR_NAME,
+    'start_directory': str(CWD),
+    'windows': [
+        {
+            'window_name': CURRENT_DIR_NAME,
+            'layout': 'tiled',
+            'start_directory': str(CWD),
+            'shell_command_before': 'source machvenv',
+        },
+        {
+            'window_name': 'ansible',
+            'layout': 'tiled',
+            'start_directory': str(CWD),
+            'shell_command_before': 'source machvenv',
+        }
+    ],
+}
+
+
+class Git:
+    def __init__(self, path: str):
+        self.path: str = path
+
+    def run(self, *args) -> str:
+        return check_output(('git', '-C', self.path, *args)).decode()
+
+
+ansible_requirements = []
+for path in CWD.glob('*/*requirements.y*ml'):
+    if not 'collections' in str(path):
+        with open(path, 'r') as requirement:
+            ansible_requirements.append(yaml.safe_load(requirement))
+
+for requirement in ansible_requirements:
+    if type(requirement) == list:
+        roles = requirement
+    else:
+        roles = requirement.get('roles')
+    for role in [
+        role for role in roles if role.get('src') and role.get('scm') == 'git'
+    ]:
+        match = REGEX_SRC_TO_NAME.search(role['src'].replace('.git', ''))
+        if match:
+            name = match.group(0)
+            path = ROLES_PATH.joinpath(name)
+            git = Git(str(path))
+            vscode_workspace['folders'].append({'name': name, 'path': str(path)})
+            tmux_workspace['windows'].append(
+                {
+                    'window_name': name,
+                    'layout': 'tiled',
+                    'start_directory': str(path),
+                    'shell_command_before': 'source machvenv',
+                }
+            )
+
+            if path.exists() and path.joinpath('.git/').exists():
+                print(f'Repo "{name}" exists locally at {str(path)}')
+            else:
+                print(f'Cloning Repo "{name}" to {str(path)}')
+                path.mkdir(parents=True, exist_ok=True)
+                git.run('clone', role['src'], '.')
+
+            git.run('fetch', '--all')
+            remotes = [
+                r.replace('*', '').strip() for r in git.run('branch', '-r').splitlines()
+            ]
+            local = [l.replace('*', '').strip() for l in git.run('branch').splitlines()]
+            tags = git.run('tag').splitlines()
+
+            if role.get('version'):
+                version = role['version']
+                if version in tags:
+                    print(f'Checking out to tag {version}')
+                    git.run('checkout', version)
+                elif version in local:
+                    print(f'Checking out to local branch {version}')
+                    git.run('switch', version)
+                elif f'origin/{version}' in remotes:
+                    print(f'Checking out remote branch {version}')
+                    git.run('switch', '-t', f'remotes/origin/{version}')
+                else:
+                    raise ValueError(f'Version {version} not found for role "{name}"')
+            else:
+                if 'master' in local:
+                    git.run('switch', 'master')
+                elif 'origin/main' in local:
+                    git.run('switch', 'main')
+
+            symlink_path = ANSIBLE_ROLES_PATH.joinpath(name)
+            if not symlink_path.exists():
+                print(f'Created symlink: {str(symlink_path)} -> {str(path)}')
+                symlink_path.symlink_to(path)
+
+VSCODE_WORKSPACES_PATH.mkdir(parents=True, exist_ok=True)
+with open(VSCODE_WORKSPACE_FILE_PATH, 'w+') as file:
+    json.dump(vscode_workspace, file, indent=2)
+TMUX_WORKSPACE_PATH.mkdir(parents=True, exist_ok=True)
+with open(TMUX_WORKSPACE_FILE_PATH, 'w+') as file:
+    yaml.safe_dump(tmux_workspace, file)

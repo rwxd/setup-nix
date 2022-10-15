@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e -o pipefail
+
+windows=$(tmux list-windows -a -F '#{session_name}:#{window_index} - #{window_name}')
+
+selected=$(fzf-tmux -p 85% --reverse --preview 'echo {} | sed -E "s/\s-.*$//" | xargs tmux capture-pane -p -e -t' <<<"${windows[@]}")
+
+if [ -z "$selected" ]; then
+	exit 0
+fi
+
+echo "$selected" | sed -E 's/\s-.*$//' | xargs tmux switch-client -t
+exit 0

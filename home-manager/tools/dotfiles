@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+DOTFILES_PATH="$HOME/.dotfiles/"
+
+DOTFILES_DIRS=$(find "$DOTFILES_PATH" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | grep -v '\.')
+
+cd "$DOTFILES_PATH" || exit
+
+case "$1" in
+"install")
+	echo "installing dotfiles"
+	for folder in $DOTFILES_DIRS; do
+		stow -v -t ~ "$folder"
+	done
+	;;
+"reinstall")
+	echo "reinstalling dotfiles"
+	for folder in $DOTFILES_DIRS; do
+		stow -v --restow -t ~ "$folder"
+	done
+	;;
+"uninstall")
+	echo "uninstalling dotfiles"
+	for folder in $DOTFILES_DIRS; do
+		stow -v -D -t ~ "$folder"
+	done
+	;;
+*)
+	echo "choose install, reinstall or uninstall"
+	;;
+esac

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+requirements=$(find . -mindepth 1 -maxdepth 1 -name "requirements*.txt")
+
+if ! [[ -d ".venv/" ]]; then
+	echo "creating venv"
+	python3 -m virtualenv .venv
+	. .venv/bin/activate
+
+	if [[ -n $requirements ]]; then
+		for requirement in "${requirements[@]}"; do
+			echo "installing $requirement"
+			python -m pip install -r "$requirement"
+		done
+	fi
+else
+	. .venv/bin/activate
+fi

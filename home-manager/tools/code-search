@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# fuzzy search for git repositories and vs code workspaces
+
+IGNORE_LIST=("$HOME/.tmux/*" "$HOME/.vscode/*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/.cache/*")
+ignore=()
+for i in "${IGNORE_LIST[@]}"; do
+	ignore+=("!" "-path" "$i")
+done
+
+if [[ $# -eq 1 ]]; then
+	selected="$1"
+else
+	directories=$(find ~/ -mindepth 1 -maxdepth 5 -type d -name ".git" "${ignore[@]}" 2>/dev/null | sed "s/\.git//g")
+	workspace_files=$(find ~/ -mindepth 1 -maxdepth 5 -type f -name "*.code-workspace" "${ignore[@]}" 2>/dev/null)
+	combined=("${directories[@]}" "${workspace_files[@]}")
+	selected=$(fzf <<<"${combined[@]}" | sort -u)
+fi
+
+if [[ -z "$selected" ]]; then
+	exit 0
+fi
+
+code "$selected"

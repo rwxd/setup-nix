@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# if executable "code" is not present, than it tries to search for the code-server "code" executable
+# and add its to the path
+
+if ! type "code" >/dev/null; then
+	code_executable=$(find "$HOME/.vscode-server/bin/" -executable -name "code" -quit -print0)
+	if [ -f "$code_executable" ]; then
+		PATH="$PATH:$code_executable"
+	fi
+fi

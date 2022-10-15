@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# IFS=', ' read -ra TLDR_COMMANDS <<< $(tldr --list | sed "s/'//g" | sed 's/\[//g' | sed 's/\]//g')
+
+# selected=$(fzf <<< ${TLDR_COMMANDS[@]})
+
+tldr --list | fzf --preview 'tldr {} --color always' | xargs tldr

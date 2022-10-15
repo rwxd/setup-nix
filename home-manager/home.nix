@@ -21,6 +21,11 @@
 
   # Raw configuration files
   home.file.".config/nix/nix.conf".source = ./config/nix/nix.conf;
+  home.file.".local/bin/" = {
+    source = ./tools;
+    recursive = true;
+    executable = true;
+  };
 
   home.packages = [
     pkgs.nix

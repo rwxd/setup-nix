@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Check if a x session is correct
+
+if ! timeout 3s xset q &>/dev/null; then
+	echo "No X server at \$DISPLAY [$DISPLAY]" >&2
+	exit 1
+fi
+
+echo "Seems to work :)"

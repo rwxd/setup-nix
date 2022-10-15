@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# fuzzy finder for cd
+# you need a bash function like "cdf(){cd $(fuzzycd "$1")}"
+
+IGNORE_LIST=("*venv*" "*venv*" "*.git*" "*.cache*")
+ignore=()
+for i in "${IGNORE_LIST[@]}"; do
+	ignore+=("!" "-path" "$i")
+done
+
+if [[ $# -eq 1 ]]; then
+	startpoint="$1"
+else
+	startpoint="."
+fi
+
+selected=$(find $startpoint -mindepth 1 -type d "${ignore[@]}" 2>/dev/null | fzf)
+
+if [[ -n $selected ]]; then
+	echo "$selected"
+fi

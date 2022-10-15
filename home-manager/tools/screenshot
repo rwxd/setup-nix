@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+QT_SCREEN_SCALE_FACTORS='' flameshot gui

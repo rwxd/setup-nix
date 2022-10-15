@@ -20,17 +20,15 @@
   programs.home-manager.enable = true;
 
   # Raw configuration files
-  home.file.".config/kitty/kitty.conf".source = ./config/kitty/kitty.conf;
-  home.file.".config/k9s/skin.yml".source = ./config/k9s/skin.yml;
+  home.file.".config/nix/nix.conf".source = ./config/nix/nix.conf;
 
-  # Packages to install
   home.packages = [
-	pkgs.neofetch
+    pkgs.nix
   ];
 
   imports = [
     ./dev-environment.nix
-	./system-tools.nix
+    ./system-tools.nix
   ];
 }
 

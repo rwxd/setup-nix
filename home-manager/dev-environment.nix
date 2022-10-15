@@ -5,7 +5,6 @@
     pkgs.git
     pkgs.neofetch
     pkgs.gnumake
-    pkgs.vim
     pkgs.jq
     pkgs.yq
     pkgs.sshpass
@@ -15,7 +14,6 @@
     pkgs.neovim
     pkgs.hadolint
     pkgs.plantuml
-    pkgs.tmux
     pkgs.sipcalc
     pkgs.virtualenv
     pkgs.wireshark
@@ -38,4 +36,164 @@
     pkgs.busybox
     pkgs.ripgrep
   ];
+
+  home.file.".config/kitty/kitty.conf".source = ./config/kitty/kitty.conf;
+  home.file.".config/k9s/skin.yml".source = ./config/k9s/skin.yml;
+
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [ vim-airline ];
+    extraConfig = ''
+      syntax on
+      set autoindent
+
+      set mouse=a
+
+      " Don't wrap text
+      set nowrap
+
+      set termguicolors
+
+      " Show line number
+      set number
+      set relativenumber
+
+      set tabstop=4
+
+      autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+      autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
+
+
+      """""""""""""""
+      """" PLUGIN
+      """""""""""""""
+
+      " Install vim-plug if it doesn't installed yet
+      if empty(glob('~/.vim/autoload/plug.vim'))
+          silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+              \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+          autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+      endif
+
+      " Install plugins, use :PlugInstall, :PlugUpdate, :PlugClean, :PlugUpgrade, or :PlugStatus
+      call plug#begin('~/.vim/plugged')
+      " Color Scheme
+      Plug 'arcticicestudio/nord-vim'
+      Plug 'junegunn/fzf'
+      call plug#end()
+
+      colorscheme nord
+    '';
+  };
+
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    extraConfig = ''
+      set -g default-terminal "tmux-256color"
+      set -ag terminal-overrides ",xterm-256color:RGB"
+
+      set -g status-left-length 100
+      set -g mouse on
+
+      # start window numbers at 1 to match keyboard order with tmux window order
+      set -g base-index 1
+      # start pane indexing at 1 for tmuxinator
+      set-window-option -g pane-base-index 1
+
+      # renumber windows sequentially after closing any of them
+      set -g renumber-windows on
+
+      # using a shortcut, and then accidentally pressing another key for a shortcut was ugly without it
+      set -g repeat-time 50
+
+      # Faster escape sequences (default is 500ms).
+      # This helps when exiting insert mode in Vim: http://superuser.com/a/252717/65504
+      set -s escape-time 50
+
+      # Bigger scrollback buffer
+      set -g history-limit 10000
+
+      # Neovim says it needs this
+      set-option -g focus-events on
+
+      # copy from terminal stuff
+      # TODO: what is with wayland??
+      bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -se c -i"
+      bind-key -T copy-mode MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -se c -i"
+
+
+      # remap prefix from 'C-b' to 'C-a'
+      unbind C-b
+      set-option -g prefix C-a
+      bind-key C-a send-prefix
+
+
+      # custom bindings
+      bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+      bind-key i run-shell -b "tmux neww ~/.local/bin/cht.sh"
+      bind-key S run-shell -b "tmux neww ~/.local/bin/tmux-session-switcher"
+      bind-key f run-shell -b "tmux neww ~/.local/bin/tmux-sessionizer"
+      bind-key e run-shell -b "~/.local/bin/tmux-sessionizer ~/.dotfiles"
+      bind-key E run-shell -b "~/.local/bin/tmux-sessionizer ~/dev/setup"
+      bind-key W run-shell -b "~/.local/bin/tmux-sessionizer ~/wiki"
+      # bind T neww -n "Global TODO" -c "#{pane_current_path}" "nvim ~/todo.md"
+      # bind t neww -n "TODO" -c "#{pane_current_path}" "nvim TODO.md"
+      bind T display-popup -w85% -h85% -E "nvim ~/todo.md"
+      bind t display-popup -w85% -h85% -E "nvim TODO.md"
+
+      bind O switch-client -l
+
+      bind-key S run-shell "tmux neww ~/.local/bin/tmux-session-switcher"
+      # bind -n C-s display-popup -w85% -h85% -E "tmux list-windows -a -F '#{session_name}:#{window_index} - #{window_name}' \
+      #   | fzf --reverse --preview 'echo {} | sed -E \"s/\s-.*$//\" | xargs tmux capture-pane -p -e -t' \
+      #                           | sed -E 's/\s-.*$//' \
+      #                           | xargs tmux switch-client -t"
+
+      bind -r b display-popup -w85% -h85% -E "btop --tty_on"
+
+      # Move current window to the left with Ctrl-Shift-Left
+      bind-key -n C-S-Left swap-window -t -1
+      # Move current window to the right with Ctrl-Shift-Right
+      bind-key -n C-S-Right swap-window -t +2
+
+      # nested sessions with F12
+      bind -T root F12  \
+        set prefix None \;\
+        set key-table off \;\
+        set status-style "fg=red" \;\
+        set window-status-current-format " #I:#W " \;\
+        if -F '#{pane_in_mode}' 'send-keys -X cancel' \;\
+        refresh-client -S \;\
+
+      bind -T off F12 \
+        set -u prefix \;\
+        set -u key-table \;\
+        set -u window-status-current-format \;\
+        refresh-client -S \;\
+
+      # vim like panes
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
+      #bind H select-pane -m \; select-pane -L \; swap-pane \; select-pane -M\; select-pane -L
+      #bind L select-pane -m \; select-pane -R \; swap-pane \; select-pane -M\; select-pane -R
+      #bind K select-pane -m \; select-pane -U \; swap-pane \; select-pane -M\; select-pane -U
+      #bind J select-pane -m \; select-pane -D \; swap-pane \; select-pane -M\; select-pane -D
+
+
+      set -g @catppuccin_flavour 'frappe' # latte, frappe, macchiato, mocha
+
+      # List of plugins
+      set -g @plugin 'tmux-plugins/tpm'
+
+      ## theming
+      #set -g @plugin "arcticicestudio/nord-tmux"
+      set -g @plugin 'rwxd/catppuccin-tmux'
+
+      # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+      run '~/.tmux/plugins/tpm/tpm'
+    '';
+  };
 }

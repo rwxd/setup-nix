@@ -45,13 +45,13 @@
       };
 
 
-      "ethernet eth0" = {
-        position = 6;
-        settings = {
-          format_up = "E: %ip (%speed)";
-          format_down = "E: down";
-        };
-      };
+      # "ethernet eth0" = {
+      #   position = 6;
+      #   settings = {
+      #     format_up = "E: %ip (%speed)";
+      #     format_down = "E: down";
+      #   };
+      # };
 
       # "volume master" = {
       #   position = 7;

@@ -18,6 +18,16 @@ in
       (lib.strings.fileContents ./extra_sources.zsh)
       (lib.strings.fileContents ./completions.zsh)
       ''
+        label="nix-shell"
+        if [[ -n "$IN_NIX_SHELL" ]]; then
+          if [[ "$name" != "$label" ]]; then
+            label="$label:$name"
+          fi
+          export PS1=$'%{$fg[green]%}'"$label $PS1"
+          unset label
+        fi
+      ''
+      ''
         ##########################
         ##### SSH-Agent
         ##########################

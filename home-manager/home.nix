@@ -19,17 +19,20 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Raw configuration files
-  home.file.".config/nix/nix.conf".source = ./config/nix/nix.conf;
+  nix = {
+    enable = true;
+    package = pkgs.nix;
+    extraOptions = ''
+
+      experimental-features = nix-command flakes
+    '';
+  };
+
   home.file.".local/bin/" = {
     source = ./tools;
     recursive = true;
     executable = true;
   };
-
-  home.packages = [
-    pkgs.nix
-  ];
 
   imports = [
     ./dev-environment.nix

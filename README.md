@@ -26,7 +26,10 @@ nix-channel --update
 ```
 
 ```bash
-ln -s ~/.dotfiles-nix/home-manager ~/.config/nixpkgs
+ln -s ~/setup-nix/home-manager ~/.config/nixpkgs
 ```
 
 ## Home Manager
+
+
+![Ansible Nein Danke](./docs/ansible-nein-danke.svg)

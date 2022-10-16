@@ -1,0 +1,25 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "py",
+    "python",
+    "yaml",
+    "yml",
+    "yaml.ansible",
+    "json",
+    "go",
+    "sh",
+    "tf",
+    "terraform"
+  ],
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--inline-quotes \"'\"",
+    "--max-line-length 180"
+  ],
+  "python.linting.mypyEnabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--skip-string-normalization"],
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false
+}

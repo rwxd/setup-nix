@@ -1,0 +1,71 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+##########################
+##### SSH-Agent
+##########################
+
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 24h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
+##########################
+##### ENV Vars
+##########################
+
+export DEFAULT_USER=$USER
+export TERM="xterm-256color"
+
+setopt EXTENDED_HISTORY
+setopt HIST_VERIFY
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Dont record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Dont record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Dont write duplicate entries in the history file.
+
+##########################
+##### Keybindings
+##########################
+
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^g "lazygit\n"
+bindkey -s ^v "source machvenv\n"
+
+##########################
+##### Extra sources
+##########################
+
+# dotfile submodules
+source "$HOME/.local/bin/source-additional-files"
+
+# vs code
+if [ -d "$HOME/.vscode-server/" ]; then
+	source "$HOME/.local/bin/code-server-integration"
+fi
+
+##########################
+##### zsh stuff
+##########################
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+fpath+=~/.zsh
+fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
+source "$ZSH/oh-my-zsh.sh"
+# autoload -U compinit && compinit
+# autoload -U +X bashcompinit && bashcompinit
+zstyle ':completion:*' menu select
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

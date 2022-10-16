@@ -45,7 +45,6 @@ in
     initExtraFirst = p10kInit;
 
     shellAliases = {
-      cat = "bat";
       asciicast2gif = "docker run --rm -v $PWD:/data asciinema/asciicast2gif";
       petname = "docker run --rm fjolsvin/petname";
       "kubeconfig-switcher" = "source kubeconfig-switcher";

@@ -7,7 +7,6 @@
     bluez
     blueman
     pavucontrol
-    kitty
     dunst
     protonvpn-cli
     firefox

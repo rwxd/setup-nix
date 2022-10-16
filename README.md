@@ -31,5 +31,4 @@ ln -s ~/setup-nix/home-manager ~/.config/nixpkgs
 
 ## Home Manager
 
-
-![Ansible Nein Danke](./docs/ansible-nein-danke.svg)
+<img src="./docs/ansible-nein-danke.svg" alt="drawing" width="600"/>

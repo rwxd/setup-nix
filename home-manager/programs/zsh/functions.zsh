@@ -1,4 +1,4 @@
-#####################
+####################
 ## functions
 #####################
 
@@ -26,4 +26,3 @@ tf-docs(){
 		docker run --rm -v $(pwd):/project -w /project quay.io/terraform-docs/terraform-docs:latest --hide requirements markdown . > ./$1
 	fi
 }
-

@@ -29,15 +29,13 @@
   };
 
   home.file.".local/bin/" = {
-    source = ./tools;
+    source = ../../tools;
     recursive = true;
     executable = true;
   };
 
   imports = [
-    ./dev-environment.nix
-    ./system-tools.nix
+    ../../dev-environment.nix
+    ../../system-tools.nix
   ];
 }
-
-

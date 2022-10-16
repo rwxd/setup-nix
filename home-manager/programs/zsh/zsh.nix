@@ -14,6 +14,8 @@ in
     initExtra = builtins.concatStringsSep "\n" [
       (lib.strings.fileContents ./variables.zsh)
       (lib.strings.fileContents ./functions.zsh)
+      (lib.strings.fileContents ./keybindings.zsh)
+      (lib.strings.fileContents ./extra_sources.zsh)
       (lib.strings.fileContents ./completions.zsh)
       ''
         ##########################

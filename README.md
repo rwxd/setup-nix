@@ -27,6 +27,7 @@ nix-channel --update
 
 ```bash
 ln -s ~/setup-nix/home-manager ~/.config/nixpkgs
+ln -s ~/setup-nix/home-manager/hosts/home/home.nix ~/.config/nixpkgs/home.nix
 ```
 
 ## Home Manager

@@ -27,7 +27,12 @@ nix-channel --update
 
 ```bash
 ln -s ~/setup-nix/home-manager ~/.config/nixpkgs
-ln -s ~/setup-nix/home-manager/hosts/home/home.nix ~/.config/nixpkgs/home.nix
+```
+
+Choose a host to map to `~/.config/nixpkgs/home.nix`
+
+```bash
+ln -s ~/setup-nix/hosts/home/home.nix ~/.config/nixpkgs/home.nix
 ```
 
 ## Home Manager

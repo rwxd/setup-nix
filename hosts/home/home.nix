@@ -19,23 +19,26 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nixpkgs.config.allowUnfree = true;
   nix = {
     enable = true;
     package = pkgs.nix;
     extraOptions = ''
-
       experimental-features = nix-command flakes
     '';
   };
 
   home.file.".local/bin/" = {
-    source = ../../tools;
+    source = ../../home-manager/tools;
     recursive = true;
     executable = true;
   };
 
+  home.file.".gitconfig".source = ./config/gitconfig;
+
   imports = [
-    ../../dev-environment.nix
-    ../../system-tools.nix
+    ../../home-manager/dev-environment.nix
+    ../../home-manager/system-tools.nix
+    ../../home-manager/desktop-environment.nix
   ];
 }

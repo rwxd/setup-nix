@@ -47,8 +47,9 @@
     ./programs/neovim/neovim.nix
     ./programs/tmux/tmux.nix
     ./programs/vim/vim.nix
-    ./programs/kitty/kitty.nix
     ./programs/k9s/k9s.nix
     ./programs/zsh/zsh.nix
+    ./programs/git/git.nix
+    ./programs/gnupg/gnupg.nix
   ];
 }

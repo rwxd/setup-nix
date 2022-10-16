@@ -16,16 +16,13 @@
     spotify
     libreoffice
     feh
-    rofi
     nextcloud-client
     discord
-    wally
     vlc
     obsidian
     flameshot
     element
     firejail
-    appimagelauncher
     tor
     todoist
     youtube-dl
@@ -33,4 +30,15 @@
     qtpass
     vscode
   ];
+
+
+  imports = [
+    ./programs/rofi/rofi.nix
+    ./programs/picom/picom.nix
+    ./programs/i3/i3.nix
+    ./programs/i3status/i3status.nix
+    ./programs/kitty/kitty.nix
+    ./programs/alacritty/alacritty.nix
+  ];
+
 }

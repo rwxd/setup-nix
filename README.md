@@ -31,4 +31,10 @@ ln -s ~/setup-nix/home-manager ~/.config/nixpkgs
 
 ## Home Manager
 
+```bash
+home-manager switch
+```
+
+---
+
 <img src="./docs/ansible-nein-danke.svg" alt="drawing" width="300"/>

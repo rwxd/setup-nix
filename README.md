@@ -11,6 +11,8 @@ sudo pacman -S nix
 sudo systemctl start nix-daemon.service
 sudo systemctl enable nix-daemon.service
 
+sudo useradd -aG nix-users $USER
+
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 sudo -i nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
 nix-channel --update

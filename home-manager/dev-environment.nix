@@ -51,5 +51,6 @@
     ./programs/zsh/zsh.nix
     ./programs/git/git.nix
     ./programs/gnupg/gnupg.nix
+    ./programs/bat/bat.nix
   ];
 }

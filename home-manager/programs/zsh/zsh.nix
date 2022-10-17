@@ -2,6 +2,7 @@
 
 let
   p10kInit = builtins.readFile ./p10k-init.zsh;
+  zshVars = builtins.readFile ./variables.zsh;
 in
 {
   programs.zsh = {
@@ -12,7 +13,6 @@ in
 
     # initExtra = zshConfig;
     initExtra = builtins.concatStringsSep "\n" [
-      (lib.strings.fileContents ./variables.zsh)
       (lib.strings.fileContents ./functions.zsh)
       (lib.strings.fileContents ./keybindings.zsh)
       (lib.strings.fileContents ./extra_sources.zsh)
@@ -43,6 +43,8 @@ in
     ];
 
     initExtraFirst = p10kInit;
+
+	envExtra = zshVars;
 
     shellAliases = {
       asciicast2gif = "docker run --rm -v $PWD:/data asciinema/asciicast2gif";

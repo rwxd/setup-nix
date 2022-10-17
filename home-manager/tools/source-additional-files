@@ -2,9 +2,7 @@
 # sources all files with shebangs in the "$dirs" var
 
 dirs=(
-	"$HOME/.dotfiles/arch/.config/arch/"
-	"$HOME/.dotfiles/personal/.config/personal/"
-	"$HOME/.dotfiles/akq/.config/akq/"
+	"$HOME/.akqenv/"
 )
 
 for dir in "${dirs[@]}"; do

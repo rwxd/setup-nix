@@ -38,13 +38,15 @@ in
         if [[ ! "$SSH_AUTH_SOCK" ]]; then
             source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
         fi
-
+      ''
+      ''
+        eval "$(direnv hook zsh)"
       ''
     ];
 
     initExtraFirst = p10kInit;
 
-	envExtra = zshVars;
+    envExtra = zshVars;
 
     shellAliases = {
       asciicast2gif = "docker run --rm -v $PWD:/data asciinema/asciicast2gif";

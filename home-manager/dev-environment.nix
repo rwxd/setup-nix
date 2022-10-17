@@ -52,5 +52,6 @@
     ./programs/git/git.nix
     ./programs/gnupg/gnupg.nix
     ./programs/bat/bat.nix
+    ./programs/direnv/direnv.nix
   ];
 }

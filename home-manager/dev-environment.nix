@@ -41,6 +41,8 @@
     python3Packages.pipx
     vault
     powershell
+    terraform
+    terragrunt
   ];
 
   imports = [

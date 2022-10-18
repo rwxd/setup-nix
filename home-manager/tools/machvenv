@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
 
-requirements=$(find . -mindepth 1 -maxdepth 1 -name "requirements*.txt")
+requirement_files=('requirements.txt' 'requirements-dev.txt')
 
 if ! [[ -d ".venv/" ]]; then
 	echo "creating venv"
 	python3 -m virtualenv .venv
-	. .venv/bin/activate
-
-	if [[ -n $requirements ]]; then
-		for requirement in "${requirements[@]}"; do
+	source .venv/bin/activate
+	for requirement in "${requirement_files[@]}"; do
+		if [ -f "$requirement" ]; then
 			echo "installing $requirement"
 			python -m pip install -r "$requirement"
-		done
-	fi
+		fi
+	done
 else
-	. .venv/bin/activate
+	source .venv/bin/activate
 fi

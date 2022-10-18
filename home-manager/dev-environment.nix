@@ -14,7 +14,6 @@
     hadolint
     plantuml
     sipcalc
-    virtualenv
     wireshark
     tldr
     kind
@@ -31,14 +30,16 @@
     glab
     entr
     btop
-    python310Packages.pipx
     ripgrep
     kubectl
     argocd
-    python3
     poetry
-    python3Packages.pip
-    python3Packages.pipx
+    python3
+    python310Packages.pip
+    python310Packages.pipx
+    python310Packages.virtualenv
+    # python3Packages.pip
+    # python3Packages.pipx
     vault
     powershell
     terraform

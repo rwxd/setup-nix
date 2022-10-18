@@ -56,6 +56,7 @@ in
       ".." = "cd ..";
       "..." = "cd ...";
       "...." = "cd ....";
+      "remove-pacman-orphans" = "pacman -Qtdq | pacman -Rns -";
     };
 
     plugins = [

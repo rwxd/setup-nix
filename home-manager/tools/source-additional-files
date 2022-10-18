@@ -8,7 +8,7 @@ dirs=(
 for dir in "${dirs[@]}"; do
 	if [ -d "$dir" ]; then
 		# shellcheck disable=SC2044
-		for file in $(find "$dir" -maxdepth 1 -mindepth 1 -type f); do
+		for file in $(find "$dir" -maxdepth 1 -mindepth 1 -type f,l); do
 			first_line=$(head -n 1 "$file")
 			if [[ $first_line =~ "#!" ]]; then
 				# shellcheck disable=SC1090

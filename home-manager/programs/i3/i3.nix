@@ -212,7 +212,7 @@ in
     extraConfig = ''
       floating_modifier ${i3_mod}
       exec --no-startup-id feh --bg-scale --random ~/wallpaper/
-      exec --no-startup-id "sleep 10; nextcloud"
+      exec --no-startup-id "sleep 5; nextcloud"
 
       exec_always --no-startup-id picom
 

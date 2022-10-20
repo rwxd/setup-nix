@@ -15,7 +15,7 @@
     spotify
     libreoffice
     feh
-    nextcloud-client
+    # nextcloud-client
     discord
     vlc
     obsidian

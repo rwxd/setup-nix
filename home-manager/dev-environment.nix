@@ -44,6 +44,7 @@
     powershell
     terraform
     terragrunt
+    go_1_18
   ];
 
   imports = [

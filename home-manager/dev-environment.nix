@@ -45,6 +45,7 @@
     terraform
     terragrunt
     go_1_18
+    jc
   ];
 
   imports = [

@@ -1,0 +1,22 @@
+[user]
+	email = rwxd@pm.me
+	name = rwxd
+	signingkey = rwxd@pm.me
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgSign = true
+
+[init]
+	defaultBranch = main
+
+[alias]
+    tree = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit

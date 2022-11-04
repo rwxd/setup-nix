@@ -2,11 +2,13 @@ syntax on
 
 "
 " plugins
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
+if !filereadable(autoload_plug_path)
+  silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs 
+      \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+unlet autoload_plug_path
 
 call plug#begin('~/.vim/plugged')
 
@@ -55,13 +57,13 @@ Plug 'mfussenegger/nvim-dap-python'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
-Plug 'nvim-telescope/telescope-frecency.nvim'
+"Plug 'nvim-telescope/telescope-frecency.nvim'
 "" for frecency
-Plug 'tami5/sqlite.lua'
+"Plug 'tami5/sqlite.lua'
 
-Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
 
@@ -120,8 +122,8 @@ let g:airline_theme='atomic'
 
 
 " python neovim
-let g:python_host_prog = '~/.venvs/neovim2/bin/python'
-let g:python3_host_prog = '~/.venvs/neovim3/bin/python'
+" let g:python_host_prog = '~/.venvs/neovim2/bin/python'
+" let g:python3_host_prog = '~/.venvs/neovim3/bin/python'
 
 "" black
 let g:black_skip_string_normalization = 1

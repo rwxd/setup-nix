@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   neovimConfig = builtins.readFile ./init.vim;
@@ -7,15 +7,14 @@ in
   programs.neovim = {
     enable = true;
     # package = pkgs.neovim-nightly;
-    vimAlias = true;
-    viAlias = true;
     withNodeJs = true;
     withPython3 = true;
     withRuby = false;
     extraConfig = neovimConfig;
 
-    plugins = [
-      (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+    plugins = with pkgs; [
+      (vimPlugins.nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
+      vimPlugins.telescope-fzf-native-nvim
     ];
 
     extraPackages = with pkgs; [

@@ -46,6 +46,8 @@
     terragrunt
     go_1_18
     jc
+    fd
+    gcc
   ];
 
   imports = [

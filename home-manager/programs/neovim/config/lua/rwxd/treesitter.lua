@@ -1,19 +1,19 @@
-local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
-vim.fn.mkdir(parser_install_dir, "p")
-vim.opt.runtimepath:append(parser_install_dir)
+-- local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
+-- vim.fn.mkdir(parser_install_dir, "p")
+-- vim.opt.runtimepath:append(parser_install_dir)
 
 require "nvim-treesitter.configs".setup {
 	-- A list of parser names, or "all"
-	ensure_installed = {
-		"c", "lua", "rust", "python", "go", "latex", "query",
-		"json", "vim", "ruby", "php", "nix", "html",
-		"css", "bash", "astro", "make", "dart", "typescript", "proto", "java"
-	},
+	-- ensure_installed = {
+	-- 	"c", "lua", "rust", "python", "go", "latex", "query",
+	-- 	"json", "vim", "ruby", "php", "nix", "html",
+	-- 	"css", "bash", "astro", "make", "dart", "typescript", "proto", "java"
+	-- },
 
-	parser_install_dir = parser_install_dir,
+	-- parser_install_dir = parser_install_dir,
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
-	sync_install = false,
+	-- sync_install = false,
 
 	-- List of parsers to ignore installing (for "all")
 	ignore_install = { "javascript" },

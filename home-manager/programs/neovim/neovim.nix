@@ -13,7 +13,7 @@ in
     extraConfig = neovimConfig;
 
     plugins = with pkgs; [
-      # (vimPlugins.nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
+      (vimPlugins.nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
       vimPlugins.telescope-fzf-native-nvim
       sumneko-lua-language-server
     ];
@@ -23,6 +23,7 @@ in
       gopls
       rust-analyzer
       nodePackages.pyright
+      gcc
     ];
   };
 

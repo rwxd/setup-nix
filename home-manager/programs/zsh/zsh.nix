@@ -52,7 +52,7 @@ in
       asciicast2gif = "docker run --rm -v $PWD:/data asciinema/asciicast2gif";
       petname = "docker run --rm fjolsvin/petname";
       "kubeconfig-switcher" = "source kubeconfig-switcher";
-      i3lock = "/bin/bash -c \"i3lock\"";
+      i3lock = "bash -c \"i3lock\"";
       ".." = "cd ..";
       "..." = "cd ...";
       "...." = "cd ....";

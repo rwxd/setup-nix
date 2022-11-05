@@ -19,5 +19,6 @@
     tcpdump
     git
     unzip
+    trash-cli
   ];
 }

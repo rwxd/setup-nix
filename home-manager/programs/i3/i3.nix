@@ -1,9 +1,12 @@
 { config, pkgs, ... }:
 let
   i3_mod = "Mod4";
+  rofi = "${pkgs.rofi}/bin/rofi";
 in
 {
-  # home.file.".config/i3/config".source = ./config;
+  home.packages = with pkgs; [
+    i3lock
+  ];
 
   xsession.windowManager.i3 = {
     enable = true;
@@ -155,7 +158,8 @@ in
         # "${i3_mod}+d exec --no-startup-id dmenu_run
 
         # start rofi (a program launcher)
-        "${i3_mod}+d" = "exec --no-startup-id rofi -show drun -config ~/.config/rofi/nord.rasi";
+        # "${i3_mod}+d" = "exec --no-startup-id rofi -show drun -config ~/.config/rofi/nord.rasi";
+        "${i3_mod}+d" = "exec --no-startup-id ${rofi} -show drun -config ~/.config/rofi/config.rasi";
 
         # kill focused window
         "${i3_mod}+Shift+q" = "kill";

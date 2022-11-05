@@ -13,6 +13,7 @@
     brave
     bitwarden
     spotify
+    spicetify-cli
     # libreoffice
     feh
     # nextcloud-client
@@ -20,7 +21,7 @@
     vlc
     obsidian
     flameshot
-    element
+    element-desktop
     firejail
     tor
     todoist
@@ -39,5 +40,4 @@
     ./programs/kitty/kitty.nix
     ./programs/alacritty/alacritty.nix
   ];
-
 }

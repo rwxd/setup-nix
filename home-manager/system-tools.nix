@@ -14,11 +14,14 @@
     findutils
     nmap
     pwgen
-    pass
     git-crypt
     tcpdump
     git
     unzip
     trash-cli
+  ];
+
+  imports = [
+    ./programs/pass.nix
   ];
 }

@@ -45,27 +45,42 @@
       };
 
 
-      # "ethernet eth0" = {
-      #   position = 6;
-      #   settings = {
-      #     format_up = "E: %ip (%speed)";
-      #     format_down = "E: down";
-      #   };
-      # };
+      "ethernet enp0s31f6" = {
+        position = 5;
+        settings = {
+          format_up = "E: %ip (%speed)";
+          format_down = "E: down";
+        };
+      };
 
-      # "volume master" = {
-      #   position = 7;
-      #   settings = {
-      #     format = "\u266a: %volume";
-      #     format_muted = "\u266a: muted (%volume)";
-      #     device = "default;";
-      #     mixer = "Master";
-      #     mixer_idx = 0;
-      #   };
-      # };
+      "wireless wlp3s0" = {
+        position = 6;
+        settings = {
+          format_up = "W: %quality at %essid %ip";
+          format_down = "W: down";
+        };
+      };
+
+      "battery 1" = {
+        position = 7;
+        settings = {
+          format = "%status %percentage %remaining";
+        };
+      };
+
+      "volume master" = {
+        position = 8;
+        settings = {
+          format = "🔊: %volume";
+          format_muted = "🔊: muted (%volume)";
+          device = "pulse;";
+          mixer = "Master";
+          mixer_idx = 0;
+        };
+      };
 
       "tztime local" = {
-        position = 8;
+        position = 9;
         settings = {
           format = "%H:%M:%S %d.%m.%Y";
         };

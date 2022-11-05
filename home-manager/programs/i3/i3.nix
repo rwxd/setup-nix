@@ -10,7 +10,7 @@ in
     package = pkgs.i3-gaps;
     config = {
       gaps = {
-        inner = 15;
+        inner = 5;
         smartBorders = "on";
       };
 
@@ -29,12 +29,48 @@ in
         ];
       };
 
-      # colors = { };
-
       bars = [
         {
           position = "bottom";
-          statusCommand = "${pkgs.i3status}/bin/i3status";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
+          extraConfig = ''
+          '';
+          colors = {
+            separator = "#1f222d";
+            background = "#1f222d";
+            statusline = "#81a1c1";
+
+            focusedWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#81a1c1";
+            };
+            activeWorkspace = {
+              border = "#1f222d";
+              background = "#252936";
+              text = "#5e81ac";
+            };
+            inactiveWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#4c566a";
+            };
+            urgentWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#ee829f";
+            };
+            bindingMode = {
+              border = "#1f222d";
+              background = "#81a1c1";
+              text = "#2e3440";
+            };
+          };
+        }
+        {
+          position = "top";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
+          workspaceButtons = false;
           extraConfig = ''
           '';
           colors = {

@@ -18,5 +18,6 @@
     git-crypt
     tcpdump
     git
+    unzip
   ];
 }

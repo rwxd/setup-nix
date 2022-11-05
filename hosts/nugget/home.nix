@@ -21,6 +21,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  home.packages = with pkgs; [
+    nextcloud-client
+  ];
+
   nix = {
     enable = true;
     package = pkgs.nix;

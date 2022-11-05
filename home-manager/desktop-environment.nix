@@ -13,7 +13,7 @@
     brave
     bitwarden
     spotify
-    libreoffice
+    # libreoffice
     feh
     # nextcloud-client
     discord
@@ -30,12 +30,12 @@
     vscode
   ];
 
-
   imports = [
     ./programs/rofi/rofi.nix
     ./programs/picom/picom.nix
     ./programs/i3/i3.nix
     ./programs/i3status/i3status.nix
+    ./programs/i3status-rust.nix
     ./programs/kitty/kitty.nix
     ./programs/alacritty/alacritty.nix
   ];

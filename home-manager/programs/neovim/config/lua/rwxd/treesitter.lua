@@ -1,5 +1,6 @@
 local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
 vim.fn.mkdir(parser_install_dir, "p")
+vim.opt.runtimepath:append(parser_install_dir)
 
 require "nvim-treesitter.configs".setup {
 	-- A list of parser names, or "all"

@@ -63,7 +63,7 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 "" for frecency
 "Plug 'tami5/sqlite.lua'
 
-"Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
 

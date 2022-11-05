@@ -62,6 +62,11 @@
             format = "{ip} {country_code} {city} {asn}";
           }
           {
+            block = "music";
+            player = "spotify";
+            hide_when_empty = true;
+          }
+          {
             block = "networkmanager";
             on_click = "alacritty -e nmtui";
             interface_name_exclude = [ "br\-[0-9a-f]{12}" "docker\d+" ];

@@ -12,7 +12,9 @@ in
   imports =
     [
       # Include the results of the hardware scan.
+      <nixos-hardware/lenovo/thinkpad/x270>
       ./hardware-configuration.nix
+      ./services.nix
       (import "${home-manager}/nixos")
     ];
 

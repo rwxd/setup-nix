@@ -14,9 +14,8 @@
     bitwarden
     spotify
     spicetify-cli
-    # libreoffice
+    libreoffice-qt
     feh
-    # nextcloud-client
     discord
     vlc
     obsidian
@@ -29,7 +28,19 @@
     cryptomator
     qtpass
     vscode
+    anki-bin
+    xss-lock
   ];
+
+  services.screen-locker = {
+    enable = true;
+    # lockCmd = "${pkgs.i3lock}/bin/i3lock -f -c 000000";
+    lockCmd = "${pkgs.i3lock}/bin/i3lock --nofork";
+    xautolock = {
+      enable = true;
+      detectSleep = true;
+    };
+  };
 
   imports = [
     ./programs/rofi/rofi.nix

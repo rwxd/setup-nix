@@ -17,6 +17,7 @@
     settings = {
       PASSWORD_STORE_DIR = "$XDG_DATA_HOME/.password-store";
       PASSWORD_STORE_CLIP_TIME = "60";
+      PASSWORD_STORE_ENABLE_EXTENSIONS = "true";
     };
   };
 }

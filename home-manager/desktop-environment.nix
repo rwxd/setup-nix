@@ -34,8 +34,7 @@
 
   services.screen-locker = {
     enable = true;
-    # lockCmd = "${pkgs.i3lock}/bin/i3lock -f -c 000000";
-    lockCmd = "${pkgs.i3lock}/bin/i3lock --nofork";
+    lockCmd = "${pkgs.i3lock}/bin/i3lock --nofork -c 000000";
     xautolock = {
       enable = true;
       detectSleep = true;

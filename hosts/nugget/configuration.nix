@@ -112,6 +112,7 @@ in
     curl
     firefox
     git
+    brightnessctl
   ];
 
   # fonts

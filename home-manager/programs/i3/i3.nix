@@ -132,6 +132,11 @@ in
       };
 
       keybindings = {
+        # backlight
+        "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
+        "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
+
+        # volume control
         "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
         "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status";
         "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
@@ -143,7 +148,7 @@ in
         "XF86AudioPrev" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous\"";
         "XF86AudioNext" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next\"";
 
-        "F12" = "exec i3lock -f";
+        "F12" = "exec i3lock --nofork -c 000000";
 
         "${i3_mod}+r" = "mode resize";
 
@@ -254,7 +259,7 @@ in
     extraConfig = ''
       floating_modifier ${i3_mod}
       exec --no-startup-id feh --bg-scale --random ~/wallpaper/
-      exec --no-startup-id "sleep 5; nextcloud"
+      exec --no-startup-id "sleep 30; nextcloud"
 
       exec_always --no-startup-id picom
 

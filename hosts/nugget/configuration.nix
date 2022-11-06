@@ -96,7 +96,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fwrage = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "video" "audio" "lp" "scanner" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       thunderbird

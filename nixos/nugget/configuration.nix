@@ -2,22 +2,23 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
-let
-  # home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in
+# let
+# home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
+# home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+# in
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/x270>
-      ./hardware-configuration.nix
-      ./virtualization.nix
-      ./services.nix
-      (import "${home-manager}/nixos")
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270
+    ./hardware-configuration.nix
+    ./virtualization.nix
+    ./services.nix
+    # (import "${home-manager}/nixos")
+  ];
+
+  home-manager.users."fwrage" = import ../../home-manager/nugget/home.nix;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -156,8 +157,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
-  home-manager.users = {
-    fwrage.imports = [ ./home.nix ];
-  };
 }

@@ -14,9 +14,8 @@ scan-git-secrets() {
 }
 
 setup(){
-	cd ~/dev/setup
-	source .venv/bin/activate
-	make $@ && deactivate
+	cd ~/setup-nix
+	make $@
 }
 
 tf-docs(){

@@ -40,6 +40,20 @@ Choose a host to map to `~/.config/nixpkgs/home.nix`
 ln -s ~/setup-nix/hosts/home/home.nix ~/.config/nixpkgs/home.nix
 ```
 
+## NixOS
+
+```bash
+# All as root
+HOST=...  # set host variable to use proper configuration
+
+nix-shell git
+git clone https://this.repo.url/ /etc/nixos
+cd /etc/nixos
+nixos-install --root /mnt --impure --flake .#$HOST
+
+# Reboot
+```
+
 ## Home Manager
 
 ```bash

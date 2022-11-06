@@ -1,17 +1,32 @@
 #!/usr/bin/env bash
 
-requirement_files=('requirements.txt' 'requirements-dev.txt')
+set -e -o pipefail
 
-if ! [[ -d ".venv/" ]]; then
-	echo "creating venv"
-	python3 -m virtualenv .venv
+requirement_files=(
+	'requirements.txt'
+	'requirements-dev.txt'
+	'requirements-api.txt'
+)
+
+if type "virtualenv" >/dev/null; then
+	virtualenv_command="virtualenv"
+elif type "venv" >/dev/null; then
+	virtualenv_command="venv"
+else
+	virtualenv_command="python3 -m venv"
+fi
+
+if [[ -d ".venv/" ]]; then
+	echo "==> Sourcing venv in \".venv\"" >&2
+	source .venv/bin/activate
+else
+	echo "==> Creating venv in \".venv\" with tool \"$virtualenv_command\"" >&2
+	$virtualenv_command .venv
 	source .venv/bin/activate
 	for requirement in "${requirement_files[@]}"; do
 		if [ -f "$requirement" ]; then
-			echo "installing $requirement"
-			python -m pip install -r "$requirement"
+			echo "==> Installing requirements from \"$requirement\"" >&2
+			python -m pip install -U -r "$requirement"
 		fi
 	done
-else
-	source .venv/bin/activate
 fi

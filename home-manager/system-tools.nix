@@ -20,6 +20,7 @@
     unzip
     trash-cli
     manix
+    age
   ];
 
   imports = [

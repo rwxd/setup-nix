@@ -267,6 +267,8 @@ in
       # and nm-applet is a desktop environment-independent system tray GUI for it.
       exec --no-startup-id nm-applet
 
+      # Blueman
+      exec --no-startup-id blueman-applet
 
       # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
       # screen before suspend. Use loginctl lock-session to lock your screen.

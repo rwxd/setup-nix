@@ -39,6 +39,8 @@
     };
   };
 
+  services.blueman-applet.enable = true;
+
   imports = [
     ./programs/rofi/rofi.nix
     ./programs/picom/picom.nix

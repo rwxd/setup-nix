@@ -19,6 +19,7 @@
     git
     unzip
     trash-cli
+    manix
   ];
 
   imports = [

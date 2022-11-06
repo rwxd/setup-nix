@@ -48,6 +48,7 @@
     jc
     fd
     gcc
+    asdf-vm
   ];
 
   imports = [

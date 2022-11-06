@@ -17,6 +17,10 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 nix-channel --update
 ```
 
+```bash
+export NIX_CONFIG="experimental-features = nix-command flakes"
+```
+
 ### home-manager
 
 [Standalone installation](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)

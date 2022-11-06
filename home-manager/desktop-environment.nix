@@ -2,8 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    flatpak
-    podman
     bluez
     blueman
     pavucontrol

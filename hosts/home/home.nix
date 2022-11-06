@@ -21,6 +21,13 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  home.packages = with pkgs; [
+    podman
+    podman-compose
+    docker
+    docker-compose
+  ];
+
   nix = {
     enable = true;
     package = pkgs.nix;

@@ -19,7 +19,6 @@
     tldr
     kind
     kubernetes-helm
-    docker
     hugo
     bfg-repo-cleaner
     shfmt

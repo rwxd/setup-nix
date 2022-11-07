@@ -21,6 +21,9 @@
     trash-cli
     manix
     age
+    speedtest-cli
+    tor
+    viu
   ];
 
   imports = [

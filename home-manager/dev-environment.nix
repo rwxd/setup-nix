@@ -16,10 +16,9 @@
     plantuml
     sipcalc
     wireshark
-    tldr
+    tealdeer
     kind
     kubernetes-helm
-    hugo
     bfg-repo-cleaner
     shfmt
     shellcheck
@@ -47,6 +46,12 @@
     fd
     gcc
     asdf-vm
+    bettercap
+    ctop
+    glow
+    httpie
+    hugo
+    tickrs
   ];
 
   imports = [

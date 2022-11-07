@@ -94,15 +94,12 @@
       };
 
       homeConfigurations = {
-        "home" = home-manager.lib.homeManagerConfiguration rec {
-          username = "fwrage";
-          homeDirectory = "/home/${username}";
-          system = systems.x86_64-linux;
+        "whopper" = home-manager-unstable.lib.homeManagerConfiguration rec {
           pkgs = legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           modules = (builtins.attrValues homeManagerModules) ++ [
             # > Our main home-manager configuration file <
-            ./home-manager/home/home.nix
+            ./home-manager/whopper/home.nix
 
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix { inherit overlays; })
@@ -111,4 +108,3 @@
       };
     };
 }
-

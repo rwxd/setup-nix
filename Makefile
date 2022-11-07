@@ -12,8 +12,8 @@ flake-lock: ## lock flakes
 flake-lock-update: ## lock flakes & update
 	nix flake lock --update-input nixpkgs --show-trace --extra-experimental-features nix-command --extra-experimental-features
 
-home: ## build home-manager home
-	home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake .#home
+whopper: ## build home-manager home
+	home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake .#whopper
 
 nugget: ## build nugget nixos
 	sudo nixos-rebuild switch --flake .#nugget --show-trace

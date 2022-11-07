@@ -261,7 +261,7 @@ in
       exec --no-startup-id watch -n 1200 feh --bg-fill --randomize ~/wallpaper/* &>/dev/null &
       exec --no-startup-id "sleep 30; nextcloud"
 
-      exec_always --no-startup-id picom
+      # exec_always --no-startup-id picom
 
       # NetworkManager is the most popular way to manage wireless networks on Linux,
       # and nm-applet is a desktop environment-independent system tray GUI for it.

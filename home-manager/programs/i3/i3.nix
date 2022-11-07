@@ -156,7 +156,7 @@ in
         "${i3_mod}+Return" = "exec i3-sensible-terminal";
 
         # change wallpaper
-        "${i3_mod}+o" = "exec feh --bg-scale --random ~/wallpaper/";
+        "${i3_mod}+o" = "exec feh --bg-fill --random ~/wallpaper/";
 
         # screenshot
         "Control+Shift+x" = "exec --no-startup-id flameshot gui";
@@ -258,7 +258,7 @@ in
     };
     extraConfig = ''
       floating_modifier ${i3_mod}
-      exec --no-startup-id watch -n 1200 feh --bg-scale --randomize ~/wallpaper/* &>/dev/null &
+      exec --no-startup-id watch -n 1200 feh --bg-fill --randomize ~/wallpaper/* &>/dev/null &
       exec --no-startup-id "sleep 30; nextcloud"
 
       exec_always --no-startup-id picom

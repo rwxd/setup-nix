@@ -28,6 +28,7 @@
     vscode
     anki-bin
     xss-lock
+    signal-desktop
   ];
 
   services.screen-locker = {

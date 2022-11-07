@@ -38,8 +38,6 @@
     python310Packages.pip
     python310Packages.pipx
     python310Packages.virtualenv
-    # python3Packages.pip
-    # python3Packages.pipx
     vault
     powershell
     terraform
@@ -52,14 +50,14 @@
   ];
 
   imports = [
-    ./programs/neovim/neovim.nix
-    ./programs/tmux/tmux.nix
-    ./programs/vim/vim.nix
-    ./programs/k9s/k9s.nix
-    ./programs/zsh/zsh.nix
-    ./programs/git/git.nix
-    ./programs/gnupg/gnupg.nix
-    ./programs/bat/bat.nix
-    ./programs/direnv/direnv.nix
+    ./programs/neovim
+    ./programs/tmux
+    ./programs/vim
+    ./programs/k9s
+    ./programs/zsh
+    ./programs/git
+    ./programs/gnupg
+    ./programs/bat
+    ./programs/direnv
   ];
 }

@@ -42,12 +42,12 @@
   services.blueman-applet.enable = true;
 
   imports = [
-    ./programs/rofi/rofi.nix
-    ./programs/picom/picom.nix
-    ./programs/i3/i3.nix
-    ./programs/i3status/i3status.nix
+    ./programs/rofi
+    ./programs/picom
+    ./programs/i3
+    ./programs/i3status
     ./programs/i3status-rust.nix
-    ./programs/kitty/kitty.nix
-    ./programs/alacritty/alacritty.nix
+    ./programs/kitty
+    ./programs/alacritty
   ];
 }

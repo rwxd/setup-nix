@@ -7,8 +7,6 @@ in
     clock24 = true;
     tmuxp.enable = true;
     sensibleOnTop = true;
-    # Automatically spawn a session if trying to attach and none are running.
-    newSession = false;
     keyMode = "vi";
     prefix = "C-a";
     extraConfig = tmuxConf;

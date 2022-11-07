@@ -91,6 +91,16 @@
             (import ./nixpkgs-config.nix { inherit overlays; })
           ];
         };
+        isoimage = nixpkgs.lib.nixosSystem {
+          pkgs = legacyPackages.x86_64-linux;
+          system = systems.x86_64-linux;
+          specialArgs = { inherit inputs; };
+          modules = (builtins.attrValues nixosModules) ++ defaultModules ++ [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+            ./nixos/iso
+          ];
+        };
+
       };
 
       homeConfigurations = {

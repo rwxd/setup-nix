@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    dolphin
     bluez
     blueman
     pavucontrol
@@ -29,6 +30,7 @@
     anki-bin
     xss-lock
     signal-desktop
+    keepassxc
   ];
 
   services.screen-locker = {

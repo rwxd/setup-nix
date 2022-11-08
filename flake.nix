@@ -91,6 +91,17 @@
             (import ./nixpkgs-config.nix { inherit overlays; })
           ];
         };
+        whopper = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          pkgs = legacyPackages-unstable.x86_64-linux;
+          system = systems.x86_64-linux;
+          modules = (builtins.attrValues nixosModules) ++ defaultModules ++ [
+            # > Our main nixos configuration file <
+            ./nixos/whopper/configuration.nix
+            # Our common nixpkgs config (unfree, overlays, etc)
+            (import ./nixpkgs-config.nix { inherit overlays; })
+          ];
+        };
         isoimage = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages.x86_64-linux;
           system = systems.x86_64-linux;

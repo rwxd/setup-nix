@@ -1,10 +1,10 @@
-# let
-#   kittyConfig = builtins.readFile ./kitty.conf; f
-# in
+let
+  kittyConfig = builtins.readFile ./kitty.conf;
+in
 {
-  home.file.".config/kitty/kitty.conf".source = ./kitty.conf;
-  # programs.kitty = {
-  #   enable = true;
-  #   extraConfig = kittyConfig;
-  # };
+  # home.file.".config/kitty/kitty.conf".source = ./kitty.conf;
+  programs.kitty = {
+    enable = true;
+    extraConfig = kittyConfig;
+  };
 }

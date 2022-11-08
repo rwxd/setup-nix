@@ -40,8 +40,6 @@
     executable = true;
   };
 
-  home.file.".gitconfig".source = ./config/gitconfig;
-
   gtk = {
     enable = true;
     gtk2 = {
@@ -86,6 +84,8 @@
       };
     };
   };
+
+  home.file.".gitconfig".source = ./config/gitconfig;
 
   imports = [
     ../../home-manager/dev-environment.nix

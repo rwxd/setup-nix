@@ -2,32 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
-# let
-# home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
-# home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-# in
 {
-  imports = [
-    # Include the results of the hardware scan.
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270
-    ./hardware-configuration.nix
-    ./virtualization.nix
-    ./services.nix
-    # (import "${home-manager}/nixos")
-  ];
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+      ./virtualization.nix
+      ./services.nix
+    ];
 
-  home-manager.users."fwrage" = import ../../home-manager/nugget/home.nix;
+  home-manager.users."fwrage" = import ../../home-manager/whopper/home.nix;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nugget"; # Define your hostname.
+  networking.hostName = "whopper"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   programs.nm-applet.enable = true;
 
   # Set your time zone.
@@ -59,7 +53,7 @@
         lightdm.enable = true;
         defaultSession = "none+i3";
         # defaultSession = "plasma";
-        # sessionCommands = "Xft.dpi: 150";
+        sessionCommands = "Xft.dpi: 150";
       };
       # Enable the Plasma 5 Desktop Environment.
       desktopManager.plasma5.enable = true;
@@ -70,12 +64,9 @@
     };
   };
 
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-
   # Configure keymap in X11
   services.xserver.layout = "de";
-  services.xserver.xkbOptions = "eurosign:e, caps:escape";
+  services.xserver.xkbOptions = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -91,28 +82,26 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fwrage = {
+  users.users.fwrage= {
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "video" "audio" "lp" "scanner" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    initialPassword = "initialPW";
     shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
     ];
-    initialPassword = "initialPW";
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    curl
-    firefox
     git
-    brightnessctl
+    tmux
   ];
 
   # fonts
@@ -122,14 +111,17 @@
     font-awesome
     font-awesome_4
     font-awesome_5
+
+    # rofi catppuccin theme
+    iosevka
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs.mtr.enable = true;
+  # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = true;
+    enableSSHSupport = false;
   };
 
   # List services that you want to enable:
@@ -155,4 +147,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
+
 }
+

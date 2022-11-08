@@ -126,5 +126,7 @@
       programs = {
         neovim = import ./home-manager/programs/neovim;
       };
+
+      tools = import ./home-manager/tools;
     };
 }

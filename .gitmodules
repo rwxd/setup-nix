@@ -1,0 +1,6 @@
+[submodule "hosts/akq"]
+	path = hosts/akq
+	url = git@gitlab.akquinet.de:fwrage/akq-setup-nix.git
+[submodule "home-manager/akq"]
+	path = home-manager/akq
+	url = git@gitlab.akquinet.de:fwrage/akq-setup-nix.git

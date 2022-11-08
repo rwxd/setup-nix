@@ -18,6 +18,9 @@ whopper: ## build home-manager home
 nugget: ## build nugget nixos
 	sudo nixos-rebuild switch --flake .#nugget --show-trace
 
+home-akq: ## build home-manager akq
+	home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake .#akq
+
 pre-commit-all: ## run pre-commit on all files
 	pre-commit run --all-files
 

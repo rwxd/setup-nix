@@ -116,5 +116,15 @@
           ];
         };
       };
+
+      home-manager-environments = {
+        dev-environment = import ./home-manager/dev-environment.nix;
+        desktop-environment = import ./home-manager/desktop-environment.nix;
+        system-tools = import ./home-manager/system-tools.nix;
+      };
+
+      programs = {
+        neovim = import ./home-manager/programs/neovim;
+      };
     };
 }

@@ -48,12 +48,18 @@
     # Enable the X11 windowing system.
     xserver = {
       enable = true;
-      dpi = 150;
+      dpi = 220;
       displayManager = {
         lightdm.enable = true;
         defaultSession = "none+i3";
         # defaultSession = "plasma";
-        sessionCommands = "Xft.dpi: 150";
+        sessionCommands = ''
+          ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
+            Xft.dpi: 150
+            Xcursor.theme: Adwaita
+            Xcursor.size: 40
+          ''}
+        '';
       };
       # Enable the Plasma 5 Desktop Environment.
       desktopManager.plasma5.enable = true;
@@ -111,9 +117,6 @@
     font-awesome
     font-awesome_4
     font-awesome_5
-
-    # rofi catppuccin theme
-    iosevka
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

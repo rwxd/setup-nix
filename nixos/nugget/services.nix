@@ -4,6 +4,8 @@
 
   security.pam.services.kdewallet.enableKwallet = true;
 
+  services.flatpak.enable = true;
+
   services.logind = {
     extraConfig = ''
       HandlePowerKey=suspend

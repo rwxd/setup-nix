@@ -44,6 +44,8 @@
 
   services.blueman-applet.enable = true;
 
+  home.file.".profile".source = ./config/.profile;
+
   imports = [
     ./programs/rofi
     ./programs/picom

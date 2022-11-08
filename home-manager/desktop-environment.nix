@@ -31,6 +31,7 @@
     xss-lock
     signal-desktop
     keepassxc
+    drawio
   ];
 
   services.screen-locker = {

@@ -5,6 +5,8 @@
   home.file.".config/rofi/launcher.rasi".source = ./launcher.rasi;
   home.file.".config/rofi/font.rasi".source = ./font.rasi;
   home.file.".config/rofi/colors.rasi".source = ./colors.rasi;
+  home.file.".config/rofi/tokyonight.rasi".source = ./tokyonight.rasi;
+  home.file.".config/rofi/onedark.rasi".source = ./onedark.rasi;
 
   home.file = {
     ".config/rofi/collection".source = pkgs.fetchFromGitHub {
@@ -17,7 +19,7 @@
 
   programs.rofi = {
     enable = true;
-    theme = "launcher";
+    theme = "tokyonight";
     location = "center";
     pass = {
       enable = true;

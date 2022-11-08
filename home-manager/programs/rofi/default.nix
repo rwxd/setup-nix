@@ -2,6 +2,9 @@
 {
   home.file.".config/rofi/nord.rasi".source = ./nord.rasi;
   home.file.".config/rofi/catppuccin-frappe.rasi".source = ./catppuccin-frappe.rasi;
+  home.file.".config/rofi/launcher.rasi".source = ./launcher.rasi;
+  home.file.".config/rofi/font.rasi".source = ./font.rasi;
+  home.file.".config/rofi/colors.rasi".source = ./colors.rasi;
 
   home.file = {
     ".config/rofi/collection".source = pkgs.fetchFromGitHub {
@@ -14,7 +17,7 @@
 
   programs.rofi = {
     enable = true;
-    theme = "catppuccin-frappe";
+    theme = "launcher";
     location = "center";
     pass = {
       enable = true;

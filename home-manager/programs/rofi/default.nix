@@ -40,7 +40,7 @@
       drun-show-actions = true;
       show-icons = true;
       sort = true;
-      sorting-method = "fzf";
+      # sorting-method = "fzf";
       matching = "fuzzy";
     };
   };

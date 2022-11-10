@@ -32,7 +32,6 @@
     signal-desktop
     keepassxc
     drawio
-    etcher
   ];
 
   services.screen-locker = {

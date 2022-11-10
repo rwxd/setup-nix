@@ -4,7 +4,10 @@
 
   security.pam.services.kdewallet.enableKwallet = true;
 
+  # flatpak
   services.flatpak.enable = true;
+  ## desktop integration for flatpak with portal
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   services.logind = {
     extraConfig = ''

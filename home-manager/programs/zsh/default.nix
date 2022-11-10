@@ -5,6 +5,8 @@ let
   zshVars = builtins.readFile ./variables.zsh;
 in
 {
+  home.file.".p10k.zsh".source = ./p10k.zsh;
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -130,7 +132,5 @@ in
     enable = true;
     enableZshIntegration = true;
   };
-
-  home.file.".p10k.zsh".source = ./p10k.zsh;
 }
 

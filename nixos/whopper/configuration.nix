@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./virtualization.nix
       ./services.nix
@@ -91,7 +92,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fwrage= {
+  users.users.fwrage = {
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "video" "audio" "lp" "scanner" "networkmanager" ]; # Enable ‘sudo’ for the user.
     initialPassword = "initialPW";

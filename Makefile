@@ -12,14 +12,17 @@ flake-lock: ## lock flakes
 flake-lock-update: ## lock flakes & update
 	nix flake lock --update-input nixpkgs --show-trace --extra-experimental-features nix-command --extra-experimental-features
 
+iso: ## make iso image
+	nix build .#nixosConfigurations.isoimage.config.system.build.isoImage
+
 # whopper: ## build home-manager home
 # 	home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake .#whopper
 
 nugget: ## build nugget nixos
-	sudo nixos-rebuild switch --flake .#nugget --show-trace
+	sudo nixos-rebuild switch --flake .#nugget
 
 whopper: ## build whopper nixos
-	sudo nixos-rebuild switch --flake .#whopper --show-trace
+	sudo nixos-rebuild switch --flake .#whopper
 
 home-akq: ## build home-manager akq
 	home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake .#akq

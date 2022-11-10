@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     neofetch
+    file
     htop
     gnupg
     nix-index

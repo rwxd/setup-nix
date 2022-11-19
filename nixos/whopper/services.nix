@@ -7,6 +7,7 @@
   # flatpak
   services.flatpak.enable = true;
   ## desktop integration for flatpak with portal
+  xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   services.logind = {

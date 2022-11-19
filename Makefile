@@ -18,6 +18,9 @@ iso: ## make iso image
 # whopper: ## build home-manager home
 # 	home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake .#whopper
 
+services:
+	nixos-rebuild switch --flake .#services --use-remote-sudo --target-host services.fritz.box --build-host services.fritz.box
+
 nugget: ## build nugget nixos
 	sudo nixos-rebuild switch --flake .#nugget
 

@@ -52,6 +52,7 @@
     httpie
     hugo
     tickrs
+    nixopsUnstable
   ];
 
   imports = [

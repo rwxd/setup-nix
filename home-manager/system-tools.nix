@@ -25,6 +25,8 @@
     speedtest-cli
     tor
     viu
+    sshpass
+    sshfs
   ];
 
   imports = [

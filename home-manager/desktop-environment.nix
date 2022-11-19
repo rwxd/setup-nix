@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    thunderbird
     dolphin
     bluez
     blueman
@@ -31,7 +32,9 @@
     xss-lock
     signal-desktop
     keepassxc
+    zsa-udev-rules
     drawio
+    ark
   ];
 
   services.screen-locker = {

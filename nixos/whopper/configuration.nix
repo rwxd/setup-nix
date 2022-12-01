@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -58,12 +58,12 @@
           ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
             Xft.dpi: 150
             Xcursor.theme: Adwaita
-            Xcursor.size: 40
+            Xcursor.size: 36
           ''}
         '';
       };
       # Enable the Plasma 5 Desktop Environment.
-      # desktopManager.plasma5.enable = true;
+      desktopManager.plasma5.enable = true;
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
@@ -104,12 +104,16 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; with inputs.nix-alien.packages.${system}; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
     tmux
+    nix-alien
+    nix-index # not necessary, but recommended
+    nix-index-update
   ];
+
 
   # fonts
   fonts.fonts = with pkgs; [

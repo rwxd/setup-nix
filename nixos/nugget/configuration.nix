@@ -68,7 +68,7 @@
         '';
       };
       # Enable the Plasma 5 Desktop Environment.
-      # desktopManager.plasma5.enable = true;
+      desktopManager.plasma5.enable = true;
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;

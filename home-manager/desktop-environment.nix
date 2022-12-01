@@ -9,6 +9,7 @@
     pavucontrol
     dunst
     protonvpn-cli
+    mullvad
     firefox
     brave
     bitwarden
@@ -26,6 +27,7 @@
     todoist
     youtube-dl
     cryptomator
+    pdfarranger
     qtpass
     vscode
     anki-bin
@@ -35,6 +37,7 @@
     zsa-udev-rules
     drawio
     ark
+    kcalc
   ];
 
   services.screen-locker = {

@@ -13,6 +13,8 @@
     home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-ld.url = "github:Mic92/nix-ld/main";
     # my-overlays.url = "path:./overlays";
     # my-overlays.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -98,6 +100,7 @@
           modules = (builtins.attrValues nixosModules) ++ defaultModules ++ [
             # > Our main nixos configuration file <
             ./nixos/whopper/configuration.nix
+            inputs.nix-ld.nixosModules.nix-ld
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix { inherit overlays; })
           ];

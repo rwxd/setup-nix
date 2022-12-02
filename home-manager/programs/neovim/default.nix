@@ -21,6 +21,7 @@ in
       tree-sitter
       gopls
       rust-analyzer
+      rustup
       nodePackages.pyright
       gcc
       nodejs

@@ -37,6 +37,7 @@
     zsa-udev-rules
     drawio
     ark
+    unrar
     kcalc
   ];
 

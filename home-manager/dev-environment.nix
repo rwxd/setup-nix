@@ -24,6 +24,7 @@
     shellcheck
     fzf
     rustup
+    cargo-watch
     nnn
     github-cli
     glab

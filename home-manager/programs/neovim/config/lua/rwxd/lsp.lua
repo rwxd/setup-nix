@@ -138,6 +138,16 @@ require("lspconfig").rust_analyzer.setup(config({
 		},
 	}
 }))
+require("rust-tools").setup({
+	server = config(),
+	tools = {
+		inlay_hints = {
+			auto = true,
+			only_current_line = false,
+		},
+	},
+	}
+)
 require("lspconfig").sumneko_lua.setup(config())
 require("lspconfig").prosemd_lsp.setup(config())
 require("lspconfig").jsonls.setup(config())

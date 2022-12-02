@@ -108,6 +108,9 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'onsails/lspkind-nvim'
 
+" Rust
+Plug 'simrat39/rust-tools.nvim'
+
 " Coc
 " Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 

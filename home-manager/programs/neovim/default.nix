@@ -10,11 +10,15 @@ in
     withNodeJs = true;
     withPython3 = true;
     withRuby = false;
-    extraConfig = neovimConfig;
+    # extraConfig = neovimConfig;
+    extraConfig = ''
+      luafile ${./init.lua}
+    '';
 
     plugins = with pkgs; [
       # (vimPlugins.nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
       vimPlugins.telescope-fzf-native-nvim
+      vimPlugins.packer-nvim
     ];
 
     extraPackages = with pkgs; [
@@ -37,3 +41,4 @@ in
     executable = true;
   };
 }
+

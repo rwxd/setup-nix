@@ -54,6 +54,8 @@
     hugo
     tickrs
     nixopsUnstable
+	openssl
+	pkg-config
   ];
 
   imports = [

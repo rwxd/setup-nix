@@ -44,6 +44,10 @@ in
       ''
         eval "$(direnv hook zsh)"
       ''
+	  ''
+		# Rust openssl fix, https://nixos.wiki/wiki/Rust
+	  	export PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig"
+	  ''
     ];
 
     initExtraFirst = p10kInit;

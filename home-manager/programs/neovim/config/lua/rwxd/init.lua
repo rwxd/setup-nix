@@ -13,6 +13,7 @@ require("rwxd.pre_commit")
 require("rwxd.quickfixlist")
 require("rwxd.rainbow_parenthesis")
 require("rwxd.vimtest")
+require("rwxd.misc")
 
 P = function(v)
 	print(vim.inspect(v))

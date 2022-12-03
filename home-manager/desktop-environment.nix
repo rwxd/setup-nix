@@ -39,6 +39,10 @@
     ark
     unrar
     kcalc
+	v4l-utils
+	guvcview
+	obs-studio
+	yt-dlp
   ];
 
   services.screen-locker = {

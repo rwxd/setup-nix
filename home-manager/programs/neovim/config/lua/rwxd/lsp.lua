@@ -1,6 +1,6 @@
 require("nvim-lsp-installer").setup({
 	-- automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-	automatic_installation = { exclude = { "rust_analyzer" } },
+	automatic_installation = { exclude = { "rust_analyzer", "sumneko_lua" } },
 })
 
 local cmp = require("cmp")

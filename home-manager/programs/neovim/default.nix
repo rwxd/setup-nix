@@ -1,8 +1,5 @@
 { config, lib, pkgs, ... }:
 
-let
-  neovimConfig = builtins.readFile ./init.vim;
-in
 {
   programs.neovim = {
     enable = true;
@@ -10,8 +7,9 @@ in
     withNodeJs = true;
     withPython3 = true;
     withRuby = false;
-    # extraConfig = neovimConfig;
     extraConfig = ''
+	  let g:copilot_node_command = "${pkgs.nodejs-16_x}/bin/node"
+	  let PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig"
       luafile ${./init.lua}
     '';
 
@@ -19,6 +17,7 @@ in
       # (vimPlugins.nvim-treesitter.withPlugins (plugins: tree-sitter.allGrammars))
       vimPlugins.telescope-fzf-native-nvim
       vimPlugins.packer-nvim
+      # vimPlugins.copilot-vim
     ];
 
     extraPackages = with pkgs; [
@@ -29,6 +28,7 @@ in
       nodePackages.pyright
       gcc
       nodejs
+	  nodejs-16_x
       python3
       python3Packages.pip
       sumneko-lua-language-server

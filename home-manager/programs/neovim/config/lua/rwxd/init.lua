@@ -14,6 +14,7 @@ require("rwxd.quickfixlist")
 require("rwxd.rainbow_parenthesis")
 require("rwxd.vimtest")
 require("rwxd.misc")
+require("rwxd.copilot")
 
 P = function(v)
 	print(vim.inspect(v))

@@ -24,3 +24,5 @@ vim.opt.termguicolors = true
 vim.opt.cmdheight = 1
 
 vim.g.mapleader = " "
+
+vim.g.black_skip_string_normalization = 1

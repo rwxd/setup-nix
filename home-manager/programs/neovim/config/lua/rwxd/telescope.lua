@@ -113,7 +113,7 @@ nnoremap("<leader>gi", function()
 	require('telescope.builtin').git_status()
 end)
 
-nnoremap("<leader>fw", function()
+nnoremap("<leader>fv", function()
 	require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
 end)
 

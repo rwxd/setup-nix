@@ -82,4 +82,20 @@ return require("packer").startup(function(use)
 	-- Rust
 	use("simrat39/rust-tools.nvim")
 
+	-- use("github/copilot.vim")
+	use {
+	  "zbirenbaum/copilot.lua",
+	  event = "VimEnter",
+	  config = function()
+		vim.defer_fn(function()
+		  require("copilot").setup({
+			suggestion = {
+				enabled = true,
+				auto_trigger = true,
+			},
+			copilot_node_command = vim.g.copilot_node_command,
+		  })
+		end, 100)
+	  end,
+	}
 end)

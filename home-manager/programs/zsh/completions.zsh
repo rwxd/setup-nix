@@ -55,6 +55,10 @@ if type "vault" >/dev/null; then
 	complete -o nospace -C /usr/bin/vault vault
 fi
 
+if type "ipams" >/dev/null; then
+	source <(ipams --show-completion zsh)
+fi
+
 # # fzf
 # if [ -f "/usr/share/fzf/completion.zsh" ]; then
 # 	source /usr/share/fzf/completion.zsh

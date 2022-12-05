@@ -65,6 +65,7 @@ in
       "remove-pacman-orphans" = "pacman -Qtdq | pacman -Rns -";
       "confup" = "home-manager switch";
       "rm" = "trash";
+      "werist" = "ipams";
     };
 
     plugins = [

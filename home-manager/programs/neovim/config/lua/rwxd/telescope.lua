@@ -73,7 +73,7 @@ nnoremap("<leader>ff", function()
 	require('telescope.builtin').find_files({ no_ignore = true, hidden = true })
 end)
 
-nnoremap("<leader>fs", function()
+nnoremap("<leader>fv", function()
 	require('telescope.builtin').live_grep()
 end)
 
@@ -113,7 +113,7 @@ nnoremap("<leader>gi", function()
 	require('telescope.builtin').git_status()
 end)
 
-nnoremap("<leader>fv", function()
+nnoremap("<leader>fw", function()
 	require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
 end)
 
@@ -125,7 +125,7 @@ nnoremap("<leader>fd", function()
 	M.search_dotfiles()
 end)
 
-nnoremap("<leader>fw", function()
+nnoremap("<leader>fW", function()
 	M.search_wiki()
 end)
 

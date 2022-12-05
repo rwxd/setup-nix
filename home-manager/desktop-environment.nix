@@ -43,6 +43,7 @@
 	guvcview
 	obs-studio
 	yt-dlp
+	ledger-live-desktop
   ];
 
   services.screen-locker = {

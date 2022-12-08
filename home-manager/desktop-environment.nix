@@ -44,6 +44,7 @@
 	obs-studio
 	yt-dlp
 	ledger-live-desktop
+	teamviewer
   ];
 
   services.screen-locker = {

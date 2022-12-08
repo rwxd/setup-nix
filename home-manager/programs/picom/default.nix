@@ -28,7 +28,7 @@
       /* "100:class_g ?= 'brave-browser'", */
       "100:fullscreen"
       /* "95:!fullscreen", */
-      "85:class_g = 'kitty'"
+      "90:class_g = 'kitty'"
       "90:class_g = 'Spotify'"
       "90:class_g = 'discord'"
       "85:class_g = 'KeePassXC'"

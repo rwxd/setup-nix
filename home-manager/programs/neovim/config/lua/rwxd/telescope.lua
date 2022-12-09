@@ -121,10 +121,6 @@ nnoremap("<leader>vh", function()
 	require('telescope.builtin').help_tags()
 end)
 
-nnoremap("<leader>fd", function()
-	M.search_dotfiles()
-end)
-
 nnoremap("<leader>fW", function()
 	M.search_wiki()
 end)

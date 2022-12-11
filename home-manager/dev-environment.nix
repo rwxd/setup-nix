@@ -56,6 +56,7 @@
     nixopsUnstable
 	openssl
 	pkg-config
+	jrnl
   ];
 
   imports = [

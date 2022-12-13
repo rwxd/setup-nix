@@ -14,7 +14,7 @@ flake-lock-update: ## lock flakes & update
 		--update-input nixpkgs \
 		--update-input nixpkgs-unstable \
 		--update-input home-manager \
-		--update-input home-manager-usntable \
+		--update-input home-manager-unstable \
 		--show-trace \
 		--extra-experimental-features nix-command \
 		--extra-experimental-features flakes

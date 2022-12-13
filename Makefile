@@ -10,7 +10,14 @@ flake-lock: ## lock flakes
 	nix flake lock --show-trace --extra-experimental-features nix-command --extra-experimental-features
 
 flake-lock-update: ## lock flakes & update
-	nix flake lock --update-input nixpkgs --show-trace --extra-experimental-features nix-command --extra-experimental-features
+	nix flake lock \
+		--update-input nixpkgs \
+		--update-input nixpkgs-unstable \
+		--update-input home-manager \
+		--update-input home-manager-usntable \
+		--show-trace \
+		--extra-experimental-features nix-command \
+		--extra-experimental-features flakes
 
 iso: ## make iso image
 	nix build .#nixosConfigurations.isoimage.config.system.build.isoImage

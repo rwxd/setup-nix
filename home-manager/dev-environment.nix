@@ -57,6 +57,9 @@
 	openssl
 	pkg-config
 	jrnl
+	chromedriver
+	google-chrome
+	wkhtmltopdf-bin
   ];
 
   imports = [

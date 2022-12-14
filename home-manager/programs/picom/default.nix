@@ -7,7 +7,6 @@
     fade = true;
     fadeDelta = 2;
     shadow = true;
-    experimentalBackends = true;
     settings = {
       corner-radius = 10.0;
       rounded-corners-exclude = [

@@ -115,7 +115,6 @@
     nix-index-update
   ];
 
-
   # fonts
   fonts.fonts = with pkgs; [
     fira-code

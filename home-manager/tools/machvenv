@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e -o pipefail
-
 requirement_files=(
 	'requirements.txt'
 	'requirements-dev.txt'

@@ -29,17 +29,17 @@
           }
           {
             block = "cpu";
-            info = 60.0;
-            warning = 80.0;
-            critical = 95.0;
+            info = 60;
+            warning = 80;
+            critical = 95;
             interval = 1;
           }
           {
             block = "load";
             format = "{1m}";
-            info = 60.0;
-            warning = 80.0;
-            critical = 95.0;
+            info = 60;
+            warning = 80;
+            critical = 95;
             interval = 1;
           }
           {

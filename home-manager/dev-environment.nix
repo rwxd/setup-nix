@@ -60,6 +60,7 @@
 	chromedriver
 	google-chrome
 	wkhtmltopdf-bin
+	k3sup
   ];
 
   imports = [

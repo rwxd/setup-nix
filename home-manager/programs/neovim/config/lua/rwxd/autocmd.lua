@@ -15,6 +15,14 @@ autocmd({"BufWritePre"}, {
 	command = "Black",
 })
 
+
+-- Terraform
+autocmd({"BufWritePre"}, {
+	group = RWXDGroup,
+	pattern = "*.tf",
+	command = "TerraformFmt",
+})
+
 -- Rust
 -- autocmd({"BufEnter", "BufWinEnter", "TabEnter"}, {
 --     group = RWXDGroup,

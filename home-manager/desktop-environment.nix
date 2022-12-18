@@ -45,6 +45,7 @@
 	yt-dlp
 	ledger-live-desktop
 	teamviewer
+	gimp
   ];
 
   services.screen-locker = {

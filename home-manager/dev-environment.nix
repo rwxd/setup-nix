@@ -18,6 +18,7 @@
     wireshark
     tealdeer
     kind
+	minikube
     kubernetes-helm
     bfg-repo-cleaner
     shfmt
@@ -50,7 +51,7 @@
     bettercap
     ctop
     glow
-    httpie
+    # httpie
     hugo
     tickrs
     nixopsUnstable

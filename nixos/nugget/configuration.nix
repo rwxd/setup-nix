@@ -93,7 +93,6 @@
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
-    hsphfpd.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).

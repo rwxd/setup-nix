@@ -94,7 +94,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fwrage = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "video" "audio" "lp" "scanner" "networkmanager" "plugdev" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "video" "audio" "lp" "scanner" "networkmanager" "plugdev" "docker"]; # Enable ‘sudo’ for the user.
     initialPassword = "initialPW";
     shell = pkgs.zsh;
     packages = with pkgs; [

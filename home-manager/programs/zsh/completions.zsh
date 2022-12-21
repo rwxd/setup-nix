@@ -59,6 +59,10 @@ if type "ipams" >/dev/null; then
 	source <(ipams --show-completion zsh)
 fi
 
+if type "minikube" >/dev/null; then
+	source <(minikube completion zsh)
+fi
+
 # # fzf
 # if [ -f "/usr/share/fzf/completion.zsh" ]; then
 # 	source /usr/share/fzf/completion.zsh

@@ -38,6 +38,7 @@
     drawio
     ark
 	todoist
+	todoist-electron
     unrar
     kcalc
 	v4l-utils

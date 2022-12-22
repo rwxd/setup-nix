@@ -63,6 +63,7 @@
 	google-chrome
 	wkhtmltopdf-bin
 	k3sup
+	todoist
   ];
 
   imports = [

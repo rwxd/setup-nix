@@ -33,6 +33,7 @@
     btop
     ripgrep
     kubectl
+	kustomize
     argocd
     poetry
     python3

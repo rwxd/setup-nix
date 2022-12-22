@@ -37,6 +37,7 @@
     zsa-udev-rules
     drawio
     ark
+	todoist
     unrar
     kcalc
 	v4l-utils
@@ -46,6 +47,7 @@
 	ledger-live-desktop
 	teamviewer
 	gimp
+	audacity
   ];
 
   services.screen-locker = {

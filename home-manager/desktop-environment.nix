@@ -24,7 +24,6 @@
     element-desktop
     firejail
     tor
-    todoist
     youtube-dl
     cryptomator
     pdfarranger

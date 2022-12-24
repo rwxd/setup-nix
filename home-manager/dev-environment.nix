@@ -36,10 +36,10 @@
 	kustomize
     argocd
     poetry
-    python3
-    python310Packages.pip
-    python310Packages.pipx
-    python310Packages.virtualenv
+    python311
+    python311Packages.pip
+    python311Packages.pipx
+    python311Packages.virtualenv
     vault
     powershell
     terraform

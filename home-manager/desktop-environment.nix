@@ -48,6 +48,7 @@
 	teamviewer
 	gimp
 	audacity
+	appimage-run
   ];
 
   services.screen-locker = {

@@ -71,7 +71,7 @@ cmp.setup({
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
 		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		on_attach = function()
+		on_attach = function(client, bufnr)
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 			vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { buffer = 0 })
 			vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", { buffer = 0 })
@@ -86,6 +86,15 @@ local function config(_config)
 			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
 			vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<CR>", { buffer = 0 })
 			vim.keymap.set("n", "<leader>dv", "<cmd>lua vim.diagnostic.open_float()<CR>", { buffer = 0 })
+
+			local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+			if filetype == "go" then
+				-- add inlay hints for Go
+				require("inlay-hints").on_attach(client, bufnr)
+			elseif filetype == "python" then
+				-- add inlay hints for Python
+				require("inlay-hints").on_attach(client, bufnr)
+			end
 		end,
 	}, _config or {})
 end
@@ -94,10 +103,22 @@ require("lspconfig").gopls.setup(config({
 	cmd = { "gopls", "serve" },
 	settings = {
 		gopls = {
+			completeUnimported = true,
+			buildFlags = { "-tags=debug" },
 			analyses = {
 				unusedparams = true,
 			},
 			staticcheck = true,
+			experimentalPostfixCompletions = true,
+			hints = {
+				parameterNames = true,
+				assignVariableTypes = true,
+				constantValues = true,
+				rangeVariableTypes = true,
+				compositeLiteralTypes = true,
+				compositeLiteralFields = true,
+				functionTypeParameters = true,
+			},
 		},
 	},
 }))
@@ -122,7 +143,22 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	exclude = {},
 })
 
-require("lspconfig").pyright.setup(config())
+require("lspconfig").pyright.setup(config({
+	settings = {
+		pyright = {
+			hints = {
+				parameterNames = true,
+				assignVariableTypes = true,
+				constantValues = true,
+				rangeVariableTypes = true,
+				compositeLiteralTypes = true,
+				compositeLiteralFields = true,
+				functionTypeParameters = true,
+			},
+		},
+	}
+}
+))
 require("lspconfig").ansiblels.setup(config())
 require("lspconfig").terraformls.setup(config())
 require("lspconfig").rust_analyzer.setup(config({
@@ -164,3 +200,46 @@ require("lspconfig").html.setup(config())
 require("lspconfig").cssls.setup(config())
 require("lspconfig").bashls.setup(config())
 require("lspconfig").rnix.setup(config())
+
+require("inlay-hints").setup {
+  -- renderer to use
+  -- possible options are dynamic, eol, virtline and custom
+  -- renderer = "inlay-hints/render/dynamic",
+  renderer = "inlay-hints/render/eol",
+
+  hints = {
+    parameter = {
+      show = true,
+      highlight = "whitespace",
+    },
+    type = {
+      show = true,
+      highlight = "Whitespace",
+    },
+  },
+
+  -- Only show inlay hints for the current line
+  only_current_line = false,
+
+  eol = {
+    -- whether to align to the extreme right or not
+    right_align = false,
+
+    -- padding from the right if right_align is true
+    right_align_padding = 7,
+
+    parameter = {
+      separator = ", ",
+      format = function(hints)
+        return string.format(" <- (%s)", hints)
+      end,
+    },
+
+    type = {
+      separator = ", ",
+      format = function(hints)
+        return string.format(" => %s", hints)
+      end,
+    },
+  },
+}

@@ -78,6 +78,10 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
 	use("onsails/lspkind-nvim")
+    use("simrat39/inlay-hints.nvim")
+
+	-- Go
+	use("ray-x/go.nvim")
 
 	-- Rust
 	use("simrat39/rust-tools.nvim")

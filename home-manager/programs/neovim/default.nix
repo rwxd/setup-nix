@@ -22,7 +22,7 @@
 
     extraPackages = with pkgs; [
       tree-sitter
-	  go_1_18
+	  go_1_19
 	  gopls
       rust-analyzer
       rustup

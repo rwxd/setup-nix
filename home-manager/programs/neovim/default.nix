@@ -22,7 +22,8 @@
 
     extraPackages = with pkgs; [
       tree-sitter
-      gopls
+	  go_1_18
+	  gopls
       rust-analyzer
       rustup
       nodePackages.pyright

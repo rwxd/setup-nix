@@ -21,6 +21,7 @@ return require("packer").startup(function(use)
 	use("tpope/vim-fugitive")
 	use("junegunn/gv.vim")
 	use("rhysd/git-messenger.vim")
+	use ("lewis6991/gitsigns.nvim")
 
 	-- Easy test shortcuts
 	use("vim-test/vim-test")

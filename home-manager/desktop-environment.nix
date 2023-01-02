@@ -18,8 +18,11 @@
     libreoffice-qt
     feh
     discord
+	teamspeak_client
+	teamspeak5_client
     vlc
     obsidian
+	logseq
     flameshot
     element-desktop
     firejail

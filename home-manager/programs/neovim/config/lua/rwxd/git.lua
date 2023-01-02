@@ -18,3 +18,15 @@ nnoremap("<leader>gh", "<cmd>:diffget //2<CR>");
 
 nnoremap("<leader>gs", "<cmd>:0G<CR>");
 nnoremap("<leader>gv", "<cmd>:GV<CR>");
+
+-- Gitsigns
+-- See `:help gitsigns.txt`
+require('gitsigns').setup {
+  signs = {
+    add = { text = '+' },
+    change = { text = '~' },
+    delete = { text = '_' },
+    topdelete = { text = '‾' },
+    changedelete = { text = '~' },
+  },
+}

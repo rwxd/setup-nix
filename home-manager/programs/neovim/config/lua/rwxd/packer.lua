@@ -31,6 +31,7 @@ return require("packer").startup(function(use)
 	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
 	use("mfussenegger/nvim-dap-python")
+	use("leoluz/nvim-dap-go")
 
 	-- Telescope
 	use("nvim-lua/popup.nvim")

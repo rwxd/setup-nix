@@ -24,9 +24,10 @@ nnoremap("<leader>gv", "<cmd>:GV<CR>");
 require('gitsigns').setup {
   signs = {
     add = { text = '+' },
-    change = { text = '~' },
+    change = { text = '│' },
     delete = { text = '_' },
     topdelete = { text = '‾' },
     changedelete = { text = '~' },
+	untracked = { text = '┆' },
   },
 }

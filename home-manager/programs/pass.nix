@@ -11,7 +11,7 @@
       exts.pass-audit
       exts.pass-update
       exts.pass-import
-      exts.pass-checkup
+      # exts.pass-checkup
       exts.pass-genphrase
     ]);
     settings = {

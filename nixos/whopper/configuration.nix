@@ -135,6 +135,14 @@
     enableSSHSupport = false;
   };
 
+  services.cron = {
+	enable = true;
+	systemCronJobs = [
+	  "0 0 * * * root /run/current-system/sw/bin/nix-collect-garbage -d"
+	  "* * * * * fwrage pacmd set-source-volume alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-input 0x25000"
+	];
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

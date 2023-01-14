@@ -33,6 +33,7 @@
     btop
     ripgrep
     kubectl
+	kubeseal
 	kustomize
     argocd
     poetry
@@ -64,6 +65,8 @@
 	wkhtmltopdf-bin
 	k3sup
 	todoist
+	age
+	sops
   ];
 
   imports = [

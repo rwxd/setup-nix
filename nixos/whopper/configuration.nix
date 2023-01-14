@@ -123,6 +123,10 @@
     font-awesome_5
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "python3.10-certifi-2022.12.7"
+  ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

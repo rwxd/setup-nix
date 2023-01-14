@@ -1,7 +1,7 @@
 {
   description = "My config";
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";flakeflake
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
@@ -64,6 +64,8 @@
       devShells = forAllSystems (system: {
         default = nixpkgs.legacyPackages.${system}.callPackage ./shell.nix { };
       });
+
+	  nixpgs.config.permittedInsecurePackages = [ "python3.10-certifi-2022.12.7" ];
 
       legacyPackages = forAllSystems (system:
         import inputs.nixpkgs {

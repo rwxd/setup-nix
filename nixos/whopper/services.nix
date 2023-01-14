@@ -16,4 +16,8 @@
       HandleLidSwitch=suspend
     '';
   };
+
+  services.syncthing = {
+    enable = true;
+  };
 }

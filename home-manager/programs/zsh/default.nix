@@ -66,6 +66,7 @@ in
       "confup" = "home-manager switch";
       "rm" = "trash";
       "werist" = "ipams";
+	  "k" = "kubectl";
     };
 
     plugins = [

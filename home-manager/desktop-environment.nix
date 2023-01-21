@@ -52,6 +52,7 @@
 	gimp
 	audacity
 	appimage-run
+	gparted
   ];
 
   services.screen-locker = {

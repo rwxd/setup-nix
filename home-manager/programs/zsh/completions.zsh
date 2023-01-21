@@ -59,7 +59,6 @@ if type "ipams" >/dev/null; then
 	source <(ipams --show-completion zsh)
 fi
 
-
 if type "ansible-workspace" >/dev/null; then
 	source <(ansible-workspace --show-completion zsh)
 fi

@@ -67,6 +67,7 @@
 	todoist
 	age
 	sops
+	azure-cli
   ];
 
   imports = [

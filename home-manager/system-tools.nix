@@ -27,7 +27,6 @@
     viu
     sshpass
     sshfs
-	taskwarrior
   ];
 
   imports = [

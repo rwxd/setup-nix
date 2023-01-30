@@ -69,6 +69,8 @@
 	sops
 	azure-cli
 	tokei
+	cargo-cross
+	go-task
   ];
 
   imports = [

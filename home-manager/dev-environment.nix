@@ -71,6 +71,7 @@
 	tokei
 	cargo-cross
 	go-task
+	vendir
   ];
 
   imports = [

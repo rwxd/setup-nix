@@ -12,6 +12,7 @@
       ./virtualization.nix
       ./services.nix
       ./ledger.nix
+      ./lutris.nix
 	  ../tests/samba.nix
     ];
 

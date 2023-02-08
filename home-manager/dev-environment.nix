@@ -72,6 +72,7 @@
 	cargo-cross
 	go-task
 	vendir
+	pinniped
   ];
 
   imports = [

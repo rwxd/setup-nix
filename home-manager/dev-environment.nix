@@ -73,6 +73,7 @@
 	go-task
 	vendir
 	pinniped
+	gron
   ];
 
   imports = [

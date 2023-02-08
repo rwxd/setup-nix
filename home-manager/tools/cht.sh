@@ -7,7 +7,7 @@ else
 	fzf_params=""
 fi
 
-selected=$(curl -s https://cht.sh/:list | grep "^\w*" | sort --unique | fzf-tmux -p 85% "$fzf_params")
+selected=$(curl -s https://cht.sh/:list | rg "^\w*" | sort --unique | fzf-tmux -p 85% "$fzf_params")
 
 if [[ -z "$selected" ]]; then
 	exit 0

@@ -27,6 +27,7 @@
     viu
     sshpass
     sshfs
+	inetutils
   ];
 
   imports = [

@@ -10,7 +10,6 @@
     yq
     sshpass
     gnupg
-    traceroute
     zsh
     hadolint
     plantuml

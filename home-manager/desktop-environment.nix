@@ -31,7 +31,6 @@
     cryptomator
     pdfarranger
     qtpass
-    vscode
     anki-bin
     xss-lock
     signal-desktop
@@ -76,5 +75,6 @@
     ./programs/i3status-rust.nix
     ./programs/kitty
     ./programs/alacritty
+	./programs/vscode
   ];
 }

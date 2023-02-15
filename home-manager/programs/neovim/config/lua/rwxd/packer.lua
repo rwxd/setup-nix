@@ -26,6 +26,9 @@ return require("packer").startup(function(use)
 	-- Easy test shortcuts
 	use("vim-test/vim-test")
 
+	-- diagrams
+	use("terrastruct/d2-vim")
+
 	-- Debugger
 	use("mfussenegger/nvim-dap")
 	use("rcarriga/nvim-dap-ui")

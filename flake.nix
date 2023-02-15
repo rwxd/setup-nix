@@ -152,6 +152,22 @@
 
       programs = {
         neovim = import ./home-manager/programs/neovim;
+        vscode = import ./home-manager/programs/vscode;
+        zsh = import ./home-manager/programs/zsh;
+        vim = import ./home-manager/programs/vim;
+		tmux = import ./home-manager/programs/tmux;
+		alacritty = import ./home-manager/programs/alacritty;
+		kitty = import ./home-manager/programs/kitty;
+		lutris = import ./home-manager/programs/lutris;
+		k9s = import ./home-manager/programs/k9s;
+		gnupg = import ./home-manager/programs/gnupg;
+		i3 = import ./home-manager/programs/i3;
+		i3status = import ./home-manager/programs/i3status;
+		rofi = import ./home-manager/programs/rofi;
+		git = import ./home-manager/programs/git;
+		direnv = import ./home-manager/programs/direnv;
+		i3status-rust = import ./home-manager/programs/i3status-rust.nix;
+		pass = import ./home-manager/programs/pass.nix;
       };
 
       tools = import ./home-manager/tools;

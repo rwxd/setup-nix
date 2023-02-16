@@ -167,6 +167,7 @@ in
         # start rofi (a program launcher)
         # "${i3_mod}+d" = "exec --no-startup-id rofi -show drun -config ~/.config/rofi/nord.rasi";
         "${i3_mod}+d" = "exec --no-startup-id ${rofi} -show drun -config ~/.config/rofi/config.rasi";
+        "${i3_mod}+p" = "exec --no-startup-id bash -c \"gopass ls --flat | rofi -dmenu -p gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | xdotool type --clearmodifiers --file -\"";
 
         # kill focused window
         "${i3_mod}+Shift+q" = "kill";

@@ -23,7 +23,9 @@
     location = "center";
     pass = {
       enable = true;
-      stores = [ ];
+      stores = [
+		"~/.password-store"
+	  ];
     };
     terminal = "${pkgs.kitty}/bin/kitty";
     plugins = with pkgs; [

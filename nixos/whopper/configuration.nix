@@ -53,6 +53,7 @@
     xserver = {
       enable = true;
       dpi = 220;
+	  videoDrivers = [ "amdgpu" ];
       displayManager = {
         lightdm.enable = true;
         defaultSession = "none+i3";
@@ -73,6 +74,12 @@
       };
     };
   };
+
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  # enable vulkan
+  hardware.opengl.driSupport = true;
+  ## For 32 bit applications
+  hardware.opengl.driSupport32Bit = true;
 
   # Configure keymap in X11
   services.xserver.layout = "de";

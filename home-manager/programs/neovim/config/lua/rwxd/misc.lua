@@ -8,3 +8,5 @@ nnoremap("<leader>m", "<cmd>:Glow<CR>")
 
 vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '<-2<CR>gv=gv")
+
+nnoremap("<leader>x", "<cmd>!chmod +x %<CR>")

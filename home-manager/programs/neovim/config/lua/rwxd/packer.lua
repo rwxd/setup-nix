@@ -28,6 +28,8 @@ return require("packer").startup(function(use)
 
 	-- diagrams
 	use("terrastruct/d2-vim")
+	use("weirongxu/plantuml-previewer.vim")
+	use("tyru/open-browser.vim")
 
 	-- Debugger
 	use("mfussenegger/nvim-dap")

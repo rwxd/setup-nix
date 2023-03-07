@@ -104,6 +104,17 @@ return require("packer").startup(function(use)
 				enabled = true,
 				auto_trigger = true,
 			},
+			filetypes = {
+				yaml = true,
+				markdown = true,
+				help = true,
+				gitcommit = true,
+				gitrebase = true,
+				hgcommit = true,
+				svn = true,
+				cvs = true,
+				["."] = true,
+			},
 			copilot_node_command = vim.g.copilot_node_command,
 		  })
 		end, 100)

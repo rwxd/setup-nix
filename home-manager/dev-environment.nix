@@ -73,6 +73,7 @@
 	vendir
 	pinniped
 	gron
+	talosctl
   ];
 
   imports = [

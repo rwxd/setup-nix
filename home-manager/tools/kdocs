@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# fuzzy search kubernetes documentation
+# supports kubectl explain parameters
+
+set -e -o pipefail
+
+if ! command -v kubectl; then
+	echo "kubectl not found :("
+ 	exit 1
+fi
+
+ENVIRONMENT_VARIABLES="KUBE_CONFIG_PATH=$KUBE_CONFIG_PATH KUBECONFIG=$KUBECONFIG"
+
+selected=$(kubectl api-resources --no-headers --sort-by=name -o name | \
+	fzf-tmux -p 85% --reverse --preview "$ENVIRONMENT_VARIABLES kubectl explain {} $*")
+
+if [[ -z $selected ]]; then
+	exit 0
+fi
+
+docs_command="kubectl explain $selected $*"
+
+if [ -n "$TMUX" ]; then
+	tmux neww -n "$selected" \
+		bash -c "$ENVIRONMENT_VARIABLES $docs_command | less"
+else
+	eval "$docs_command"
+fi

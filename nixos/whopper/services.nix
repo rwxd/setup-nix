@@ -20,4 +20,5 @@
   services.syncthing = {
     enable = true;
   };
+  services.teamviewer.enable = true;
 }

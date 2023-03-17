@@ -58,7 +58,7 @@ in
       asciicast2gif = "docker run --rm -v $PWD:/data asciinema/asciicast2gif";
 	  m4b-tool = "docker run -it --rm -u $(id -u):$(id -g) -v \"$(pwd)\":/mnt sandreas/m4b-tool:latest";
       petname = "docker run --rm fjolsvin/petname";
-      "kubeconfig-switcher" = "source kubeconfig-switcher";
+      "kswitch" = "source kswitch";
       i3lock = "bash -c \"i3lock -c 000000\"";
       ".." = "cd ..";
       "..." = "cd ...";

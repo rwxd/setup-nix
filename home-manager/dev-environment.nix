@@ -74,6 +74,7 @@
 	pinniped
 	gron
 	talosctl
+	exercism
   ];
 
   imports = [

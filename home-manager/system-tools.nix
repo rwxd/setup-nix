@@ -32,6 +32,7 @@
 	# to copy to clipboard with rofi and gopass
 	xdotool
 	rclone
+	hplipWithPlugin
   ];
 
   imports = [

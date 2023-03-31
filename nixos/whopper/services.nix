@@ -21,4 +21,12 @@
     enable = true;
   };
   services.teamviewer.enable = true;
+
+  services.printing = {
+	enable = true;
+	drivers = [ pkgs.hplipWithPlugin ];
+  };
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  services.avahi.openFirewall = true;
 }

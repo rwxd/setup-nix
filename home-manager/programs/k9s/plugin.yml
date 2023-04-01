@@ -1,0 +1,11 @@
+---
+plugin: {}
+  # kswitch:
+  #   shortCut: Ctrl-K
+  #   description: Switch kubectl config
+  #   scopes:
+  #     - all
+  #   command: source
+  #   background: false
+  #   args:
+  #     - kswitch

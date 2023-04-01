@@ -5,4 +5,5 @@
   ];
 
   home.file.".config/k9s/skin.yml".source = ./skin.yml;
+  home.file.".config/k9s/plugin.yml".source = ./plugin.yml;
 }

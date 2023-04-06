@@ -29,4 +29,7 @@
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
   services.avahi.openFirewall = true;
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
 }

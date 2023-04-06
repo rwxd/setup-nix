@@ -52,6 +52,7 @@
 	audacity
 	appimage-run
 	gparted
+	gnucash
   ];
 
   services.screen-locker = {

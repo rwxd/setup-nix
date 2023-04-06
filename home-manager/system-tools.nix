@@ -33,6 +33,7 @@
 	xdotool
 	rclone
 	hplipWithPlugin
+	lm_sensors
   ];
 
   imports = [

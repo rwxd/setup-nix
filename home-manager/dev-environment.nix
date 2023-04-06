@@ -75,6 +75,7 @@
 	gron
 	talosctl
 	exercism
+	d2
   ];
 
   imports = [

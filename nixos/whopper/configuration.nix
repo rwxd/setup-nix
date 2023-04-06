@@ -110,6 +110,7 @@
       firefox
     ];
   };
+  programs.zsh.enable = true;
 
   programs.adb.enable = true;
 

@@ -10,33 +10,26 @@
           {
             block = "disk_space";
             path = "/";
-            alias = "/";
             info_type = "available";
-            unit = "GB";
+            alert_unit = "GB";
             interval = 60;
             warning = 20.0;
             alert = 10.0;
           }
           {
             block = "memory";
-            display_type = "memory";
-            format_mem = "{mem_used_percents}";
-          }
-          {
-            block = "memory";
-            display_type = "swap";
-            format_swap = "{swap_used_percents}";
+            format= " $icon $mem_used_percents.eng(w:1) ";
+			format_alt= " $icon_swap $swap_free.eng(w:3,u:B,p:M)/$swap_total.eng(w:3,u:B,p:M)($swap_used_percents.eng(w:2)) ";
+			interval = 30;
+			warning_mem = 70;
+			critical_mem = 90;
           }
           {
             block = "cpu";
-            info = 60;
-            warning = 80;
-            critical = 95;
-            interval = 1;
           }
           {
             block = "load";
-            format = "{1m}";
+            format = "$icon 1min avg: $1m.eng(w:4)";
             info = 60;
             warning = 80;
             critical = 95;
@@ -45,7 +38,7 @@
           {
             block = "sound";
           }
-          { block = "time"; format = "%a %d/%m %T"; interval = 5; }
+          { block = "time"; format = "$icon $timestamp.datetime(f:'%Y-%m-%d %R') "; interval = 5; }
         ];
       };
       top = {
@@ -54,28 +47,33 @@
         blocks = [
           {
             block = "focused_window";
-            max_width = 50;
-            show_marks = "visible";
+			format = {
+				full = " $title.str(max_w:15) |";
+				short = " $title.str(max_w:10) |";
+			};
           }
           {
             block = "external_ip";
-            format = "{ip} {country_code} {city} {asn}";
+            format = " $ip $country_code ";
           }
           {
             block = "music";
             player = "spotify";
-            hide_when_empty = true;
           }
-          {
-            block = "networkmanager";
-            on_click = "alacritty -e nmtui";
-            interface_name_exclude = [ "br\-[0-9a-f]{12}" "docker\d+" ];
-            interface_name_include = [ ];
-            ap_format = "{ssid^10}";
-          }
+		  {
+			block = "net";
+			format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device ";
+		  }
+		  {
+			block = "xrandr";
+			format = " $icon $brightness $resolution ";
+		  }
           {
             block = "battery";
-            format = "{percentage} {time}";
+			format = " $percentage {$time |}";
+			device = "DisplayDevice";
+			driver = "upower";
+			missing_format = "";
             interval = 60;
           }
         ];

@@ -63,6 +63,12 @@
 		  {
 			block = "net";
 			format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device ";
+			click = [
+				{
+					button = "left";
+					cmd = "alacritty -e nmtui";
+				}
+			];
 		  }
 		  {
 			block = "xrandr";

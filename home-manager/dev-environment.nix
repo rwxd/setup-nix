@@ -76,6 +76,7 @@
 	talosctl
 	exercism
 	d2
+	gource
   ];
 
   imports = [

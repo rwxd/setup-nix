@@ -34,6 +34,7 @@
 	rclone
 	hplipWithPlugin
 	lm_sensors
+	bc # for tmux
   ];
 
   imports = [

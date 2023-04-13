@@ -7,7 +7,7 @@
     neofetch
     gnumake
     jq
-    yq
+    yq-go
     sshpass
     gnupg
     zsh
@@ -77,6 +77,7 @@
 	exercism
 	d2
 	gource
+	kompose
   ];
 
   imports = [

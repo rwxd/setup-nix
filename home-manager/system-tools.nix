@@ -9,6 +9,7 @@
     nix-index
     bind
     wireguard-tools
+	tailscale
     xclip
     less
     cron

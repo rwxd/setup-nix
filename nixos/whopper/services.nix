@@ -32,4 +32,5 @@
   services.udev.packages = [
     pkgs.android-udev-rules
   ];
+  services.tailscale.enable = true;
 }

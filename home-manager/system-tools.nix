@@ -36,6 +36,8 @@
 	hplipWithPlugin
 	lm_sensors
 	bc # for tmux
+	traceroute
+	tcptraceroute
   ];
 
   imports = [

@@ -11,7 +11,10 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x270
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
     ./virtualization.nix
     ./services.nix

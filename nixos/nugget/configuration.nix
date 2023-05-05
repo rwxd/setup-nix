@@ -101,7 +101,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput = {
 	enable = true;
-	tapping = true;
+	touchpad = {
+	  tapping = true;
+	};
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

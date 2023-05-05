@@ -44,7 +44,7 @@
     powershell
     terraform
     terragrunt
-    go_1_19
+    go_1_20
     jc
     fd
     gcc

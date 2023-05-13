@@ -78,6 +78,7 @@
 	d2
 	gource
 	kompose
+	cobra-cli
   ];
 
   imports = [

@@ -37,6 +37,8 @@
 	lm_sensors
 	bc # for tmux
 	tcptraceroute
+	killall
+	restic
   ];
 
   imports = [

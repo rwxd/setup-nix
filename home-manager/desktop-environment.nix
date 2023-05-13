@@ -53,6 +53,10 @@
 	appimage-run
 	gparted
 	gnucash
+	openjdk
+	minecraft
+	restique
+	calibre
   ];
 
   services.screen-locker = {

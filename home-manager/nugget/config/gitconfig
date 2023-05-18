@@ -1,7 +1,7 @@
 [user]
-	email = rwxd@pm.me
+	email = git@rwxd.de
 	name = rwxd
-	signingkey = rwxd@pm.me
+	signingkey = git@rwxd.de
 
 [pull]
 	rebase = true

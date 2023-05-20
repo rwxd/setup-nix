@@ -18,6 +18,5 @@ export EDITOR=nvim
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 export DEFAULT_USER=$USER
-export TERM="xterm-256color"
 
 export PASSWORD_STORE_DIR="$HOME/.password-store"

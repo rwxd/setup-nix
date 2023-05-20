@@ -1,3 +1,5 @@
+vim.g.airline_theme='catppuccin'
+
 vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
 
 require("catppuccin").setup({

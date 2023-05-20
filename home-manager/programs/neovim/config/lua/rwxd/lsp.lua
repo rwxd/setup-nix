@@ -186,7 +186,6 @@ require("rust-tools").setup({
 	},
 	}
 )
-require("lspconfig").sumneko_lua.setup(config())
 require("lspconfig").prosemd_lsp.setup(config())
 require("lspconfig").jsonls.setup(config())
 require("lspconfig").dockerls.setup(config())

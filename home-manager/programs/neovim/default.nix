@@ -56,7 +56,6 @@
 	  nodejs-16_x
       python3
       python3Packages.pip
-      sumneko-lua-language-server
 	  jdk
 	  plantuml
 	  graphviz

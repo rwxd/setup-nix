@@ -100,16 +100,6 @@ return require("packer").startup(function(use)
 	  config = function()
 		vim.defer_fn(function()
 		  require("copilot").setup({
-			panel = {
-				enabled = true,
-				auto_refresh = false,
-				keymap = {
-					jump_prev = "<M-j>",
-					jump_next = "<M-k>",
-					accept = "<M-l>",
-					open = "<M-CR>",
-				},
-			},
 			suggestion = {
 				enabled = true,
 				auto_trigger = false,
@@ -117,6 +107,7 @@ return require("packer").startup(function(use)
 				keymap = {
 					jump_prev = "<M-j>",
 					jump_next = "<M-k>",
+					dismiss = "<C-CR>",
 					accept = "<M-l>",
 					accept_word = false,
 					accept_line = false,

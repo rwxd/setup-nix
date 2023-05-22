@@ -60,7 +60,6 @@
 	pkg-config
 	jrnl
 	chromedriver
-	google-chrome
 	wkhtmltopdf-bin
 	k3sup
 	todoist

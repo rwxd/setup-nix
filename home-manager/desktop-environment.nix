@@ -57,6 +57,7 @@
 	minecraft
 	restique
 	calibre
+	google-chrome
   ];
 
   services.screen-locker = {

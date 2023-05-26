@@ -3,15 +3,10 @@
 #####################
 
 export fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit
 
-# refresh zcompdump every 1 hour
-for dump in ~/.zcompdump(N.mh+1); do
-  echo "Updating $dump"
-  compinit
-done
-
-compinit
+if ! [ -d "$HOME/.zsh/completion" ]; then
+	mkdir "$HOME/.zsh/completion"
+]
 
 if type "kubectl" >/dev/null && ! [ -f "$HOME/.zsh/completion/_kubectl" ]; then
     kubectl completion zsh > $HOME/.zsh/completion/_kubectl
@@ -27,10 +22,6 @@ fi
 
 if type "argo" >/dev/null && ! [ -f "$HOME/.zsh/completion/_argo" ]; then
     argo completion zsh > "$HOME/.zsh/completion/_argo"
-fi
-
-if type "terraform" >/dev/null; then
-	complete -o nospace -C "$(which terraform)" terraform
 fi
 
 if type "containerlab" >/dev/null && ! [ -f "$HOME/.zsh/completion/_containerlab" ]; then
@@ -59,10 +50,6 @@ fi
 
 if [ -f "/usr/share/nvm/init-nvm.sh" ] && ! [ -f "$HOME/.zsh/completion/_init-nvm" ]; then
 	cp /usr/share/nvm/init-nvm.sh "$HOME/.zsh/completion/_init-nvm"
-fi
-
-if type "vault" >/dev/null; then
-	complete -o nospace -C "$(which vault)" vault
 fi
 
 if type "ipams" >/dev/null && ! [ -f "$HOME/.zsh/completion/_ipams" ]; then

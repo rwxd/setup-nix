@@ -13,15 +13,20 @@ in
     enableCompletion = true;
     enableSyntaxHighlighting = true;
 
-    # initExtra = zshConfig;
+    initExtraFirst = p10kInit;
+
+	initExtraBeforeCompInit = builtins.concatStringsSep "\n" [
+      (lib.strings.fileContents ./completions.zsh)
+	];
+
     initExtra = builtins.concatStringsSep "\n" [
 	  ''
 	  zmodload zsh/zprof
 	  ''
+      (lib.strings.fileContents ./completions_after_compinit.zsh)
       (lib.strings.fileContents ./functions.zsh)
       (lib.strings.fileContents ./keybindings.zsh)
       (lib.strings.fileContents ./extra_sources.zsh)
-      (lib.strings.fileContents ./completions.zsh)
       ''
         label="nix-shell"
         if [[ -n "$IN_NIX_SHELL" ]]; then
@@ -53,7 +58,6 @@ in
 	  ''
     ];
 
-    initExtraFirst = p10kInit;
 
     envExtra = zshVars;
 

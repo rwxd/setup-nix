@@ -4,9 +4,7 @@
 
 export fpath=(~/.zsh/completion $fpath)
 
-if ! [ -d "$HOME/.zsh/completion" ]; then
-	mkdir "$HOME/.zsh/completion"
-]
+mkdir -p "$HOME/.zsh/completion"
 
 if type "kubectl" >/dev/null && ! [ -f "$HOME/.zsh/completion/_kubectl" ]; then
     kubectl completion zsh > $HOME/.zsh/completion/_kubectl

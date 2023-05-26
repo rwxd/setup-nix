@@ -25,3 +25,8 @@ tf-docs(){
 		docker run --rm -v $(pwd):/project -w /project quay.io/terraform-docs/terraform-docs:latest --hide requirements markdown . > ./$1
 	fi
 }
+
+timesh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do time $shell -i -c exit; done
+}

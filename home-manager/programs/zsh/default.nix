@@ -15,6 +15,9 @@ in
 
     # initExtra = zshConfig;
     initExtra = builtins.concatStringsSep "\n" [
+	  ''
+	  zmodload zsh/zprof
+	  ''
       (lib.strings.fileContents ./functions.zsh)
       (lib.strings.fileContents ./keybindings.zsh)
       (lib.strings.fileContents ./extra_sources.zsh)

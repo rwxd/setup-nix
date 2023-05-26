@@ -2,6 +2,17 @@
 ## completions
 #####################
 
+export fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit
+
+# refresh zcompdump every 1 hour
+for dump in ~/.zcompdump(N.mh+1); do
+  echo "Updating $dump"
+  compinit
+done
+
+compinit
+
 if type "kubectl" >/dev/null && ! [ -f "$HOME/.zsh/completion/_kubectl" ]; then
     kubectl completion zsh > $HOME/.zsh/completion/_kubectl
 fi
@@ -19,7 +30,7 @@ if type "argo" >/dev/null && ! [ -f "$HOME/.zsh/completion/_argo" ]; then
 fi
 
 if type "terraform" >/dev/null; then
-	complete -o nospace -C /usr/bin/terraform terraform
+	complete -o nospace -C "$(which terraform)" terraform
 fi
 
 if type "containerlab" >/dev/null && ! [ -f "$HOME/.zsh/completion/_containerlab" ]; then
@@ -51,7 +62,7 @@ if [ -f "/usr/share/nvm/init-nvm.sh" ] && ! [ -f "$HOME/.zsh/completion/_init-nv
 fi
 
 if type "vault" >/dev/null; then
-	complete -o nospace -C /usr/bin/vault vault
+	complete -o nospace -C "$(which vault)" vault
 fi
 
 if type "ipams" >/dev/null && ! [ -f "$HOME/.zsh/completion/_ipams" ]; then
@@ -59,7 +70,7 @@ if type "ipams" >/dev/null && ! [ -f "$HOME/.zsh/completion/_ipams" ]; then
 fi
 
 if type "ansible-workspace" >/dev/null && ! [ -f "$HOME/.zsh/completion/_ansible-workspace" ]; then
-	ansible-workspace --show-completion zsh > "$HOME/.zsh/completion/_ansible-workspace" 
+	ansible-workspace --show-completion zsh > "$HOME/.zsh/completion/_ansible-workspace"
 fi
 
 if type "minikube" >/dev/null && ! [ -f "$HOME/.zsh/completion/_minikube" ]; then
@@ -74,13 +85,3 @@ fi
 # if [ -f "/usr/share/fzf/key-bindings.zsh" ]; then
 # 	source /usr/share/fzf/key-bindings.zsh
 # fi
-
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit
-
-# refresh compdump every 1 hour
-for dump in ~/.zcompdump(N.mh+1); do
-  compinit
-done
-
-compinit -C

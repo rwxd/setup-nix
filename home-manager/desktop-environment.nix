@@ -58,6 +58,7 @@
 	restique
 	calibre
 	google-chrome
+	tor-browser-bundle-bin
   ];
 
   services.screen-locker = {

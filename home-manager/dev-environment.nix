@@ -78,6 +78,7 @@
 	gource
 	kompose
 	cobra-cli
+	dbeaver
   ];
 
   imports = [

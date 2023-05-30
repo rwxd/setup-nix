@@ -3,7 +3,7 @@ vim.g.airline_theme='catppuccin'
 vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
 
 require("catppuccin").setup({
-	transparent_background = false,
+	transparent_background = true,
 	-- dim_inactive = {
 	-- 	enabled = false,
 	-- 	shade = "dark",

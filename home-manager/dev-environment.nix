@@ -40,6 +40,7 @@
     python311Packages.pip
     python311Packages.pipx
     python311Packages.virtualenv
+    python311Packages.google-api-python-client
     vault
     powershell
     terraform

@@ -98,35 +98,33 @@ return require("packer").startup(function(use)
 	  "zbirenbaum/copilot.lua",
 	  event = "VimEnter",
 	  config = function()
-		vim.defer_fn(function()
-		  require("copilot").setup({
-			suggestion = {
-				enabled = true,
-				auto_trigger = false,
-				debounce = 75,
-				keymap = {
-					jump_prev = "<M-j>",
-					jump_next = "<M-k>",
-					dismiss = "<C-CR>",
-					accept = "<M-l>",
-					accept_word = false,
-					accept_line = false,
-				},
-			},
-			filetypes = {
-				yaml = true,
-				markdown = true,
-				help = true,
-				gitcommit = true,
-				gitrebase = true,
-				hgcommit = true,
-				svn = true,
-				cvs = true,
-				["."] = true,
-			},
-			copilot_node_command = vim.g.copilot_node_command,
-		  })
-		end, 100)
+		require("copilot").setup({
+		  suggestion = {
+		  	enabled = true,
+		  	auto_trigger = false,
+		  	debounce = 75,
+		  	keymap = {
+		  		jump_prev = "<M-j>",
+		  		jump_next = "<M-k>",
+		  		dismiss = "<C-CR>",
+		  		accept = "<M-l>",
+		  		accept_word = false,
+		  		accept_line = false,
+		  	},
+		  },
+		  filetypes = {
+		  	yaml = true,
+		  	markdown = true,
+		  	help = true,
+		  	gitcommit = true,
+		  	gitrebase = true,
+		  	hgcommit = true,
+		  	svn = true,
+		  	cvs = true,
+		  	["."] = true,
+		  },
+		  copilot_node_command = vim.g.copilot_node_command,
+		})
 	  end,
 	}
 end)

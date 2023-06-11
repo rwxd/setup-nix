@@ -16,4 +16,8 @@
       HandleLidSwitch=suspend
     '';
   };
+
+  services.tailscale.enable = true;
+  services.mullvad-vpn.enable = true;
+  services.syncthing.enable = true;
 }

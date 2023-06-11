@@ -33,4 +33,5 @@
     pkgs.android-udev-rules
   ];
   services.tailscale.enable = true;
+  services.mullvad-vpn.enable = true;
 }

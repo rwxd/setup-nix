@@ -16,6 +16,7 @@ require("rwxd.vimtest")
 require("rwxd.misc")
 require("rwxd.copilot")
 require("rwxd.debugger")
+require("rwxd.chatgpt")
 
 P = function(v)
 	print(vim.inspect(v))

@@ -17,8 +17,12 @@
     { device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
+  fileSystems."/home/fwrage/ssd_1tb" = {
+	device = "/dev/disk/by-label/ssd_1tb";
+  };
 
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/a9da1a02-3295-4f36-af08-2ec859c8ec67";
+  # boot.initrd.luks.devices."crypt_ssd_1tb".device = "/dev/disk/by-uiid/816bc108-36cf-4cd2-94cb-9bc8eb12f034";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-label/boot";

@@ -104,8 +104,8 @@ return require("packer").startup(function(use)
 		  	auto_trigger = false,
 		  	debounce = 75,
 		  	keymap = {
-		  		jump_prev = "<M-j>",
-		  		jump_next = "<M-k>",
+		  		jump_prev = "<M-n>",
+		  		jump_next = "<M-m>",
 		  		dismiss = "<C-CR>",
 		  		accept = "<M-l>",
 		  		accept_word = false,

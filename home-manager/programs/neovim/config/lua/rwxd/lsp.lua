@@ -191,7 +191,13 @@ require("lspconfig").jsonls.setup(config())
 require("lspconfig").dockerls.setup(config())
 require("lspconfig").cmake.setup(config())
 require("lspconfig").intelephense.setup(config())
-require("lspconfig").yamlls.setup(config())
+require("lspconfig").yamlls.setup(config({
+	settings = {
+		yaml = {
+			keyOrdering = false,
+		},
+	},
+}))
 -- require("lspconfig").powershell_es.setup(config())
 require("lspconfig").svelte.setup(config())
 require("lspconfig").tsserver.setup(config())

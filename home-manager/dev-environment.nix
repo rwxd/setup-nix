@@ -80,6 +80,7 @@
 	kompose
 	cobra-cli
 	dbeaver
+	minio-client
   ];
 
   imports = [

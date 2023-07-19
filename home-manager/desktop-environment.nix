@@ -59,7 +59,6 @@
 	calibre
 	google-chrome
 	tor-browser-bundle-bin
-	appflowy
   ];
 
   services.screen-locker = {

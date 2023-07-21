@@ -61,7 +61,7 @@ map("v", "<leader>gb", "<cmd>ChatGPTRun fix_bugs<cr>", { desc = "ChatGPT fix bug
 
 -- Harpoon
 map("n", "<leader>h", "<cmd>:lua require('harpoon.ui').toggle_quick_menu()<cr>", { desc = "Show harpoon" })
-map("n", "<leader>a", "<cmd>:lua require('harpoon.ui').add_file()<cr>", { desc = "Add current file to harpoon" })
+map("n", "<leader>a", "<cmd>:lua require('harpoon.mark').add_file()<cr>", { desc = "Add current file to harpoon" })
 map("n", "<C-h>", "<cmd>:lua require('harpoon.ui').nav_file(1)<cr>", { desc = "Navigate to file 1" })
 map("n", "<C-j>", "<cmd>:lua require('harpoon.ui').nav_file(2)<cr>", { desc = "Navigate to file 2" })
 map("n", "<C-k>", "<cmd>:lua require('harpoon.ui').nav_file(3)<cr>", { desc = "Navigate to file 3" })

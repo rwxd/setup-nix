@@ -20,3 +20,25 @@
 
 [alias]
     tree = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit
+
+
+    # Lists aliases
+    alias = config --get-regexp alias
+
+    # List branches in most-recently-modified order
+    recent = for-each-ref --sort='-authordate:iso8601' --format='%(authordate:relative)%09%(refname:short)' refs/heads
+
+    # Force-push
+    pushf = push --force-with-lease
+
+    # Log, in a single-line format
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+    # Create a fixup commit. Usage: git fixup <hash-of-commit-to-fixup>
+    fixup = commit --fixup
+
+    # FIXME Roulette!
+    fixme-roulette = "!f() { \
+            echo 'Abandon hope, all ye who enter here!'; \
+            git grep -Ein '(FIXME|TODO)' | shuf -n1; \
+    }; f"

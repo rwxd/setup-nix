@@ -51,13 +51,13 @@ map("n", "<leader>gs", "<cmd>:0G<cr>", { desc = "Show Git fugitive window" })
 map("n", "<leader>gv", "<cmd>:GV<cr>", { desc = "Git change log" })
 
 -- ChatGPT
-map("n", "<leader>cc", "<cmd>ChatGPT<cr>", { desc = "ChatGPT Interaction" })
-map("v", "<leader>cc", "<cmd>ChatGPT<cr>", { desc = "ChatGPT Interaction" })
-map("v", "<leader>co", "<cmd>ChatGPTRun optimize_code<cr>", { desc = "ChatGPT optimize code" })
-map("v", "<leader>ch", "<cmd>ChatGPTRun explain_code<cr>", { desc = "ChatGPT explain code" })
-map("v", "<leader>ce", "<cmd>ChatGPTEditWithInstructions<cr>", { desc = "ChatGPT edit with instructions" })
-map("v", "<leader>ca", "<cmd>ChatGPTActAs<cr>", { desc = "ChatGPT act as" })
-map("v", "<leader>cb", "<cmd>ChatGPTRun fix_bugs<cr>", { desc = "ChatGPT fix bugs" })
+map("n", "<leader>gg", "<cmd>ChatGPT<cr>", { desc = "ChatGPT Interaction" })
+map("v", "<leader>gg", "<cmd>ChatGPT<cr>", { desc = "ChatGPT Interaction" })
+map("v", "<leader>go", "<cmd>ChatGPTRun optimize_code<cr>", { desc = "ChatGPT optimize code" })
+map("v", "<leader>gh", "<cmd>ChatGPTRun explain_code<cr>", { desc = "ChatGPT explain code" })
+map("v", "<leader>ge", "<cmd>ChatGPTEditWithInstructions<cr>", { desc = "ChatGPT edit with instructions" })
+map("v", "<leader>ga", "<cmd>ChatGPTActAs<cr>", { desc = "ChatGPT act as" })
+map("v", "<leader>gb", "<cmd>ChatGPTRun fix_bugs<cr>", { desc = "ChatGPT fix bugs" })
 
 -- Harpoon
 map("n", "<leader>h", "<cmd>:lua require('harpoon.ui').toggle_quick_menu()<cr>", { desc = "Show harpoon" })

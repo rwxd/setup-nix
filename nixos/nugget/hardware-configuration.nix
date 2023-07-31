@@ -41,6 +41,9 @@
   # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wwp0s20f0u3.useDHCP = lib.mkDefault true;
 
+  networking.extraHosts = ''
+  	192.168.2.1 speedport.ip
+  '';
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

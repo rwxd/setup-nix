@@ -194,3 +194,8 @@ end)
 
 map("i", "<M-m>", "<cmd>:Copilot suggestion next<CR>", { desc = "Next copilot suggestion" })
 map("i", "<M-n>", "<cmd>:Copilot suggestion prev<CR>", { desc = "Previous copilot suggestion" })
+map("i", "<M-,>", "<cmd>:Copilot disable<CR>", { desc = "Disable Copilot" })
+map("n", "<M-,>", "<cmd>:Copilot disable<CR>", { desc = "Disable Copilot" })
+map("i", "<M-.>", "<cmd>:Copilot enable<CR>", { desc = "Enable Copilot" })
+map("n", "<M-.>", "<cmd>:Copilot enable<CR>", { desc = "Enable Copilot" })
+

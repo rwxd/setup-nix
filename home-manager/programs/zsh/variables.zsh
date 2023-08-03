@@ -21,3 +21,6 @@ export DEFAULT_USER=$USER
 export TERM="xterm-256color"
 
 export PASSWORD_STORE_DIR="$HOME/.password-store"
+
+export NEOVIM_COPILOT_ENABLED="TRUE"
+export NEOVIM_COPILOT_AUTO_TRIGGER="TRUE"

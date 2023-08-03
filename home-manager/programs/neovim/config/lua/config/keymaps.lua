@@ -192,3 +192,5 @@ nnoremap("<leader>fo", function()
 	require('telescope.builtin').extensions.frecency.frecency({})
 end)
 
+map("i", "<M-m>", "<cmd>:Copilot suggestion next<CR>", { desc = "Next copilot suggestion" })
+map("i", "<M-n>", "<cmd>:Copilot suggestion prev<CR>", { desc = "Previous copilot suggestion" })

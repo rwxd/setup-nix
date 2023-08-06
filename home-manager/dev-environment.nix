@@ -81,6 +81,7 @@
 	cobra-cli
 	dbeaver
 	minio-client
+    ipinfo
   ];
 
   imports = [

@@ -82,6 +82,7 @@
 	dbeaver
 	minio-client
     ipinfo
+    sqlite
   ];
 
   imports = [

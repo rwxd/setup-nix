@@ -83,6 +83,8 @@
 	minio-client
     ipinfo
     sqlite
+    protobuf
+    protoc-gen-go
   ];
 
   imports = [

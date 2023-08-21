@@ -5,7 +5,10 @@ return {
   	"catppuccin/nvim",
 	lazy = true,
 	name = "catppuccin",
-	opts = {
-	}
+	config = function()
+        require("catppuccin").setup({
+            transparent_background = true,
+        })
+    end,
   },
 }

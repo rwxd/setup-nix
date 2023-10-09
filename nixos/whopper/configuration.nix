@@ -124,6 +124,8 @@
     nix-alien
     nix-index # not necessary, but recommended
     nix-index-update
+    restic
+    autorestic
   ];
 
   # fonts
@@ -151,6 +153,7 @@
 	enable = true;
 	systemCronJobs = [
 	  "* * * * * fwrage pacmd set-source-volume alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-input 0x25000"
+	  "*/5 * * * * root autorestic --ci cron"
 	];
   };
 

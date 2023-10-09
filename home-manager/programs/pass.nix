@@ -8,7 +8,6 @@
     enable = true;
     package = pkgs.pass.withExtensions (exts: [
       exts.pass-otp
-      exts.pass-audit
       exts.pass-update
       exts.pass-import
       # exts.pass-checkup

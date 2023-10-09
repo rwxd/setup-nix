@@ -13,8 +13,13 @@ flake-lock-update: ## lock flakes & update
 	nix flake lock \
 		--update-input nixpkgs \
 		--update-input nixpkgs-unstable \
+		--update-input nixos-hardware \
 		--update-input home-manager \
 		--update-input home-manager-unstable \
+		--update-input flake-utils \
+		--update-input nix-alien \
+		--update-input nix-ld \
+		--update-input neovim-nightly \
 		--show-trace \
 		--extra-experimental-features nix-command \
 		--extra-experimental-features flakes

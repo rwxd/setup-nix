@@ -87,6 +87,10 @@
     sqlite
     protobuf
     protoc-gen-go
+    # fping
+    # mtr
+    # cilium-cli
+    # hubble
   ];
 
   imports = [

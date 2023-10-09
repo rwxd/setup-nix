@@ -39,6 +39,7 @@
 	tcptraceroute
 	killall
 	restic
+    autorestic
   ];
 
   imports = [

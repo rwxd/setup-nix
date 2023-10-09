@@ -32,6 +32,8 @@
     btop
     ripgrep
     kubectl
+    krew
+    kubelogin-oidc
 	kubeseal
 	kustomize
     argocd

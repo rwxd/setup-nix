@@ -91,6 +91,7 @@
     # mtr
     # cilium-cli
     # hubble
+    ruff
   ];
 
   imports = [

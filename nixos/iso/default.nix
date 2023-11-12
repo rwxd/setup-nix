@@ -27,6 +27,7 @@
     initialPassword = "initialPW";
   };
 
+  programs.zsh.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

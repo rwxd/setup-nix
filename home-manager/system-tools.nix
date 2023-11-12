@@ -40,6 +40,7 @@
 	killall
 	restic
     autorestic
+    pciutils
   ];
 
   imports = [

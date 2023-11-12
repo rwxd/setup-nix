@@ -6,6 +6,31 @@ Install nix & home-manager
 
 ## NixOS
 
+### Disk
+
+- use ext4
+- no swap partition
+- we use a swap file, because it is easier to resize and the encryption is easier
+
+```bash
+parted /dev/nvme0n1 -- mklabel gpt
+parted /dev/nvme0n1 -- mkpart primary 512MB 100%
+parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 512MB
+parted /dev/nvme0n1 -- set 2 esp on
+mkfs.ext4 -L nixos /dev/nvme0n1p1
+mkfs.fat -F 32 -n boot /dev/nvme0n1p2
+
+cryptsetup luksFormat /dev/nvme0n1p1
+cryptsetup luksOpen /dev/nvme0n1p1 cryptroot
+mkfs.ext4 -L nixos /dev/mapper/cryptroot
+
+mount /dev/disk/by-label/nixos /mnt
+mkdir /mnt/boot
+mount /dev/nvme0n1p2 /mnt/boot/
+
+nixos-generate-config
+```
+
 ### Installation
 
 ```bash

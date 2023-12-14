@@ -5,7 +5,7 @@
 
 SEARCH_PATH="$HOME/"
 WORKSPACES_PATH="$HOME/workspaces/"
-IGNORE_LIST=("$HOME/.tmux/*" "$HOME/.vscode/*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/.cache/*" "*/\.venv/*" "$HOME/.cargo/*" "$HOME/.cookiecutters/*" "*/\.git/*" "*/\.terraform/*" "*/\.cache/*" "*/\.vim/*" "*/\.oh-my-zsh/*")
+IGNORE_LIST=("$HOME/.tmux/*" "$HOME/.vscode/*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/mnt/*" "$HOME/.cache/*" "*/\.venv/*" "$HOME/.cargo/*" "$HOME/.cookiecutters/*" "*/\.git/*" "*/\.terraform/*" "*/\.cache/*" "*/\.vim/*" "*/\.oh-my-zsh/*")
 
 ignore=()
 for i in "${IGNORE_LIST[@]}"; do
@@ -16,7 +16,7 @@ if [[ $# -eq 1 ]]; then
 	selected="$1"
 else
 	files=$(
-		find "$SEARCH_PATH" -mindepth 1 -maxdepth 5 -name '.git' -type d "${ignore[@]}" 2>/dev/null | sed 's/\.git//g' &&
+		find "$SEARCH_PATH" -mindepth 1 -maxdepth 5 -name '.git' -mount -type d "${ignore[@]}" 2>/dev/null | sed 's/\.git//g' &&
 			find "$WORKSPACES_PATH" -mindepth 1 -maxdepth 1 -name "*.tmuxp-workspace.yml" -type f "${ignore[@]}" 2>/dev/null
 	)
 	selected=$(fzf-tmux -p 85% --reverse --preview 'glow -s dark {}/README.md 2> /dev/null || echo "No README.md found 😞"' <<<"${files[@]}" | sort -u)

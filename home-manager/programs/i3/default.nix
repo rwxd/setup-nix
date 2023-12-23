@@ -2,6 +2,7 @@
 let
   i3_mod = "Mod4";
   rofi = "${pkgs.rofi}/bin/rofi";
+  kitty = "${pkgs.kitty}/bin/kitty";
 in
 {
   home.packages = with pkgs; [
@@ -154,7 +155,7 @@ in
         "${i3_mod}+r" = "mode resize";
 
         # start a terminal
-        "${i3_mod}+Return" = "exec i3-sensible-terminal";
+        "${i3_mod}+Return" = "exec ${kitty}";
 
         # change wallpaper
         "${i3_mod}+o" = "exec feh --bg-fill --random ~/wallpaper/";

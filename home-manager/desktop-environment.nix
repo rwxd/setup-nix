@@ -59,6 +59,7 @@
 	calibre
 	google-chrome
 	tor-browser-bundle-bin
+    gromit-mpx
   ];
 
   services.screen-locker = {

@@ -163,6 +163,9 @@ in
         # screenshot
         "Control+Shift+x" = "exec --no-startup-id flameshot gui";
 
+        # screen painting
+        "${i3_mod}+F9" = "exec --no-startup-id gromit-mpx -a";
+
         # start dmenu (a program launcher)
         # "${i3_mod}+d exec --no-startup-id dmenu_run
 

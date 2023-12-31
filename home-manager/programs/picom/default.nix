@@ -22,7 +22,13 @@
         strength = 5.0;
         deviation = 1.0;
       };
+      blur-background-exclude = [
+        "class_g = 'Gromit-mpx'"
+      ];
     };
+    shadowExclude = [
+        "class_g = 'GromitMPX'"
+    ];
     opacityRules = [
       /* "100:class_g ?= 'brave-browser'", */
       "100:fullscreen"

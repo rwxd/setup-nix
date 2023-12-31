@@ -152,7 +152,7 @@
   services.cron = {
 	enable = true;
 	systemCronJobs = [
-	  "* * * * * fwrage pacmd set-source-volume alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-input 0x25000"
+	  "* * * * * fwrage pacmd set-source-volume alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-input 0x20000"
 	  "*/5 * * * * root autorestic --ci cron"
 	];
   };

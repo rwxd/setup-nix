@@ -60,6 +60,7 @@
 	google-chrome
 	tor-browser-bundle-bin
     gromit-mpx
+    obs-studio
   ];
 
   services.screen-locker = {

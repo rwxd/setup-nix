@@ -199,3 +199,4 @@ map("n", "<M-,>", "<cmd>:Copilot disable<CR>", { desc = "Disable Copilot" })
 map("i", "<M-.>", "<cmd>:Copilot enable<CR>", { desc = "Enable Copilot" })
 map("n", "<M-.>", "<cmd>:Copilot enable<CR>", { desc = "Enable Copilot" })
 
+map("n", "<leader>ee", "oif err != nil {<CR>}<ESC>Oreturn err<ESC>")

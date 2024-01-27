@@ -77,6 +77,7 @@ in
       "rm" = "trash";
       "werist" = "ipams";
 	  "k" = "kubectl";
+      "benchmark-zsh" = "for i in $(seq 1 10); do time $SHELL -i -c exit; done";
     };
 
     plugins = [

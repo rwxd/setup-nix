@@ -47,7 +47,7 @@
     powershell
     terraform
     terragrunt
-    go_1_20
+    go_1_22
     jc
     fd
     gcc
@@ -58,7 +58,6 @@
     # httpie
     hugo
     tickrs
-    nixopsUnstable
 	openssl
 	pkg-config
 	jrnl

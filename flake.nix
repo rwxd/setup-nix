@@ -86,7 +86,7 @@
       nixosConfigurations = {
         nugget = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          pkgs = legacyPackages-unstable.x86_64-linux;
+          # pkgs = legacyPackages-unstable.x86_64-linux;
           system = systems.x86_64-linux;
           modules = (builtins.attrValues nixosModules) ++ defaultModules ++ [
             # > Our main nixos configuration file <
@@ -97,7 +97,7 @@
         };
         whopper = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          pkgs = legacyPackages-unstable.x86_64-linux;
+          # pkgs = legacyPackages-unstable.x86_64-linux;
           system = systems.x86_64-linux;
           modules = (builtins.attrValues nixosModules) ++ defaultModules ++ [
             # > Our main nixos configuration file <
@@ -109,7 +109,7 @@
         };
         services = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          pkgs = legacyPackages-unstable.x86_64-linux;
+          # pkgs = legacyPackages-unstable.x86_64-linux;
           system = systems.x86_64-linux;
           modules = (builtins.attrValues nixosModules) ++ defaultModules ++ [
             # > Our main nixos configuration file <

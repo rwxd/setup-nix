@@ -66,7 +66,7 @@
 	  # and it makes connecting from a local Mac possible.
 	  services.avahi = {
 		enable = true;
-		nssmdns = true;
+		nssmdns4 = true;
 		publish = {
 		  enable = true;
 		  addresses = true;

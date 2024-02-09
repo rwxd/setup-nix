@@ -82,8 +82,8 @@
   hardware.opengl.driSupport32Bit = true;
 
   # Configure keymap in X11
-  services.xserver.layout = "de";
-  services.xserver.xkbOptions = "eurosign:e,caps:escape";
+  services.xserver.xkb.layout = "de";
+  services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

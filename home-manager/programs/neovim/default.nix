@@ -8,7 +8,7 @@
     withPython3 = true;
     withRuby = false;
     extraConfig = ''
-	  let g:copilot_node_command = "${pkgs.nodejs-16_x}/bin/node"
+	  let g:copilot_node_command = "${pkgs.nodejs-18_x}/bin/node"
 	  let PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig"
 
 	  let g:rwxd_qf_l = 0
@@ -46,14 +46,14 @@
 
     extraPackages = with pkgs; [
       tree-sitter
-	  go_1_19
+	  go_1_22
 	  gopls
       rust-analyzer
       rustup
       nodePackages.pyright
       gcc
       nodejs
-	  nodejs-16_x
+	  nodejs-18_x
       python3
       python3Packages.pip
 	  jdk

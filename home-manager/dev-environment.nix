@@ -91,6 +91,7 @@
     # cilium-cli
     # hubble
     ruff
+    git-absorb
   ];
 
   imports = [

@@ -41,6 +41,7 @@
 	restic
     autorestic
     pciutils
+    iotop
   ];
 
   imports = [

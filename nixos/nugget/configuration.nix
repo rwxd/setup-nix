@@ -127,7 +127,16 @@
     firefox
     git
     brightnessctl
+    autorestic
+    restic
   ];
+
+  services.cron = {
+	enable = true;
+	systemCronJobs = [
+	  "*/5 * * * * root autorestic --ci cron"
+	];
+  };
 
   # fonts
   fonts.packages = with pkgs; [

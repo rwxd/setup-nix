@@ -86,12 +86,14 @@
     sqlite
     protobuf
     protoc-gen-go
-    # fping
-    # mtr
-    # cilium-cli
-    # hubble
+    fping
+    mtr
     ruff
     git-absorb
+    nodejs_latest
+    cilium-cli
+    hubble
+    kubeseal
   ];
 
   imports = [

@@ -51,6 +51,9 @@ local function config(_config)
 	}, _config or {})
 end
 
+-- This is necessary for LSPs to "pick up" on .templ files.
+vim.filetype.add({ extension = { templ = "templ" } })
+
 return {
   {
     "sbdchd/neoformat",
@@ -63,12 +66,14 @@ return {
   },
   {
     "L3MON4D3/LuaSnip",
+    build = "make install_jsregexp",
 	config = function()
-	  require("luasnip.loaders.from_vscode").lazy_load({
-		paths = snippets_paths(),
-		include = nil, -- Load all languages
-		exclude = {},
-	  })
+        require("luasnip.loaders.from_vscode").lazy_load()
+		--  require("luasnip.loaders.from_vscode").lazy_load({
+		-- paths = snippets_paths(),
+		-- include = nil, -- Load all languages
+		-- exclude = {},
+		--  })
 	end,
   },
   {
@@ -291,7 +296,17 @@ return {
 		-- require("lspconfig").powershell_es.setup(config())
 		require("lspconfig").svelte.setup(config())
 		require("lspconfig").tsserver.setup(config())
-		require("lspconfig").html.setup(config())
+		require("lspconfig").html.setup(config({
+                filetypes = { "html", "templ" },
+        }))
+		require("lspconfig").htmx.setup(config({
+                filetypes = { "html", "templ" },
+        }))
+		require("lspconfig").templ.setup(config())
+		require("lspconfig").tailwindcss.setup(config({
+            filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+            init_options = { userLanguages = { templ = "html" } },
+        }))
 		require("lspconfig").cssls.setup(config())
 		require("lspconfig").bashls.setup(config())
 		require("lspconfig").rnix.setup(config())

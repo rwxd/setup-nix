@@ -94,6 +94,7 @@
     cilium-cli
     hubble
     kubeseal
+    bruno
   ];
 
   imports = [

@@ -4,6 +4,11 @@
 
   security.pam.services.kdewallet.enableKwallet = true;
 
+  # Allow swaylock to unlock the computer for us
+  security.pam.services.swaylock = {
+    text = "auth include login";
+  };
+
   # flatpak
   services.flatpak.enable = true;
   ## desktop integration for flatpak with portal

@@ -1,11 +1,11 @@
 return require("packer").startup(function(use)
-    use("wbthomason/packer.nvim")
+	use("wbthomason/packer.nvim")
 
 	-- use("junegunn/rainbow_parentheses.vim")
 	use("luochen1990/rainbow")
 
 	-- theme
-	use { "catppuccin/nvim", as = "catppuccin" }
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- statusline plugins
 	use("vim-airline/vim-airline")
@@ -21,7 +21,7 @@ return require("packer").startup(function(use)
 	use("tpope/vim-fugitive")
 	use("junegunn/gv.vim")
 	use("rhysd/git-messenger.vim")
-	use ("lewis6991/gitsigns.nvim")
+	use("lewis6991/gitsigns.nvim")
 
 	-- Easy test shortcuts
 	use("vim-test/vim-test")
@@ -85,7 +85,7 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
 	use("onsails/lspkind-nvim")
-    use("simrat39/inlay-hints.nvim")
+	use("simrat39/inlay-hints.nvim")
 
 	-- Go
 	use("ray-x/go.nvim")
@@ -94,51 +94,50 @@ return require("packer").startup(function(use)
 	use("simrat39/rust-tools.nvim")
 
 	-- use("github/copilot.vim")
-	use {
-	  "zbirenbaum/copilot.lua",
-	  event = "VimEnter",
-	  config = function()
-		require("copilot").setup({
-		  suggestion = {
-		  	enabled = true,
-		  	auto_trigger = false,
-		  	debounce = 75,
-		  	keymap = {
-		  		jump_prev = "<M-n>",
-		  		jump_next = "<M-m>",
-		  		dismiss = "<C-CR>",
-		  		accept = "<M-l>",
-		  		accept_word = false,
-		  		accept_line = false,
-		  	},
-		  },
-		  filetypes = {
-		  	yaml = true,
-		  	markdown = true,
-		  	help = true,
-		  	gitcommit = true,
-		  	gitrebase = true,
-		  	hgcommit = true,
-		  	svn = true,
-		  	cvs = true,
-		  	["."] = true,
-		  },
-		  copilot_node_command = vim.g.copilot_node_command,
-		})
-	  end,
-	}
 	use({
-	  "jackMort/ChatGPT.nvim",
+		"zbirenbaum/copilot.lua",
+		event = "VimEnter",
 		config = function()
-		  require("chatgpt").setup({
-			api_key_cmd = "gopass show --password private/openai_token",
-		    }
-	          )
+			require("copilot").setup({
+				suggestion = {
+					enabled = true,
+					auto_trigger = false,
+					debounce = 75,
+					keymap = {
+						jump_prev = "<M-n>",
+						jump_next = "<M-m>",
+						dismiss = "<C-CR>",
+						accept = "<M-l>",
+						accept_word = false,
+						accept_line = false,
+					},
+				},
+				filetypes = {
+					yaml = true,
+					markdown = true,
+					help = true,
+					gitcommit = true,
+					gitrebase = true,
+					hgcommit = true,
+					svn = true,
+					cvs = true,
+					["."] = true,
+				},
+				copilot_node_command = vim.g.copilot_node_command,
+			})
+		end,
+	})
+	use({
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({
+				api_key_cmd = "gopass show --password private/openai_token",
+			})
 		end,
 		requires = {
-		  "MunifTanjim/nui.nvim",
-		  "nvim-lua/plenary.nvim",
-		  "nvim-telescope/telescope.nvim"
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
 		},
 	})
 end)

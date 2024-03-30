@@ -6,7 +6,8 @@ require("nvim-lsp-installer").setup({
 local cmp = require("cmp")
 local source_mapping = {
 	buffer = "[Buffer]",
-	nvim_lsp = "[LSP]", nvim_lua = "[Lua]",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[Lua]",
 	cmp_tabnine = "[TN]",
 	path = "[Path]",
 }
@@ -30,7 +31,7 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-f>"] = cmp.mapping.complete(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	}),
 
 	formatting = {
@@ -156,9 +157,8 @@ require("lspconfig").pyright.setup(config({
 				functionTypeParameters = true,
 			},
 		},
-	}
-}
-))
+	},
+}))
 require("lspconfig").ansiblels.setup(config())
 require("lspconfig").terraformls.setup(config())
 require("lspconfig").rust_analyzer.setup(config({
@@ -174,7 +174,7 @@ require("lspconfig").rust_analyzer.setup(config({
 				},
 			},
 		},
-	}
+	},
 }))
 require("rust-tools").setup({
 	server = config(),
@@ -184,8 +184,7 @@ require("rust-tools").setup({
 			only_current_line = false,
 		},
 	},
-	}
-)
+})
 require("lspconfig").prosemd_lsp.setup(config())
 require("lspconfig").jsonls.setup(config())
 require("lspconfig").dockerls.setup(config())
@@ -206,45 +205,45 @@ require("lspconfig").cssls.setup(config())
 require("lspconfig").bashls.setup(config())
 require("lspconfig").rnix.setup(config())
 
-require("inlay-hints").setup {
-  -- renderer to use
-  -- possible options are dynamic, eol, virtline and custom
-  -- renderer = "inlay-hints/render/dynamic",
-  renderer = "inlay-hints/render/eol",
+require("inlay-hints").setup({
+	-- renderer to use
+	-- possible options are dynamic, eol, virtline and custom
+	-- renderer = "inlay-hints/render/dynamic",
+	renderer = "inlay-hints/render/eol",
 
-  hints = {
-    parameter = {
-      show = true,
-      highlight = "whitespace",
-    },
-    type = {
-      show = true,
-      highlight = "Whitespace",
-    },
-  },
+	hints = {
+		parameter = {
+			show = true,
+			highlight = "whitespace",
+		},
+		type = {
+			show = true,
+			highlight = "Whitespace",
+		},
+	},
 
-  -- Only show inlay hints for the current line
-  only_current_line = false,
+	-- Only show inlay hints for the current line
+	only_current_line = false,
 
-  eol = {
-    -- whether to align to the extreme right or not
-    right_align = false,
+	eol = {
+		-- whether to align to the extreme right or not
+		right_align = false,
 
-    -- padding from the right if right_align is true
-    right_align_padding = 7,
+		-- padding from the right if right_align is true
+		right_align_padding = 7,
 
-    parameter = {
-      separator = ", ",
-      format = function(hints)
-        return string.format(" <- (%s)", hints)
-      end,
-    },
+		parameter = {
+			separator = ", ",
+			format = function(hints)
+				return string.format(" <- (%s)", hints)
+			end,
+		},
 
-    type = {
-      separator = ", ",
-      format = function(hints)
-        return string.format(" => %s", hints)
-      end,
-    },
-  },
-}
+		type = {
+			separator = ", ",
+			format = function(hints)
+				return string.format(" => %s", hints)
+			end,
+		},
+	},
+})

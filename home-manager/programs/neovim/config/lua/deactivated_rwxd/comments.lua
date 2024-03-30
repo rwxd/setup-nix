@@ -1,2 +1,2 @@
-require('Comment').setup()
-require('todo-comments').setup()
+require("Comment").setup()
+require("todo-comments").setup()

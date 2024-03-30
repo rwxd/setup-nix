@@ -21,8 +21,8 @@ require("telescope").setup({
 
 		pickers = {
 			find_files = {
-				hidden = true
-			}
+				hidden = true,
+			},
 		},
 
 		mappings = {
@@ -40,7 +40,7 @@ require("telescope").setup({
 			override_file_sorter = true,
 			case_mode = "ignore_case",
 		},
-	}
+	},
 })
 
 local M = {}
@@ -70,55 +70,55 @@ M.git_branches = function()
 end
 
 nnoremap("<leader>ff", function()
-	require('telescope.builtin').find_files({ no_ignore = true, hidden = true })
+	require("telescope.builtin").find_files({ no_ignore = true, hidden = true })
 end)
 
 nnoremap("<leader>fv", function()
-	require('telescope.builtin').live_grep()
+	require("telescope.builtin").live_grep()
 end)
 
 nnoremap("<leader>fb", function()
-	require('telescope.builtin').buffers()
+	require("telescope.builtin").buffers()
 end)
 
 nnoremap("<leader>fh", function()
-	require('telescope.builtin').help_tags()
+	require("telescope.builtin").help_tags()
 end)
 
 nnoremap("<leader>fs", function()
-	require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})
+	require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ") })
 end)
 
 nnoremap("<C-p>", function()
-	require('telescope.builtin').git_files({ show_untracked = true })
+	require("telescope.builtin").git_files({ show_untracked = true })
 end)
 
 nnoremap("<leader>fgb", function()
-	require('telescope.builtin').git_branches()
+	require("telescope.builtin").git_branches()
 end)
 
 nnoremap("<leader>fgcc", function()
-	require('telescope.builtin').git_commits()
+	require("telescope.builtin").git_commits()
 end)
 
 nnoremap("<leader>fgcb", function()
-	require('telescope.builtin').git_bcommits()
+	require("telescope.builtin").git_bcommits()
 end)
 
 nnoremap("<leader>fgs", function()
-	require('telescope.builtin').git_stash()
+	require("telescope.builtin").git_stash()
 end)
 
 nnoremap("<leader>gi", function()
-	require('telescope.builtin').git_status()
+	require("telescope.builtin").git_status()
 end)
 
 nnoremap("<leader>fw", function()
-	require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
+	require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
 end)
 
 nnoremap("<leader>vh", function()
-	require('telescope.builtin').help_tags()
+	require("telescope.builtin").help_tags()
 end)
 
 nnoremap("<leader>fW", function()
@@ -126,11 +126,11 @@ nnoremap("<leader>fW", function()
 end)
 
 nnoremap("<leader>fp", function()
-	require('telescope.builtin').extensions.file_browser.file_browser({ hidden = true })
+	require("telescope.builtin").extensions.file_browser.file_browser({ hidden = true })
 end)
 
 nnoremap("<leader>fo", function()
-	require('telescope.builtin').extensions.frecency.frecency({})
+	require("telescope.builtin").extensions.frecency.frecency({})
 end)
 
 return M

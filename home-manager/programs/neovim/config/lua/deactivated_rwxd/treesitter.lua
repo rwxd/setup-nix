@@ -2,12 +2,30 @@ local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
 vim.fn.mkdir(parser_install_dir, "p")
 vim.opt.runtimepath:append(parser_install_dir)
 
-require "nvim-treesitter.configs".setup {
+require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all"
 	ensure_installed = {
-		"c", "lua", "rust", "python", "go", "latex", "query",
-		"json", "vim", "ruby", "php", "nix", "html",
-		"css", "bash", "astro", "make", "dart", "typescript", "proto", "java"
+		"c",
+		"lua",
+		"rust",
+		"python",
+		"go",
+		"latex",
+		"query",
+		"json",
+		"vim",
+		"ruby",
+		"php",
+		"nix",
+		"html",
+		"css",
+		"bash",
+		"astro",
+		"make",
+		"dart",
+		"typescript",
+		"proto",
+		"java",
 	},
 
 	parser_install_dir = parser_install_dir,
@@ -34,28 +52,28 @@ require "nvim-treesitter.configs".setup {
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
 	},
-}
+})
 
-require "nvim-treesitter.configs".setup {
+require("nvim-treesitter.configs").setup({
 	playground = {
 		enable = true,
 		disable = {},
 		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
 		persist_queries = false, -- Whether the query persists across vim sessions
 		keybindings = {
-			toggle_query_editor = 'o',
-			toggle_hl_groups = 'i',
-			toggle_injected_languages = 't',
-			toggle_anonymous_nodes = 'a',
-			toggle_language_display = 'I',
-			focus_language = 'f',
-			unfocus_language = 'F',
-			update = 'R',
-			goto_node = '<cr>',
-			show_help = '?',
+			toggle_query_editor = "o",
+			toggle_hl_groups = "i",
+			toggle_injected_languages = "t",
+			toggle_anonymous_nodes = "a",
+			toggle_language_display = "I",
+			focus_language = "f",
+			unfocus_language = "F",
+			update = "R",
+			goto_node = "<cr>",
+			show_help = "?",
 		},
-	}
-}
+	},
+})
 
 require("treesitter-context").setup({
 	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)

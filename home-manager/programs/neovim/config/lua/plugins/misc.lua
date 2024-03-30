@@ -27,5 +27,13 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-  }
+  },
+  -- rainbow parantheses
+  {
+    "luochen1990/rainbow",
+  },
+  -- show bad whitespace in red
+  {
+    "ntpeters/vim-better-whitespace",
+  },
 }

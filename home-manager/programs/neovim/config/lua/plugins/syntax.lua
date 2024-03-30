@@ -5,16 +5,13 @@ vim.opt.runtimepath:append(parser_install_dir)
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		version = false,
+		-- version = false,
 		build = ":TSUpdate",
 		opts = {
 			ensure_installed = "all",
 			-- 	ignore_install = { "javascript" },
 			parser_install_dir = parser_install_dir,
-			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
-		}
-
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
@@ -121,6 +118,20 @@ return {
           end,
         })
       end,
+    },
+    {
+      "stevearc/conform.nvim",
+      opts = {
+        formatters_by_ft = {
+            ["python"] = { "ruff_fix", "ruff_format" },
+            ["lua"] = { "stylua" },
+            ["sh"] = { "shfmt" },
+            ["terraform"] = { "terraform_fmt" },
+            ["go"] = { "goimports", "gofmt" },
+            ["templ"] = { "templ" },
+            ["nix"] = { "nixfmt" },
+        },
+      },
     },
     {
       "ellisonleao/glow.nvim",

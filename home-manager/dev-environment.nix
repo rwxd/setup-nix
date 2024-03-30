@@ -100,6 +100,10 @@
     tflint
     hadolint
     markdownlint-cli
+
+    # formatters
+    stylua
+    nixfmt
   ];
 
   imports = [

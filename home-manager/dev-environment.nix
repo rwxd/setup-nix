@@ -11,7 +11,6 @@
     sshpass
     gnupg
     zsh
-    hadolint
     plantuml
     sipcalc
     wireshark
@@ -95,6 +94,12 @@
     hubble
     kubeseal
     bruno
+    scrcpy
+
+    # linters
+    tflint
+    hadolint
+    markdownlint-cli
   ];
 
   imports = [

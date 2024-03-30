@@ -24,6 +24,9 @@
 
   services.syncthing = {
     enable = true;
+    user = "fwrage";
+    dataDir = "/home/fwrage/Documents";    # Default folder for new synced folders
+    configDir = "/home/fwrage/.config/syncthing";
   };
   services.teamviewer.enable = true;
 

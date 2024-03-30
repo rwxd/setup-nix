@@ -44,5 +44,11 @@ return {
 	end,
     init = function()
     end,
+    keys = {
+        {"<M-m>", "<cmd>:Copilot suggestion next<CR>", mode = {"i"}, desc = "Next copilot suggestion"},
+        {"<M-n>", "<cmd>:Copilot suggestion prev<CR>", mode = {"i"}, desc = "Previous copilot suggestion"},
+        {"<M-,>", "<cmd>:Copilot disable<CR>", mode = {"i", "n"}, desc = "Disable Copilot"},
+        {"<M-.>", "<cmd>:Copilot enable<CR>", mode = {"i", "n"}, desc = "Enable Copilot"},
+    },
   },
 }

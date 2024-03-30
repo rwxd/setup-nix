@@ -108,6 +108,7 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
+      bcc
     ];
   };
   programs.zsh.enable = true;
@@ -126,6 +127,7 @@
     nix-index-update
     restic
     autorestic
+    bcc
   ];
 
   # fonts

@@ -39,8 +39,14 @@ return {
 						},
 					},
 				},
-				setup = {},
+                ruff_lsp = {
+                    mason = false; -- use nix installed server
+                },
+                rust_analyzer = {
+                    mason = false; -- use nix installed server
+                },
 			},
+            setup = {},
 		},
 	},
 }

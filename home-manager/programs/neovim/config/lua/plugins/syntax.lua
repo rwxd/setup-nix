@@ -5,12 +5,26 @@ vim.opt.runtimepath:append(parser_install_dir)
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		-- version = false,
-		build = ":TSUpdate",
 		opts = {
-			ensure_installed = "all",
-			-- 	ignore_install = { "javascript" },
-			parser_install_dir = parser_install_dir,
+            -- parser_install_dir = parser_install_dir,
+			ensure_installed = {
+				"bash",
+				"html",
+				"javascript",
+				"json",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"python",
+				"query",
+				"regex",
+				"tsx",
+				"typescript",
+				"vim",
+				"yaml",
+				"go",
+				"python",
+			},
 		},
 	},
 	{

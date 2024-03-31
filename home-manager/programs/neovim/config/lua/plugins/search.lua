@@ -1,25 +1,7 @@
-earch_dotfiles = function()
-	require("telescope.builtin").git_files({
-		prompt_title = "< dotfiles >",
-		cwd = "~/.dotfiles/",
-		hidden = true,
-	})
-end
-
-search_wiki = function()
+local search_wiki = function()
 	require("telescope.builtin").live_grep({
 		prompt_title = "< wiki >",
 		cwd = "~/wiki/",
-	})
-end
-
-git_branches = function()
-	require("telescope.builtin").git_branches({
-		attach_mappings = function(_, map)
-			map("i", "<c-d>", actions.git_delete_branch)
-			map("n", "<c-d>", actions.git_delete_branch)
-			return true
-		end,
 	})
 end
 
@@ -37,11 +19,6 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 		},
 		config = function()
-			local pickers = require("telescope.pickers")
-			local finders = require("telescope.finders")
-			local previewers = require("telescope.previewers")
-			local action_state = require("telescope.actions.state")
-			local conf = require("telescope.config").values
 			local actions = require("telescope.actions")
 
 			require("telescope").load_extension("fzf")
@@ -158,7 +135,7 @@ return {
 			{
 				"<leader>fv",
 				function()
-					require("telescope.builtin").grep_string()
+					require("telescope.builtin").live_grep()
 				end,
 				desc = "Telescope: Grep",
 			},

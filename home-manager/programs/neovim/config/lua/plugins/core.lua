@@ -1,15 +1,29 @@
-vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
-
 return {
 	{
 		"catppuccin/nvim", -- must be initialized before LazyVim
-		lazy = true,
 		name = "catppuccin",
-		config = function()
-			require("catppuccin").setup({
-				transparent_background = true,
-			})
-		end,
+		opts = {
+			flavour = "frappe",
+			transparent_background = true,
+		},
+		-- config = function()
+		-- 	require("catppuccin").setup({
+		--               flavour = "frappe",
+		-- 		transparent_background = true,
+		--               default_integrations = true,
+		-- 		integrations = {
+		-- 			cmp = true,
+		-- 			gitsigns = true,
+		-- 			nvimtree = true,
+		-- 			treesitter = true,
+		-- 			notify = false,
+		-- 			mini = {
+		-- 				enabled = true,
+		-- 				indentscope_color = "",
+		-- 			},
+		-- 		},
+		-- 	})
+		-- end,
 	},
 	{
 		"LazyVim/LazyVim",

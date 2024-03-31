@@ -3,7 +3,6 @@
 {
   programs.neovim = {
     enable = true;
-    # package = pkgs.neovim-nightly;
     withNodeJs = true;
     withPython3 = true;
     withRuby = false;
@@ -64,6 +63,7 @@
       lua-language-server
       stylua
       phpactor
+      neocmakelsp
     ];
   };
 

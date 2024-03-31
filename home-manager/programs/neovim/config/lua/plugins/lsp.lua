@@ -61,6 +61,9 @@ return {
 				phpactor = {
 					mason = not is_nixos,
 				},
+				neocmake = {
+					mason = not is_nixos,
+				},
 			},
 			setup = {},
 		},

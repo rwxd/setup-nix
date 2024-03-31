@@ -1,6 +1,6 @@
 local search_wiki = function()
 	require("telescope.builtin").live_grep({
-		prompt_title = "< wiki >",
+		prompt_title = "Search in wiki",
 		cwd = "~/wiki/",
 	})
 end

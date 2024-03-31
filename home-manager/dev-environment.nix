@@ -16,7 +16,7 @@
     wireshark
     tealdeer
     kind
-	minikube
+    minikube
     kubernetes-helm
     bfg-repo-cleaner
     shfmt
@@ -33,8 +33,8 @@
     kubectl
     krew
     kubelogin-oidc
-	kubeseal
-	kustomize
+    kubeseal
+    kustomize
     argocd
     poetry
     python311
@@ -57,30 +57,30 @@
     # httpie
     hugo
     tickrs
-	openssl
-	pkg-config
-	jrnl
-	chromedriver
-	wkhtmltopdf-bin
-	k3sup
-	todoist
-	age
-	sops
-	azure-cli
-	tokei
-	cargo-cross
-	go-task
-	vendir
-	pinniped
-	gron
-	talosctl
-	exercism
-	d2
-	gource
-	kompose
-	cobra-cli
-	dbeaver
-	minio-client
+    openssl
+    pkg-config
+    jrnl
+    chromedriver
+    wkhtmltopdf-bin
+    k3sup
+    todoist
+    age
+    sops
+    azure-cli
+    tokei
+    cargo-cross
+    go-task
+    vendir
+    pinniped
+    gron
+    talosctl
+    exercism
+    d2
+    gource
+    kompose
+    cobra-cli
+    dbeaver
+    minio-client
     ipinfo
     sqlite
     protobuf
@@ -88,6 +88,7 @@
     fping
     mtr
     ruff
+    ruff-lsp
     git-absorb
     nodejs_latest
     cilium-cli

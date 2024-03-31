@@ -1,11 +1,5 @@
-local copilot_enabled = os.getenv("NEOVIM_COPILOT_ENABLED")
-local copilot_auto_trigger = os.getenv("NEOVIM_COPILOT_AUTO_TRIGGER")
-
-if copilot_auto_trigger == nil then
-	copilot_auto_trigger = false
-else
-	copilot_auto_trigger = true
-end
+local env_copilot_enabled = os.getenv("NEOVIM_COPILOT_ENABLED")
+local env_copilot_auto_trigger = os.getenv("NEOVIM_COPILOT_AUTO_TRIGGER")
 
 return {
 	{
@@ -14,7 +8,7 @@ return {
 			require("copilot").setup({
 				suggestion = {
 					enabled = true,
-					auto_trigger = copilot_auto_trigger,
+					auto_trigger = env_copilot_auto_trigger,
 					debounce = 75,
 					keymap = {
 						jump_prev = "<M-n>",
@@ -38,7 +32,7 @@ return {
 				},
 				copilot_node_command = vim.g.copilot_node_command,
 			})
-			if copilot_enabled == nil then
+			if env_copilot_enabled == nil then
 				vim.cmd([[Copilot disable]])
 			end
 		end,

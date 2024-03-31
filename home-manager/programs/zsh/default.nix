@@ -3,28 +3,24 @@
 let
   p10kInit = builtins.readFile ./p10k-init.zsh;
   zshVars = builtins.readFile ./variables.zsh;
-in
-{
+in {
   home.file.".p10k.zsh".source = ./p10k.zsh;
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion = { enable = true; };
     enableCompletion = true;
-    syntaxHighlighting = {
-        enable = true;
-    };
+    syntaxHighlighting = { enable = true; };
 
     initExtraFirst = p10kInit;
 
-	initExtraBeforeCompInit = builtins.concatStringsSep "\n" [
-      (lib.strings.fileContents ./completions.zsh)
-	];
+    initExtraBeforeCompInit = builtins.concatStringsSep "\n"
+      [ (lib.strings.fileContents ./completions.zsh) ];
 
     initExtra = builtins.concatStringsSep "\n" [
-	  ''
-	  zmodload zsh/zprof
-	  ''
+      ''
+        zmodload zsh/zprof
+      ''
       (lib.strings.fileContents ./completions_after_compinit.zsh)
       (lib.strings.fileContents ./functions.zsh)
       (lib.strings.fileContents ./keybindings.zsh)
@@ -54,21 +50,18 @@ in
       ''
         eval "$(direnv hook zsh)"
       ''
-	  ''
-		# Rust openssl fix, https://nixos.wiki/wiki/Rust
-	  	export PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig"
-	  ''
+      "	# Rust openssl fix, https://nixos.wiki/wiki/Rust\n  	export PKG_CONFIG_PATH=\"${pkgs.openssl.dev}/lib/pkgconfig\"\n  "
     ];
-
 
     envExtra = zshVars;
 
     shellAliases = {
       asciicast2gif = "docker run --rm -v $PWD:/data asciinema/asciicast2gif";
-	  m4b-tool = "docker run -it --rm -u $(id -u):$(id -g) -v \"$(pwd)\":/mnt sandreas/m4b-tool:latest";
+      m4b-tool = ''
+        docker run -it --rm -u $(id -u):$(id -g) -v "$(pwd)":/mnt sandreas/m4b-tool:latest'';
       petname = "docker run --rm fjolsvin/petname";
       "kswitch" = "source kswitch";
-      i3lock = "bash -c \"i3lock -c 000000\"";
+      i3lock = ''bash -c "i3lock -c 000000"'';
       ".." = "cd ..";
       "..." = "cd ...";
       "...." = "cd ....";
@@ -76,7 +69,7 @@ in
       "confup" = "home-manager switch";
       "rm" = "trash";
       "werist" = "ipams";
-	  "k" = "kubectl";
+      "k" = "kubectl";
       "benchmark-zsh" = "for i in $(seq 1 10); do time $SHELL -i -c exit; done";
     };
 

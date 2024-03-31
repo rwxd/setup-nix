@@ -61,7 +61,6 @@
       graphviz
       ruff-lsp
       ruff
-      sumneko-lua-language-server
       lua-language-server
     ];
   };

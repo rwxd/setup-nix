@@ -2,14 +2,16 @@
 vim.filetype.add({ extension = { templ = "templ" } })
 
 local function check_nixos()
-    local f = io.open("/etc/nixos/", "r")
-    if f ~= nil then
-        io.close(f)
-        return true
-    else
-        return false
-    end
+	local f = io.open("/etc/nixos/", "r")
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
 end
+
+local is_nixos = check_nixos()
 
 return {
 	{
@@ -35,7 +37,7 @@ return {
 
 			servers = {
 				lua_ls = {
-                    mason = not check_nixos();
+					mason = not is_nixos,
 					settings = {
 						Lua = {
 							workspace = {
@@ -50,14 +52,14 @@ return {
 						},
 					},
 				},
-                ruff_lsp = {
-                    mason = not check_nixos();
-                },
-                rust_analyzer = {
-                    mason = not check_nixos();
-                },
+				ruff_lsp = {
+					mason = not is_nixos,
+				},
+				rust_analyzer = {
+					mason = not is_nixos,
+				},
 			},
-            setup = {},
+			setup = {},
 		},
 	},
 }

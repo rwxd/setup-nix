@@ -58,6 +58,9 @@ return {
 				rust_analyzer = {
 					mason = not is_nixos,
 				},
+				phpactor = {
+					mason = not is_nixos,
+				},
 			},
 			setup = {},
 		},

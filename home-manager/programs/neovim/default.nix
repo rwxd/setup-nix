@@ -63,6 +63,7 @@
       ruff
       lua-language-server
       stylua
+      phpactor
     ];
   };
 

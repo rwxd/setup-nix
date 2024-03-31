@@ -3,19 +3,19 @@ vim.fn.mkdir(parser_install_dir, "p")
 vim.opt.runtimepath:append(parser_install_dir)
 
 local function get_stylua_path()
-    local stylua_path = vim.fn.exepath("stylua")
-    if stylua_path == "" then
-        local home = os.getenv("HOME")
-        return home .. "/.local/share/nvim/mason/stylua"
-    end
-    return stylua_path
+	local stylua_path = vim.fn.exepath("stylua")
+	if stylua_path == "" then
+		local home = os.getenv("HOME")
+		return home .. "/.local/share/nvim/mason/stylua"
+	end
+	return stylua_path
 end
 
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
-            -- parser_install_dir = parser_install_dir,
+			-- parser_install_dir = parser_install_dir,
 			ensure_installed = {
 				"bash",
 				"html",
@@ -33,6 +33,7 @@ return {
 				"yaml",
 				"go",
 				"python",
+				"php",
 			},
 		},
 	},
@@ -154,11 +155,11 @@ return {
 				["templ"] = { "templ" },
 				["nix"] = { "nixfmt" },
 			},
-            formatters = {
-                stylua = {
-                    command = get_stylua_path(),
-                },
-            },
+			formatters = {
+				stylua = {
+					command = get_stylua_path(),
+				},
+			},
 		},
 	},
 	{

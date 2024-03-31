@@ -62,6 +62,7 @@
       ruff-lsp
       ruff
       lua-language-server
+      stylua
     ];
   };
 

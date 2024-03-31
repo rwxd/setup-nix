@@ -1,6 +1,16 @@
 -- This is necessary for LSPs to "pick up" on .templ files.
 vim.filetype.add({ extension = { templ = "templ" } })
 
+local function check_nixos()
+    local f = io.open("/etc/nixos/", "r")
+    if f ~= nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
+end
+
 return {
 	{
 		"hashivim/vim-terraform",
@@ -25,6 +35,7 @@ return {
 
 			servers = {
 				lua_ls = {
+                    mason = not check_nixos();
 					settings = {
 						Lua = {
 							workspace = {
@@ -40,10 +51,10 @@ return {
 					},
 				},
                 ruff_lsp = {
-                    mason = false; -- use nix installed server
+                    mason = not check_nixos();
                 },
                 rust_analyzer = {
-                    mason = false; -- use nix installed server
+                    mason = not check_nixos();
                 },
 			},
             setup = {},

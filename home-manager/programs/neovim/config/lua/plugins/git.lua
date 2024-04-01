@@ -84,6 +84,12 @@ return {
 		},
 	},
 	{
+		"tpope/vim-rhubarb", -- Enables :GBrowse from fugitive.vim to open GitHub URLs.
+	},
+	{
+		"shumphrey/fugitive-gitlab.vim", -- Enables :GBrowse from fugitive.vim to open GitLab URLs.
+	},
+	{
 		"junegunn/gv.vim",
 	},
 	{

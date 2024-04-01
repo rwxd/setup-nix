@@ -25,13 +25,5 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down" })
 map("n", "<leader>pv", "<cmd>:Ex<cr>", { desc = "Show file explorer" })
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
 
--- quickfix list
-map("n", "<leader>K>", "<cmd>cnext<CR>zz", { desc = "Go to the next quickfix item and center it" })
-map("n", "<leader>J>", "<cmd>cprev<CR>zz", { desc = "Go to the previous quickfix item and center it" })
-map("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Go to the next location list item and center it" })
-map("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Go to the previous location list item and center it" })
-map("n", "<C-q>", "<cmd>:call ToggleQFList(1)<CR>", { desc = "Toggle QuickFix List with 1" })
-map("n", "<leader>q", "<cmd>:call ToggleQFList(0)<CR>", { desc = "Toggle QuickFix List with 0" })
-
 -- Go
 map("n", "<leader>ee", "oif err != nil {<CR>}<ESC>Oreturn err<ESC>", { desc = "Add golang err != nil" })

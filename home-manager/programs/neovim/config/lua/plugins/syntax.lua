@@ -2,6 +2,8 @@ local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
 vim.fn.mkdir(parser_install_dir, "p")
 vim.opt.runtimepath:append(parser_install_dir)
 
+-- function to get the absolute path to a command
+-- needed for nixos, where we can't use the mason installed commands directly
 local function get_cmd_path(cmd)
 	local cmd_path = vim.fn.exepath(cmd)
 	if cmd_path == "" then

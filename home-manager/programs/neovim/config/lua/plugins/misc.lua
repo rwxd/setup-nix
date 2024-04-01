@@ -7,10 +7,6 @@ return {
 	{
 		"ThePrimeagen/refactoring.nvim",
 	},
-	-- indent tab blank
-	{
-		"lukas-reineke/indent-blankline.nvim",
-	},
 	-- Easy test shortcuts
 	{
 		"vim-test/vim-test",
@@ -24,16 +20,5 @@ return {
 	},
 	{
 		"numToStr/Comment.nvim",
-	},
-	{
-		"folke/todo-comments.nvim",
-	},
-	-- rainbow parantheses
-	{
-		"luochen1990/rainbow",
-	},
-	-- show bad whitespace in red
-	{
-		"ntpeters/vim-better-whitespace",
 	},
 }

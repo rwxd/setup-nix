@@ -2,17 +2,17 @@ local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
 vim.fn.mkdir(parser_install_dir, "p")
 vim.opt.runtimepath:append(parser_install_dir)
 
-local function get_stylua_path()
-	local stylua_path = vim.fn.exepath("stylua")
-	if stylua_path == "" then
+local function get_cmd_path(cmd)
+	local cmd_path = vim.fn.exepath(cmd)
+	if cmd_path == "" then
 		local home = os.getenv("HOME")
-		return home .. "/.local/share/nvim/mason/stylua"
+		return home .. "/.local/share/nvim/mason/" .. cmd
 	end
-	return stylua_path
+	return cmd_path
 end
 
 return {
-	{
+	{ -- highlighting
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			-- parser_install_dir = parser_install_dir,
@@ -37,7 +37,7 @@ return {
 			},
 		},
 	},
-	{
+	{ -- showing current context
 		"nvim-treesitter/nvim-treesitter-context",
 		config = function()
 			require("treesitter-context").setup({
@@ -46,10 +46,6 @@ return {
 				max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
 				show_all_context = true,
 				patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-					-- For all filetypes
-					-- Note that setting an entry here replaces all other patterns for this entry.
-					-- By setting the 'default' entry below, you can control which nodes you want to
-					-- appear in the context window.
 					default = {
 						"class",
 						"function",
@@ -64,7 +60,7 @@ return {
 			})
 		end,
 	},
-	{
+	{ -- play around with tokens found by treesitter
 		"nvim-treesitter/playground",
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -89,61 +85,17 @@ return {
 			})
 		end,
 	},
-	{ -- Linting
+	{ -- linting
 		"mfussenegger/nvim-lint",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			local lint = require("lint")
-			lint.linters_by_ft = {
+		opts = {
+			linters_by_ft = {
 				markdown = { "markdownlint" },
 				terrafom = { "tflint" },
 				dockerfile = { "hadolint" },
-			}
-
-			-- To allow other plugins to add linters to require('lint').linters_by_ft,
-			-- instead set linters_by_ft like this:
-			-- lint.linters_by_ft = lint.linters_by_ft or {}
-			-- lint.linters_by_ft['markdown'] = { 'markdownlint' }
-			--
-			-- However, note that this will enable a set of default linters,
-			-- which will cause errors unless these tools are available:
-			-- {
-			--   clojure = { "clj-kondo" },
-			--   dockerfile = { "hadolint" },
-			--   inko = { "inko" },
-			--   janet = { "janet" },
-			--   json = { "jsonlint" },
-			--   markdown = { "vale" },
-			--   rst = { "vale" },
-			--   ruby = { "ruby" },
-			--   terraform = { "tflint" },
-			--   text = { "vale" }
-			-- }
-			--
-			-- You can disable the default linters by setting their filetypes to nil:
-			-- lint.linters_by_ft['clojure'] = nil
-			-- lint.linters_by_ft['dockerfile'] = nil
-			-- lint.linters_by_ft['inko'] = nil
-			-- lint.linters_by_ft['janet'] = nil
-			-- lint.linters_by_ft['json'] = nil
-			-- lint.linters_by_ft['markdown'] = nil
-			-- lint.linters_by_ft['rst'] = nil
-			-- lint.linters_by_ft['ruby'] = nil
-			-- lint.linters_by_ft['terraform'] = nil
-			-- lint.linters_by_ft['text'] = nil
-
-			-- Create autocommand which carries out the actual linting
-			-- on the specified events.
-			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-				group = lint_augroup,
-				callback = function()
-					require("lint").try_lint()
-				end,
-			})
-		end,
+			},
+		},
 	},
-	{
+	{ -- formatting
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
@@ -156,16 +108,20 @@ return {
 				["nix"] = { "nixfmt" },
 			},
 			formatters = {
-				stylua = {
-					command = get_stylua_path(),
-				},
+				stylua = { command = get_cmd_path("stylua") },
 			},
 		},
 	},
+	-- rainbow parantheses
 	{
-		"ellisonleao/glow.nvim",
+		"luochen1990/rainbow",
 	},
+	-- indent tab blank
 	{
-		"dhruvasagar/vim-table-mode",
+		"lukas-reineke/indent-blankline.nvim",
+	},
+	-- show bad whitespace in red
+	{
+		"ntpeters/vim-better-whitespace",
 	},
 }

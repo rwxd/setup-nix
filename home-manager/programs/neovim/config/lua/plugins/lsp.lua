@@ -15,9 +15,6 @@ local is_nixos = check_nixos()
 
 return {
 	{
-		"hashivim/vim-terraform",
-	},
-	{
 		"ray-x/go.nvim",
 	},
 	{

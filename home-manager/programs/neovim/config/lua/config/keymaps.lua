@@ -17,9 +17,6 @@ local function map(mode, lhs, rhs, opts)
 	end
 end
 
--- Render
-map("n", "<leader>m", "<cmd>:Glow<cr>", { desc = "Render Markdown file" })
-
 -- Movement
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection up" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down" })

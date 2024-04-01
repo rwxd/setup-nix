@@ -8,7 +8,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down" })
 
 -- File
 vim.keymap.set("n", "<leader>pv", "<cmd>:Ex<cr>", { desc = "Show file explorer" })
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Make file executable" })
 
 -- Go
 vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<ESC>Oreturn err<ESC>", { desc = "Add golang err != nil" })

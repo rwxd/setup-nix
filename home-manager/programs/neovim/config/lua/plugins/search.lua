@@ -161,6 +161,20 @@ return {
 				desc = "Telescope: List the results of the last search (previous telescope picker)",
 			},
 			{
+				"<leader>fI",
+				function()
+					require("telescope.builtin").lsp_document_symbols()
+				end,
+				desc = "Telescope: Lists LSP document symbols in the current buffer",
+			},
+			{
+				"<leader>fi",
+				function()
+					require("telescope.builtin").lsp_dynamic_workspace_symbols()
+				end,
+				desc = "Telescope: Dynamically Lists LSP for all workspace symbols",
+			},
+			{
 				"<C-S-p>",
 				function()
 					require("telescope.builtin").commands()

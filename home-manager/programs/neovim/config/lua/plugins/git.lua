@@ -87,6 +87,8 @@ return {
 			{ "<leader>gl", "<cmd>diffget //3<CR>", desc = "GitFugitive: diff choose right buffer" },
 			{ "<leader>gs", "<cmd>0G<CR>", desc = "GitFugitive: Show window" },
 			{ "<leader>gv", "<cmd>GV<CR>", desc = "GitFugitive: Show change log" },
+			{ "<leader>gb", "<cmd>GBrowse<CR>", desc = "GitFugitive: Open in Browser" },
+			{ "<leader>gb", "<cmd>'<,'>GBrowse<CR>", mode = { "v" }, desc = "GitFugitive: Open selection in Browser" },
 		},
 	},
 	{

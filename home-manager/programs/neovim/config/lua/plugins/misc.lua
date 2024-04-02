@@ -21,4 +21,10 @@ return {
 	{
 		"numToStr/Comment.nvim",
 	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		keys = {
+			{ "<leader>ge", false }, -- deactivate git explorer shortcut
+		},
+	},
 }

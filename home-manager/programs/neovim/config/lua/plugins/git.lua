@@ -1,5 +1,11 @@
 vim.g.git_messenger_always_into_popup = true
 
+local gitlab_url = os.getenv("GITLAB_URL")
+if gitlab_url then
+	local ssh_url = gitlab_url.gsub(gitlab_url, "https://", "")
+	vim.g.fugitive_gitlab_domains = { ssh_url, gitlab_url }
+end
+
 -- pre-commit
 local api = vim.api
 local function run_pre_commit(all)

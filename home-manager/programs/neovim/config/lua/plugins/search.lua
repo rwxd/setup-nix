@@ -154,6 +154,7 @@ return {
 				end,
 				mode = { "v" },
 				desc = "Telescope: Grep for selection",
+			},
 			{
 				"<leader>fW",
 				function()

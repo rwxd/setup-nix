@@ -139,28 +139,21 @@ return {
 				desc = "Telescope: Find stashed git changes",
 			},
 			{
-				"<leader>fw",
-				function()
-					require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-				end,
-				desc = "Telescope: Grep for word under cursor",
-			},
-			{
-
-				"<leader>fw",
-				function()
-					require("telescope.builtin").grep_string({ search = getVisualSelection() })
-				end,
-				mode = { "v" },
-				desc = "Telescope: Grep for word selected",
-			},
-			{
 				"<leader>fv",
 				function()
 					require("telescope.builtin").live_grep()
 				end,
+				mode = { "n" },
 				desc = "Telescope: Grep",
 			},
+			{
+
+				"<leader>fv",
+				function()
+					require("telescope.builtin").live_grep({ default_text = getVisualSelection() })
+				end,
+				mode = { "v" },
+				desc = "Telescope: Grep for selection",
 			{
 				"<leader>fW",
 				function()

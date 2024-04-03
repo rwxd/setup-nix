@@ -5,6 +5,19 @@ local search_wiki = function()
 	})
 end
 
+local getVisualSelection = function()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg("v")
+	vim.fn.setreg("v", {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ""
+	end
+end
+
 return {
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
@@ -131,6 +144,15 @@ return {
 					require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
 				end,
 				desc = "Telescope: Grep for word under cursor",
+			},
+			{
+
+				"<leader>fw",
+				function()
+					require("telescope.builtin").grep_string({ search = getVisualSelection() })
+				end,
+				mode = { "v" },
+				desc = "Telescope: Grep for word selected",
 			},
 			{
 				"<leader>fv",

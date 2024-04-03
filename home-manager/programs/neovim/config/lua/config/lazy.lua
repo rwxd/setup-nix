@@ -14,6 +14,7 @@ require("lazy").setup({
 
 		{ import = "lazyvim.plugins.extras.coding.copilot" },
 		{ import = "lazyvim.plugins.extras.editor.trouble-v3" },
+		{ import = "lazyvim.plugins.extras.test.core" },
 
 		{ import = "lazyvim.plugins.extras.lang.rust" },
 		{ import = "lazyvim.plugins.extras.lang.tailwind" },

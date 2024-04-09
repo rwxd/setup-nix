@@ -13,6 +13,14 @@ local function get_cmd_path(cmd)
 	return cmd_path
 end
 
+vim.api.nvim_create_user_command("AutoformatDisable", function()
+	vim.g.autoformat = false
+end, { bang = true, desc = "Disable autoformatting" })
+
+vim.api.nvim_create_user_command("AutoformatEnable", function()
+	vim.g.autoformat = true
+end, { bang = true, desc = "Enable autoformatting" })
+
 return {
 	{ -- highlighting
 		"nvim-treesitter/nvim-treesitter",

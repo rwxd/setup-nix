@@ -30,4 +30,10 @@ return {
 			require("cloak").setup()
 		end,
 	},
+	{
+		"mbbill/undotree",
+		keys = {
+			{ "<leader>ut", vim.cmd.UndotreeToggle },
+		},
+	},
 }

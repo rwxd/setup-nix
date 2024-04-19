@@ -1,5 +1,3 @@
-vim.g.rainbow_active = 1
-
 return {
 	{
 		"mbbill/undotree",

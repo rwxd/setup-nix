@@ -26,4 +26,10 @@ return {
 			{ "<leader>ge", false }, -- deactivate git explorer shortcut
 		},
 	},
+	{
+		"laytan/cloak.nvim",
+		config = function()
+			require("cloak").setup()
+		end,
+	},
 }

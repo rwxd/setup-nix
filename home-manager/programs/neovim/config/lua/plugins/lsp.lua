@@ -61,6 +61,19 @@ return {
 				neocmake = {
 					mason = not is_nixos,
 				},
+				html = {
+					mason = not is_nixos,
+					filetypes = { "html", "templ" },
+				},
+				htmx = {
+					mason = not is_nixos,
+					filetypes = { "html", "templ" },
+				},
+				tailwindcss = {
+					mason = not is_nixos,
+					filetypes = { "html", "templ", "javascript", "typescript" },
+				},
+				templ = {},
 			},
 			setup = {},
 		},

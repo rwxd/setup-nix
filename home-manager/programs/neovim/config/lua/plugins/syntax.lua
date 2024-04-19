@@ -116,6 +116,7 @@ return {
 				["go"] = { "goimports", "gofmt" },
 				["templ"] = { "templ" },
 				["nix"] = { "nixfmt" },
+				["html"] = { "djlint" },
 			},
 			formatters = {
 				stylua = { command = get_cmd_path("stylua") },

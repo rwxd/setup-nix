@@ -77,5 +77,8 @@ return {
 			},
 			setup = {},
 		},
+		keys = {
+			{ "<leader>L", "<cmd>LspRestart<CR>", desc = "Restart the LSP" },
+		},
 	},
 }

@@ -96,6 +96,7 @@
     kubeseal
     bruno
     scrcpy
+    tailwindcss
 
     # linters
     tflint

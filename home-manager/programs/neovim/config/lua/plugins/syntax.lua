@@ -31,6 +31,7 @@ return {
 			ensure_installed = {
 				"bash",
 				"html",
+				"htmldjango",
 				"javascript",
 				"json",
 				"lua",
@@ -62,6 +63,7 @@ return {
 				markdown = { "markdownlint" },
 				terrafom = { "tflint" },
 				dockerfile = { "hadolint" },
+				htmldjango = { "djlint" },
 			},
 		},
 	},
@@ -77,6 +79,7 @@ return {
 				["templ"] = { "templ" },
 				["nix"] = { "nixfmt" },
 				["html"] = { "djlint" },
+				["htmldjango"] = { "djlint" },
 			},
 			formatters = {
 				stylua = { command = get_cmd_path("stylua") },

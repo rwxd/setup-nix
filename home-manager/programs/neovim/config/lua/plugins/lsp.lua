@@ -63,15 +63,15 @@ return {
 				},
 				html = {
 					mason = not is_nixos,
-					filetypes = { "html", "templ" },
+					filetypes = { "html", "templ", "htmldjango" },
 				},
 				htmx = {
 					mason = not is_nixos,
-					filetypes = { "html", "templ" },
+					filetypes = { "html", "templ", "htmldjango" },
 				},
 				tailwindcss = {
 					mason = not is_nixos,
-					filetypes = { "html", "templ", "javascript", "typescript" },
+					filetypes = { "html", "templ", "javascript", "typescript", "htmldjango" },
 				},
 				templ = {},
 			},

@@ -93,5 +93,4 @@
     ../../home-manager/desktop-environment.nix
   ];
 
-
 }

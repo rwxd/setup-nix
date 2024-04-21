@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
   sway_mod = "Mod4";
-  rofi = "${pkgs.rofi}/bin/rofi";
   kitty = "${pkgs.kitty}/bin/kitty";
 in
 {
@@ -9,7 +8,6 @@ in
     swaylock
     swayidle
     wl-clipboard
-    kitty
     wofi
     waybar
     wlr-randr
@@ -124,30 +122,54 @@ in
             };
         }];
 
-        keybindings = {
-          "${sway_mod}+Shift+Ctrl" = "exec ${pkgs.swaylock}/bin/swaylock";
-
-          # change wallpaper
-          "${sway_mod}+o" = "exec feh --bg-fill --random ~/wallpaper/";
-
-          # screenshot
-          "Control+Shift+x" = "exec --no-startup-id grim -g \"$(slurp)\" - | wl-copy";
-
-          # wofi gopass
-          "${sway_mod}+p" = "exec --no-startup-id bash -c \"gopass ls --flat | wofi -d -p gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | wl-copy\"";
+        input = {
+            "type:keyboard" = {
+              xkb_layout = "de";
+              xkb_options = "eurosign:e,caps:escape";
+            };
         };
-        extraConfig = ''
-          # wallaper changer
-          exec --no-startup-id watch -n 1200 feh --bg-fill --randomize ~/wallpaper/* &>/dev/null &
 
-          # start nextcloud client
-          exec --no-startup-id "sleep 30; nextcloud"
+        # keybindings = {
+        #   # backlight
+        #   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
+        #   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
+        #
+        #   # volume control
+        #   "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
+        #   "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status";
+        #   "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
+        #   "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status";
+        #
+        #   # spotify player controls
+        #   "XF86AudioPlay" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause\"";
+        #   "XF86AudioStop" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop\"";
+        #   "XF86AudioPrev" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous\"";
+        #   "XF86AudioNext" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next\"";
+        #
+        #   # lock screen
+        #   "${sway_mod}+Shift+Ctrl" = "exec ${pkgs.swaylock}/bin/swaylock";
+        #
+        #   # change wallpaper
+        #   "${sway_mod}+o" = "exec feh --bg-fill --random ~/wallpaper/";
+        #
+        #   # screenshot
+        #   "Control+Shift+x" = "exec --no-startup-id grim -g \"$(slurp)\" - | wl-copy";
+        #
+        #   # wofi gopass
+        #   "${sway_mod}+p" = "exec --no-startup-id bash -c \"gopass ls --flat | wofi -d -p gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | wl-copy\"";
+        # };
 
-          # applets
-          exec --no-startup-id nm-applet
-          exec --no-startup-id blueman-applet
-        '';
+        startup = [
+          {command="nextcloud";}
+          {command="watch -n 1200 feh --bg-fill --randomize ~/wallpaper/* &>/dev/null &";}
+          {command="nm-applet";}
+          {command="blueman-applet";}
+          {command="sleep 5; systemctl --user start kanshi.service";}
+        ];
       };
+
+      extraConfig = ''
+      '';
   };
 
   # x11.windowManager.i3 = {

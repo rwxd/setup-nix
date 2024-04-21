@@ -9,11 +9,28 @@
     text = "auth include login";
   };
 
+  security.polkit.enable = true;
+
   # flatpak
   services.flatpak.enable = true;
-  ## desktop integration for flatpak with portal
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  # xdg-desktop-portal works by exposing a series of D-Bus interfaces
+  # known as portals under a well-known name
+  # (org.freedesktop.portal.Desktop) and object path
+  # (/org/freedesktop/portal/desktop).
+  # The portal interfaces include APIs for file access, opening URIs,
+  # printing and others.
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+    config = {
+        common.default = "*";
+    };
+  };
 
   services.logind = {
     extraConfig = ''
@@ -25,4 +42,13 @@
   services.tailscale.enable = true;
   services.mullvad-vpn.enable = true;
   services.syncthing.enable = true;
+
+  # kanshi systemd service
+  systemd.user.services.kanshi = {
+    description = "kanshi daemon";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+    };
+  };
 }

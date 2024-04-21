@@ -6,5 +6,8 @@ in
   programs.kitty = {
     enable = true;
     extraConfig = kittyConfig;
+    environment = {
+        "KITTY_ENABLE_WAYLAND"= "1";
+    };
   };
 }

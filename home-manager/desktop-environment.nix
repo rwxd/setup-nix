@@ -85,5 +85,6 @@
     ./programs/kitty
     ./programs/alacritty
 	./programs/vscode
+    ./programs/sway
   ];
 }

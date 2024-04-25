@@ -97,6 +97,7 @@
     bruno
     scrcpy
     tailwindcss
+    up
 
     # linters
     tflint

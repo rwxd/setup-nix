@@ -1,5 +1,6 @@
 -- This is necessary for LSPs to "pick up" on .templ files.
 vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({ pattern = { [".*.html.*.tmpl"] = "html" } })
 
 local function check_nixos()
 	local f = io.open("/etc/nixos/", "r")

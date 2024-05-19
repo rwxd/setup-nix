@@ -2,8 +2,7 @@
 let
   sway_mod = "Mod4";
   kitty = "${pkgs.kitty}/bin/kitty";
-in
-{
+in {
   home.packages = with pkgs; [
     swaylock
     swayidle
@@ -14,13 +13,11 @@ in
     wdisplays
   ];
 
-  programs.swaylock = {
-    enable = true;
-  };
+  programs.swaylock = { enable = true; };
 
   programs.waybar = {
-    settings = {};
-    style = {};
+    settings = { };
+    style = { };
     # systemd = {
     # enable = true;
     # target = "multi-user.target";
@@ -31,145 +28,145 @@ in
     enable = true;
     wrapperFeatures.gtk = true;
     config = {
-        modifier = sway_mod;
-        terminal = "kitty";
-        menu = "wofi --show run";
+      modifier = sway_mod;
+      terminal = "kitty";
+      menu = "wofi --show run";
 
-        gaps = {
-          inner = 5;
-          smartBorders = "on";
-        };
-
-        floating.modifier = sway_mod;
-
-        window.commands = [
-          {
-            command = "border pixel 2";
-            criteria = {
-              class = "^.*";
-            };
-          }
-        ];
-
-        bars = [{
-            fonts.size = 15.0;
-            position = "bottom";
-            colors = {
-              separator = "#1f222d";
-              background = "#1f222d";
-              statusline = "#81a1c1";
-
-              focusedWorkspace = {
-                border = "#1f222d";
-                background = "#1f222d";
-                text = "#81a1c1";
-              };
-              activeWorkspace = {
-                border = "#1f222d";
-                background = "#252936";
-                text = "#5e81ac";
-              };
-              inactiveWorkspace = {
-                border = "#1f222d";
-                background = "#1f222d";
-                text = "#4c566a";
-              };
-              urgentWorkspace = {
-                border = "#1f222d";
-                background = "#1f222d";
-                text = "#ee829f";
-              };
-              bindingMode = {
-                border = "#1f222d";
-                background = "#81a1c1";
-                text = "#2e3440";
-              };
-            };
-        }
-        {
-            fonts.size = 15.0;
-            position = "top";
-            colors = {
-              separator = "#1f222d";
-              background = "#1f222d";
-              statusline = "#81a1c1";
-
-              focusedWorkspace = {
-                border = "#1f222d";
-                background = "#1f222d";
-                text = "#81a1c1";
-              };
-              activeWorkspace = {
-                border = "#1f222d";
-                background = "#252936";
-                text = "#5e81ac";
-              };
-              inactiveWorkspace = {
-                border = "#1f222d";
-                background = "#1f222d";
-                text = "#4c566a";
-              };
-              urgentWorkspace = {
-                border = "#1f222d";
-                background = "#1f222d";
-                text = "#ee829f";
-              };
-              bindingMode = {
-                border = "#1f222d";
-                background = "#81a1c1";
-                text = "#2e3440";
-              };
-            };
-        }];
-
-        input = {
-            "type:keyboard" = {
-              xkb_layout = "de";
-              xkb_options = "eurosign:e,caps:escape";
-            };
-        };
-
-        # keybindings = {
-        #   # backlight
-        #   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
-        #   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
-        #
-        #   # volume control
-        #   "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
-        #   "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status";
-        #   "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
-        #   "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status";
-        #
-        #   # spotify player controls
-        #   "XF86AudioPlay" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause\"";
-        #   "XF86AudioStop" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop\"";
-        #   "XF86AudioPrev" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous\"";
-        #   "XF86AudioNext" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next\"";
-        #
-        #   # lock screen
-        #   "${sway_mod}+Shift+Ctrl" = "exec ${pkgs.swaylock}/bin/swaylock";
-        #
-        #   # change wallpaper
-        #   "${sway_mod}+o" = "exec feh --bg-fill --random ~/wallpaper/";
-        #
-        #   # screenshot
-        #   "Control+Shift+x" = "exec --no-startup-id grim -g \"$(slurp)\" - | wl-copy";
-        #
-        #   # wofi gopass
-        #   "${sway_mod}+p" = "exec --no-startup-id bash -c \"gopass ls --flat | wofi -d -p gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | wl-copy\"";
-        # };
-
-        startup = [
-          {command="nextcloud";}
-          {command="watch -n 1200 feh --bg-fill --randomize ~/wallpaper/* &>/dev/null &";}
-          {command="nm-applet";}
-          {command="blueman-applet";}
-          {command="sleep 5; systemctl --user start kanshi.service";}
-        ];
+      gaps = {
+        inner = 5;
+        smartBorders = "on";
       };
 
-      extraConfig = ''
-      '';
+      floating.modifier = sway_mod;
+
+      window.commands = [{
+        command = "border pixel 2";
+        criteria = { class = "^.*"; };
+      }];
+
+      bars = [
+        {
+          fonts.size = 15.0;
+          position = "bottom";
+          colors = {
+            separator = "#1f222d";
+            background = "#1f222d";
+            statusline = "#81a1c1";
+
+            focusedWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#81a1c1";
+            };
+            activeWorkspace = {
+              border = "#1f222d";
+              background = "#252936";
+              text = "#5e81ac";
+            };
+            inactiveWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#4c566a";
+            };
+            urgentWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#ee829f";
+            };
+            bindingMode = {
+              border = "#1f222d";
+              background = "#81a1c1";
+              text = "#2e3440";
+            };
+          };
+        }
+        {
+          fonts.size = 15.0;
+          position = "top";
+          colors = {
+            separator = "#1f222d";
+            background = "#1f222d";
+            statusline = "#81a1c1";
+
+            focusedWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#81a1c1";
+            };
+            activeWorkspace = {
+              border = "#1f222d";
+              background = "#252936";
+              text = "#5e81ac";
+            };
+            inactiveWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#4c566a";
+            };
+            urgentWorkspace = {
+              border = "#1f222d";
+              background = "#1f222d";
+              text = "#ee829f";
+            };
+            bindingMode = {
+              border = "#1f222d";
+              background = "#81a1c1";
+              text = "#2e3440";
+            };
+          };
+        }
+      ];
+
+      input = {
+        "type:keyboard" = {
+          xkb_layout = "de";
+          xkb_options = "eurosign:e,caps:escape";
+        };
+      };
+
+      # keybindings = {
+      #   # backlight
+      #   "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
+      #   "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
+      #
+      #   # volume control
+      #   "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
+      #   "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status";
+      #   "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
+      #   "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status";
+      #
+      #   # spotify player controls
+      #   "XF86AudioPlay" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause\"";
+      #   "XF86AudioStop" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop\"";
+      #   "XF86AudioPrev" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous\"";
+      #   "XF86AudioNext" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next\"";
+      #
+      #   # lock screen
+      #   "${sway_mod}+Shift+Ctrl" = "exec ${pkgs.swaylock}/bin/swaylock";
+      #
+      #   # change wallpaper
+      #   "${sway_mod}+o" = "exec feh --bg-fill --random ~/wallpaper/";
+      #
+      #   # screenshot
+      #   "Control+Shift+x" = "exec --no-startup-id grim -g \"$(slurp)\" - | wl-copy";
+      #
+      #   # wofi gopass
+      #   "${sway_mod}+p" = "exec --no-startup-id bash -c \"gopass ls --flat | wofi -d -p gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | wl-copy\"";
+      # };
+
+      startup = [
+        { command = "nextcloud"; }
+        {
+          command =
+            "watch -n 1200 feh --bg-fill --randomize ~/wallpaper/* &>/dev/null &";
+        }
+        { command = "nm-applet"; }
+        { command = "blueman-applet"; }
+        { command = "sleep 5; systemctl --user start kanshi.service"; }
+      ];
+    };
+
+    extraConfig = "";
   };
 
   # x11.windowManager.i3 = {

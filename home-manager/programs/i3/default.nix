@@ -3,11 +3,8 @@ let
   i3_mod = "Mod4";
   rofi = "${pkgs.rofi}/bin/rofi";
   kitty = "${pkgs.kitty}/bin/kitty";
-in
-{
-  home.packages = with pkgs; [
-    i3lock
-  ];
+in {
+  home.packages = with pkgs; [ i3lock ];
 
   xsession.windowManager.i3 = {
     enable = true;
@@ -18,27 +15,21 @@ in
         smartBorders = "on";
       };
 
-      floating = {
-        modifier = i3_mod;
-      };
+      floating = { modifier = i3_mod; };
 
       window = {
-        commands = [
-          {
-            command = "border pixel 2";
-            criteria = {
-              class = "^.*";
-            };
-          }
-        ];
+        commands = [{
+          command = "border pixel 2";
+          criteria = { class = "^.*"; };
+        }];
       };
 
       bars = [
         {
           position = "bottom";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
-          extraConfig = ''
-          '';
+          statusCommand =
+            "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
+          extraConfig = "";
           colors = {
             separator = "#1f222d";
             background = "#1f222d";
@@ -73,10 +64,10 @@ in
         }
         {
           position = "top";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
+          statusCommand =
+            "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
           workspaceButtons = false;
-          extraConfig = ''
-          '';
+          extraConfig = "";
           colors = {
             separator = "#1f222d";
             background = "#1f222d";
@@ -126,9 +117,9 @@ in
           "Right" = "resize grow width 10 px or 10 ppt";
 
           # back to normal: Enter or Escape or $mod+r
-          "Return" = "mode \"default\"";
-          "Escape" = "mode \"default\"";
-          "${i3_mod}+r" = "mode \"default\"";
+          "Return" = ''mode "default"'';
+          "Escape" = ''mode "default"'';
+          "${i3_mod}+r" = ''mode "default"'';
         };
       };
 
@@ -138,19 +129,28 @@ in
         "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
 
         # volume control
-        "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
-        "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status";
-        "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
-        "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status";
+        "XF86AudioRaiseVolume" =
+          "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
+        "XF86AudioLowerVolume" =
+          "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status";
+        "XF86AudioMute" =
+          "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
+        "XF86AudioMicMute" =
+          "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status";
 
         # spotify player controls
-        "XF86AudioPlay" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause\"";
-        "XF86AudioStop" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop\"";
-        "XF86AudioPrev" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous\"";
-        "XF86AudioNext" = "exec \"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next\"";
+        "XF86AudioPlay" = ''
+          exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"'';
+        "XF86AudioStop" = ''
+          exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"'';
+        "XF86AudioPrev" = ''
+          exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"'';
+        "XF86AudioNext" = ''
+          exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"'';
 
         # locking screen with wallpaper
-        "F10" = "exec ${pkgs.i3lock}/bin/i3lock --image ~/.i3lock-wallpaper.png --tiling --nofork --color 000000";
+        "F10" =
+          "exec ${pkgs.i3lock}/bin/i3lock --image ~/.i3lock-wallpaper.png --tiling --nofork --color 000000";
 
         "${i3_mod}+r" = "mode resize";
 
@@ -171,8 +171,10 @@ in
 
         # start rofi (a program launcher)
         # "${i3_mod}+d" = "exec --no-startup-id rofi -show drun -config ~/.config/rofi/nord.rasi";
-        "${i3_mod}+d" = "exec --no-startup-id ${rofi} -show drun -config ~/.config/rofi/config.rasi";
-        "${i3_mod}+p" = "exec --no-startup-id bash -c \"gopass ls --flat | rofi -dmenu -p gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | xdotool type --clearmodifiers --file -\"";
+        "${i3_mod}+d" =
+          "exec --no-startup-id ${rofi} -show drun -config ~/.config/rofi/config.rasi";
+        "${i3_mod}+p" = ''
+          exec --no-startup-id bash -c "gopass ls --flat | rofi -dmenu -p gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | xdotool type --clearmodifiers --file -"'';
 
         # kill focused window
         "${i3_mod}+Shift+q" = "kill";
@@ -259,7 +261,8 @@ in
         # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${i3_mod}+Shift+r" = "restart";
         # exit i3 (logs you out of your X session)
-        "${i3_mod}+Shift+e" = "exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'";
+        "${i3_mod}+Shift+e" =
+          "exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'";
       };
     };
     extraConfig = ''

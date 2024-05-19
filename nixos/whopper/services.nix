@@ -1,13 +1,10 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   services.blueman.enable = true;
 
   security.pam.services.kdewallet.enableKwallet = true;
 
   # Allow swaylock to unlock the computer for us
-  security.pam.services.swaylock = {
-    text = "auth include login";
-  };
+  security.pam.services.swaylock = { text = "auth include login"; };
 
   # flatpak
   services.flatpak.enable = true;
@@ -25,21 +22,19 @@
   services.syncthing = {
     enable = true;
     user = "fwrage";
-    dataDir = "/home/fwrage/Documents";    # Default folder for new synced folders
+    dataDir = "/home/fwrage/Documents"; # Default folder for new synced folders
     configDir = "/home/fwrage/.config/syncthing";
   };
   services.teamviewer.enable = true;
 
   services.printing = {
-	enable = true;
-	drivers = [ pkgs.hplipWithPlugin ];
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
   };
   services.avahi.enable = true;
   services.avahi.nssmdns4 = true;
   services.avahi.openFirewall = true;
-  services.udev.packages = [
-    pkgs.android-udev-rules
-  ];
+  services.udev.packages = [ pkgs.android-udev-rules ];
   services.tailscale.enable = true;
   services.mullvad-vpn.enable = true;
 }

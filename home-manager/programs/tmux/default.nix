@@ -1,7 +1,5 @@
-let
-  tmuxConf = builtins.readFile ./tmux.conf;
-in
-{
+let tmuxConf = builtins.readFile ./tmux.conf;
+in {
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -12,5 +10,4 @@ in
     extraConfig = tmuxConf;
   };
 }
-
 

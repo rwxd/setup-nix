@@ -1,13 +1,10 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   services.blueman.enable = true;
 
   security.pam.services.kdewallet.enableKwallet = true;
 
   # Allow swaylock to unlock the computer for us
-  security.pam.services.swaylock = {
-    text = "auth include login";
-  };
+  security.pam.services.swaylock = { text = "auth include login"; };
 
   security.polkit.enable = true;
 
@@ -27,9 +24,7 @@
     # gtk portal needed to make gtk apps happy
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-    config = {
-        common.default = "*";
-    };
+    config = { common.default = "*"; };
   };
 
   services.logind = {
@@ -48,7 +43,7 @@
     description = "kanshi daemon";
     serviceConfig = {
       Type = "simple";
-      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+      ExecStart = "${pkgs.kanshi}/bin/kanshi -c kanshi_config_file";
     };
   };
 }

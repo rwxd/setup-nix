@@ -50,18 +50,8 @@
 
   services = {
     displayManager = {
-      lightdm.enable = true;
+      enable = true;
       defaultSession = "none+i3";
-      # defaultSession = "plasma";
-      sessionCommands = ''
-        ${pkgs.xorg.xrdb}/bin/xrdb -merge <${
-          pkgs.writeText "Xresources" ''
-            Xft.dpi: 150
-            Xcursor.theme: Adwaita
-            Xcursor.size: 36
-          ''
-        }
-      '';
     };
 
     # Enable the X11 windowing system.
@@ -69,6 +59,19 @@
       enable = true;
       dpi = 220;
       videoDrivers = [ "amdgpu" ];
+      displayManager = {
+        lightdm.enable = true;
+        # defaultSession = "plasma";
+        sessionCommands = ''
+          ${pkgs.xorg.xrdb}/bin/xrdb -merge <${
+            pkgs.writeText "Xresources" ''
+              Xft.dpi: 150
+              Xcursor.theme: Adwaita
+              Xcursor.size: 36
+            ''
+          }
+        '';
+      };
       # Enable the Plasma 5 Desktop Environment.
       desktopManager.plasma5.enable = true;
       windowManager.i3 = {

@@ -1,12 +1,7 @@
-{ config, pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    gpg-tui
-  ];
+{ config, pkgs, ... }: {
+  home.packages = with pkgs; [ gpg-tui ];
 
-  programs.gpg = {
-    enable = true;
-  };
+  programs.gpg = { enable = true; };
 
   services.gpg-agent = {
     enable = true;

@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    spicetify-cli
-  ];
+  home.packages = with pkgs; [ spicetify-cli ];
 
   home.file = {
     ".config/spicetify/Themes".source = pkgs.fetchFromGitHub {

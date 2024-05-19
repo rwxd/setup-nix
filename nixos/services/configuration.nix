@@ -5,10 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -16,10 +15,10 @@
 
   networking.hostName = "services";
   networking.networkmanager.enable = true;
-  networking.interfaces.eth0.ipv4.addresses = [ {
+  networking.interfaces.eth0.ipv4.addresses = [{
     address = "192.168.2.32";
     prefixLength = 23;
-  } ];
+  }];
   networking.defaultGateway = "192.168.2.1";
   networking.nameservers = [ "192.168.2.1" "1.1.1.1" "8.8.8.8" ];
 
@@ -38,8 +37,7 @@
   users.users.fwrage = {
     isNormalUser = true;
     extraGroups = [ "wheel" "NetworkManager" "docker" ];
-    packages = with pkgs; [
-    ];
+    packages = with pkgs; [ ];
     initialPassword = "initialPW";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDFPlflmLbEqiNMMXTlSAEVQZepLimyg9S6B5PsJ98Ti id_ed25519"
@@ -66,9 +64,7 @@
     permitRootLogin = "yes";
   };
 
-  virtualisation.docker = {
-    enable = true;
-  };
+  virtualisation.docker = { enable = true; };
 
   # Enable cron service
   services.cron = {
@@ -76,10 +72,12 @@
     systemCronJobs = [
       "*/5 * * * * root date >> /tmp/cron.log"
       # nextcloud
-      "0 0 * * 1 root ${pkgs.docker}/bin/docker exec -u www-data nextcloud-app php /var/www/html/occ preview:generate-all
-"
-      "*/15 * * * * root ${pkgs.docker}/bin/docker exec -u www-data nextcloud-app php /var/www/html/occ preview:pre-generate
-"
+      ''
+        0 0 * * 1 root ${pkgs.docker}/bin/docker exec -u www-data nextcloud-app php /var/www/html/occ preview:generate-all
+      ''
+      ''
+        */15 * * * * root ${pkgs.docker}/bin/docker exec -u www-data nextcloud-app php /var/www/html/occ preview:pre-generate
+      ''
       "*/5 * * * * root ${pkgs.docker}/bin/docker exec -u www-data nextcloud-app php -f /var/www/html/cron.php 2>&1 >> /var/logs/nextcloud-cron"
     ];
   };

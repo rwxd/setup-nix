@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   home.file.".config/rofi/nord.rasi".source = ./nord.rasi;
-  home.file.".config/rofi/catppuccin-frappe.rasi".source = ./catppuccin-frappe.rasi;
+  home.file.".config/rofi/catppuccin-frappe.rasi".source =
+    ./catppuccin-frappe.rasi;
   home.file.".config/rofi/launcher.rasi".source = ./launcher.rasi;
   home.file.".config/rofi/font.rasi".source = ./font.rasi;
   home.file.".config/rofi/colors.rasi".source = ./colors.rasi;
@@ -23,9 +23,7 @@
     location = "center";
     pass = {
       enable = true;
-      stores = [
-		"~/.password-store"
-	  ];
+      stores = [ "~/.password-store" ];
     };
     terminal = "${pkgs.kitty}/bin/kitty";
     plugins = with pkgs; [

@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   # home.file.".config/i3status/config".source = ./config;
 
   programs.i3status = {
@@ -15,16 +14,12 @@
     modules = {
       "disk /" = {
         position = 1;
-        settings = {
-          format = "/ %avail";
-        };
+        settings = { format = "/ %avail"; };
       };
 
       load = {
         position = 2;
-        settings = {
-          format = "%1min";
-        };
+        settings = { format = "%1min"; };
       };
 
       memory = {
@@ -39,11 +34,8 @@
       "path_exists VPN" = {
         position = 4;
         # path exists when a VPN tunnel launched by nmcli/nm-applet is active
-        settings = {
-          path = "/proc/sys/net/ipv4/conf/tun0";
-        };
+        settings = { path = "/proc/sys/net/ipv4/conf/tun0"; };
       };
-
 
       "ethernet enp0s31f6" = {
         position = 5;
@@ -63,9 +55,7 @@
 
       "battery 1" = {
         position = 7;
-        settings = {
-          format = "%status %percentage %remaining";
-        };
+        settings = { format = "%status %percentage %remaining"; };
       };
 
       "volume master" = {
@@ -81,9 +71,7 @@
 
       "tztime local" = {
         position = 9;
-        settings = {
-          format = "%H:%M:%S %d.%m.%Y";
-        };
+        settings = { format = "%H:%M:%S %d.%m.%Y"; };
       };
 
     };

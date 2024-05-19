@@ -1,15 +1,9 @@
-{ pkgs, config, ... }:
-{
+{ pkgs, config, ... }: {
   home-manager.users."nixos" = import ../../home-manager/iso;
 
   time.timeZone = "Europe/Berlin";
 
-  environment.systemPackages = with pkgs; [
-    vim
-    curl
-    tmux
-    git
-  ];
+  environment.systemPackages = with pkgs; [ vim curl tmux git ];
 
   console = {
     font = "Lat2-Terminus16";
@@ -22,8 +16,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
-    packages = with pkgs; [
-    ];
+    packages = with pkgs; [ ];
     initialPassword = "initialPW";
   };
 
@@ -34,7 +27,8 @@
 
   networking.hostName = "nugget"; # Define your hostname.
 
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];

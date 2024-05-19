@@ -9,7 +9,7 @@
     nix-index
     bind
     wireguard-tools
-	tailscale
+    tailscale
     xclip
     less
     cron
@@ -28,23 +28,21 @@
     viu
     sshpass
     sshfs
-	inetutils
-	gopass
-	# to copy to clipboard with rofi and gopass
-	xdotool
-	rclone
-	hplipWithPlugin
-	lm_sensors
-	bc # for tmux
-	tcptraceroute
-	killall
-	restic
+    inetutils
+    gopass
+    # to copy to clipboard with rofi and gopass
+    xdotool
+    rclone
+    hplipWithPlugin
+    lm_sensors
+    bc # for tmux
+    tcptraceroute
+    killall
+    restic
     autorestic
     pciutils
     iotop
   ];
 
-  imports = [
-    ./programs/pass.nix
-  ];
+  imports = [ ./programs/pass.nix ];
 }

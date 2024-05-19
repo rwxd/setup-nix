@@ -1,7 +1,1 @@
-_:
-{
-  imports = [
-    ./default.nix
-    ./config/gui-packages.nix
-  ];
-}
+_: { imports = [ ./default.nix ./config/gui-packages.nix ]; }

@@ -41,8 +41,7 @@ let
       gsettings set $gnome_schema gtk-theme 'Dracula'
     '';
   };
-in
-{
+in {
   imports = [
     # Include the results of the hardware scan.
     inputs.nixos-hardware.nixosModules.common-gpu-amd
@@ -64,7 +63,8 @@ in
   networking.hostName = "nugget"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
   programs.nm-applet.enable = true;
 
   # Set your time zone.
@@ -96,11 +96,13 @@ in
         lightdm.enable = true;
         defaultSession = "none+i3";
         sessionCommands = ''
-          ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
-            Xft.dpi: 130
-            Xcursor.theme: Adwaita
-            Xcursor.size: 36
-          ''}
+          ${pkgs.xorg.xrdb}/bin/xrdb -merge <${
+            pkgs.writeText "Xresources" ''
+              Xft.dpi: 130
+              Xcursor.theme: Adwaita
+              Xcursor.size: 36
+            ''
+          }
         '';
       };
       # Enable the Plasma 5 Desktop Environment.
@@ -127,16 +129,12 @@ in
   hardware.pulseaudio.enable = true;
 
   # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true;
-  };
+  hardware.bluetooth = { enable = true; };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput = {
-	enable = true;
-	touchpad = {
-	  tapping = true;
-	};
+    enable = true;
+    touchpad = { tapping = true; };
   };
 
   hardware.opengl = {
@@ -150,11 +148,17 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fwrage = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "video" "audio" "lp" "scanner" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "libvirtd"
+      "video"
+      "audio"
+      "lp"
+      "scanner"
+      "networkmanager"
+    ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      firefox
-    ];
+    packages = with pkgs; [ firefox ];
     initialPassword = "initialPW";
   };
   programs.zsh.enable = true;
@@ -176,10 +180,8 @@ in
   ];
 
   services.cron = {
-	enable = true;
-	systemCronJobs = [
-	  "*/5 * * * * root autorestic --ci cron"
-	];
+    enable = true;
+    systemCronJobs = [ "*/5 * * * * root autorestic --ci cron" ];
   };
 
   # fonts

@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    pass-secret-service
-  ];
+{ config, pkgs, ... }: {
+  home.packages = with pkgs; [ pass-secret-service ];
 
   programs.password-store = {
     enable = true;

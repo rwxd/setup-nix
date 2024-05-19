@@ -18,18 +18,10 @@
     # my-overlays.url = "path:./overlays";
     # my-overlays.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs =
-    { nixpkgs
-    , nixpkgs-unstable
-    , nixpkgs-master
-    , nixos-hardware
-    , flake-utils
-    , home-manager
-    , home-manager-unstable
-    , neovim-nightly-overlay
-      # , my-overlays
-    , ...
-    }@inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, nixpkgs-master, nixos-hardware
+    , flake-utils, home-manager, home-manager-unstable, neovim-nightly-overlay
+    # , my-overlays
+    , ... }@inputs:
     let
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -40,15 +32,12 @@
       ];
       systems = flake-utils.lib.system;
       defaultModules = [ home-manager-unstable.nixosModules.home-manager ];
-    in
-    rec {
+    in rec {
       # Your custom packages
       # Acessible through 'nix build', 'nix shell', etc
       packages = forAllSystems (system:
         let pkgs = nixpkgs.legacyPackages.${system};
-        in
-        import ./pkgs { inherit pkgs; }
-      );
+        in import ./pkgs { inherit pkgs; });
 
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays;
@@ -65,23 +54,22 @@
         default = nixpkgs.legacyPackages.${system}.callPackage ./shell.nix { };
       });
 
-	  nixpgs.config.permittedInsecurePackages = [ "python3.10-certifi-2022.12.7" ];
+      nixpgs.config.permittedInsecurePackages =
+        [ "python3.10-certifi-2022.12.7" ];
 
       legacyPackages = forAllSystems (system:
         import inputs.nixpkgs {
           inherit system;
           overlays = builtins.attrValues overlays;
           config.allowUnfree = true;
-        }
-      );
+        });
 
       legacyPackages-unstable = forAllSystems (system:
         import inputs.nixpkgs-unstable {
           inherit system;
           overlays = builtins.attrValues overlays;
           config.allowUnfree = true;
-        }
-      );
+        });
 
       nixosConfigurations = {
         nugget = nixpkgs.lib.nixosSystem {
@@ -132,8 +120,11 @@
 
       homeConfigurations = {
         "whopper" = home-manager-unstable.lib.homeManagerConfiguration rec {
-          pkgs = legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          pkgs =
+            legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = {
+            inherit inputs;
+          }; # Pass flake inputs to our config
           modules = (builtins.attrValues homeManagerModules) ++ [
             # > Our main home-manager configuration file <
             ./home-manager/whopper/home.nix
@@ -155,19 +146,19 @@
         vscode = import ./home-manager/programs/vscode;
         zsh = import ./home-manager/programs/zsh;
         vim = import ./home-manager/programs/vim;
-		tmux = import ./home-manager/programs/tmux;
-		alacritty = import ./home-manager/programs/alacritty;
-		kitty = import ./home-manager/programs/kitty;
-		lutris = import ./home-manager/programs/lutris;
-		k9s = import ./home-manager/programs/k9s;
-		gnupg = import ./home-manager/programs/gnupg;
-		i3 = import ./home-manager/programs/i3;
-		i3status = import ./home-manager/programs/i3status;
-		rofi = import ./home-manager/programs/rofi;
-		git = import ./home-manager/programs/git;
-		direnv = import ./home-manager/programs/direnv;
-		i3status-rust = import ./home-manager/programs/i3status-rust.nix;
-		pass = import ./home-manager/programs/pass.nix;
+        tmux = import ./home-manager/programs/tmux;
+        alacritty = import ./home-manager/programs/alacritty;
+        kitty = import ./home-manager/programs/kitty;
+        lutris = import ./home-manager/programs/lutris;
+        k9s = import ./home-manager/programs/k9s;
+        gnupg = import ./home-manager/programs/gnupg;
+        i3 = import ./home-manager/programs/i3;
+        i3status = import ./home-manager/programs/i3status;
+        rofi = import ./home-manager/programs/rofi;
+        git = import ./home-manager/programs/git;
+        direnv = import ./home-manager/programs/direnv;
+        i3status-rust = import ./home-manager/programs/i3status-rust.nix;
+        pass = import ./home-manager/programs/pass.nix;
       };
 
       tools = import ./home-manager/tools;

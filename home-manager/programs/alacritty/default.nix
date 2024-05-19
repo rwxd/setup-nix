@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   home.file.".config/alacritty/alacritty.yml".source = ./alacritty.yml;
 
-  home.packages = with pkgs; [
-    alacritty
-  ];
+  home.packages = with pkgs; [ alacritty ];
 }

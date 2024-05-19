@@ -18,11 +18,11 @@
     libreoffice-qt
     feh
     discord
-	teamspeak_client
-	teamspeak5_client
+    teamspeak_client
+    teamspeak5_client
     vlc
     obsidian
-	logseq
+    logseq
     flameshot
     element-desktop
     firejail
@@ -38,29 +38,30 @@
     zsa-udev-rules
     drawio
     ark
-	todoist
-	# todoist-electron
+    todoist
+    # todoist-electron
     unrar
     kcalc
-	v4l-utils
-	guvcview
-	obs-studio
-	yt-dlp
-	ledger-live-desktop
-	teamviewer
-	gimp
-	audacity
-	appimage-run
-	gparted
-	gnucash
-	openjdk
-	minecraft
-	restique
-	calibre
-	google-chrome
-	tor-browser-bundle-bin
+    v4l-utils
+    guvcview
+    obs-studio
+    yt-dlp
+    ledger-live-desktop
+    teamviewer
+    gimp
+    audacity
+    appimage-run
+    gparted
+    gnucash
+    openjdk
+    minecraft
+    restique
+    calibre
+    google-chrome
+    tor-browser-bundle-bin
     gromit-mpx
     obs-studio
+    chatterino2
   ];
 
   services.screen-locker = {
@@ -84,7 +85,7 @@
     ./programs/i3status-rust.nix
     ./programs/kitty
     ./programs/alacritty
-	./programs/vscode
+    ./programs/vscode
     ./programs/sway
   ];
 }

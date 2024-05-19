@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   home.file.".local/bin/" = {
     source = ../../home-manager/tools;
     recursive = true;

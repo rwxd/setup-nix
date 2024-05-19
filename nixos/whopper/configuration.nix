@@ -5,16 +5,15 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./virtualization.nix
-      ./services.nix
-      ./ledger.nix
-      ./lutris.nix
-	  ../tests/samba.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./virtualization.nix
+    ./services.nix
+    ./ledger.nix
+    ./lutris.nix
+    ../tests/samba.nix
+  ];
 
   home-manager.users."fwrage" = import ../../home-manager/whopper/home.nix;
 
@@ -25,7 +24,8 @@
   networking.hostName = "whopper"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
   programs.nm-applet.enable = true;
 
   # Set your time zone.
@@ -49,23 +49,26 @@
   };
 
   services = {
+    displayManager = {
+      lightdm.enable = true;
+      defaultSession = "none+i3";
+      # defaultSession = "plasma";
+      sessionCommands = ''
+        ${pkgs.xorg.xrdb}/bin/xrdb -merge <${
+          pkgs.writeText "Xresources" ''
+            Xft.dpi: 150
+            Xcursor.theme: Adwaita
+            Xcursor.size: 36
+          ''
+        }
+      '';
+    };
+
     # Enable the X11 windowing system.
     xserver = {
       enable = true;
       dpi = 220;
-	  videoDrivers = [ "amdgpu" ];
-      displayManager = {
-        lightdm.enable = true;
-        defaultSession = "none+i3";
-        # defaultSession = "plasma";
-        sessionCommands = ''
-          ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
-            Xft.dpi: 150
-            Xcursor.theme: Adwaita
-            Xcursor.size: 36
-          ''}
-        '';
-      };
+      videoDrivers = [ "amdgpu" ];
       # Enable the Plasma 5 Desktop Environment.
       desktopManager.plasma5.enable = true;
       windowManager.i3 = {
@@ -93,9 +96,7 @@
   hardware.pulseaudio.enable = true;
 
   # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true;
-  };
+  hardware.bluetooth = { enable = true; };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -103,13 +104,21 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fwrage = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "video" "audio" "lp" "scanner" "networkmanager" "plugdev" "docker" "adbusers"]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "libvirtd"
+      "video"
+      "audio"
+      "lp"
+      "scanner"
+      "networkmanager"
+      "plugdev"
+      "docker"
+      "adbusers"
+    ]; # Enable ‘sudo’ for the user.
     initialPassword = "initialPW";
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      firefox
-      bcc
-    ];
+    packages = with pkgs; [ firefox bcc ];
   };
   programs.zsh.enable = true;
 
@@ -117,18 +126,19 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; with inputs.nix-alien.packages.${system}; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    tmux
-    nix-alien
-    nix-index # not necessary, but recommended
-    nix-index-update
-    restic
-    autorestic
-    bcc
-  ];
+  environment.systemPackages = with pkgs;
+    with inputs.nix-alien.packages.${system}; [
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      wget
+      git
+      tmux
+      nix-alien
+      nix-index # not necessary, but recommended
+      nix-index-update
+      restic
+      autorestic
+      bcc
+    ];
 
   # fonts
   fonts.packages = with pkgs; [
@@ -139,9 +149,7 @@
     font-awesome_5
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "python3.10-certifi-2022.12.7"
-  ];
+  nixpkgs.config.permittedInsecurePackages = [ "python3.10-certifi-2022.12.7" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -152,11 +160,11 @@
   };
 
   services.cron = {
-	enable = true;
-	systemCronJobs = [
-	  "* * * * * fwrage pacmd set-source-volume alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-input 0x20000"
-	  "*/5 * * * * root autorestic --ci cron"
-	];
+    enable = true;
+    systemCronJobs = [
+      "* * * * * fwrage pacmd set-source-volume alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-input 0x20000"
+      "*/5 * * * * root autorestic --ci cron"
+    ];
   };
 
   # List services that you want to enable:

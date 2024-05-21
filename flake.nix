@@ -15,11 +15,17 @@
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-ld.url = "github:Mic92/nix-ld/main";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # my-overlays.url = "path:./overlays";
     # my-overlays.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { nixpkgs, nixpkgs-unstable, nixpkgs-master, nixos-hardware
     , flake-utils, home-manager, home-manager-unstable, neovim-nightly-overlay
+    , lanzaboote
     # , my-overlays
     , ... }@inputs:
     let
@@ -76,7 +82,7 @@
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
           # pkgs = legacyPackages-unstable.x86_64-linux;
           system = systems.x86_64-linux;
-          modules = (builtins.attrValues nixosModules) ++ defaultModules ++ [
+          modules = (builtins.attrValues nixosModules) ++ defaultModules [
             # > Our main nixos configuration file <
             ./nixos/nugget/configuration.nix
             # Our common nixpkgs config (unfree, overlays, etc)
@@ -88,6 +94,8 @@
           # pkgs = legacyPackages-unstable.x86_64-linux;
           system = systems.x86_64-linux;
           modules = (builtins.attrValues nixosModules) ++ defaultModules ++ [
+            lanzaboote.nixosModules.lanzaboote
+
             # > Our main nixos configuration file <
             ./nixos/whopper/configuration.nix
             inputs.nix-ld.nixosModules.nix-ld

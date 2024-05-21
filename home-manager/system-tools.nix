@@ -42,6 +42,7 @@
     autorestic
     pciutils
     iotop
+    sbctl
   ];
 
   imports = [ ./programs/pass.nix ];

@@ -5,7 +5,7 @@
 
 SEARCH_PATH="$HOME/"
 WORKSPACES_PATH="$HOME/workspaces/"
-IGNORE_LIST=("$HOME/.tmux/*" "$HOME/.vscode/*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/mnt/*" "$HOME/.cache/*" "*/\.venv/*" "$HOME/.cargo/*" "$HOME/.cookiecutters/*" "*/\.git/*" "*/\.terraform/*" "*/\.cache/*" "*/\.vim/*" "*/\.oh-my-zsh/*")
+IGNORE_LIST=("$HOME/.tmux/*" "$HOME/.vscode/*" "$HOME/.vim/*" "$HOME/.oh-my-zsh/*" "$HOME/mnt*" "$HOME/mnt/*" "$HOME/.cache/*" "*/\.venv/*" "$HOME/.cargo/*" "$HOME/.cookiecutters/*" "*/\.git/*" "*/\.terraform/*" "*/\.cache/*" "*/\.vim/*" "*/\.oh-my-zsh/*")
 
 ignore=()
 for i in "${IGNORE_LIST[@]}"; do

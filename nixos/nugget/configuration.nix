@@ -177,6 +177,7 @@ in {
     dbus
     dbus-sway-environment
     configure-gtk
+    powertop
   ];
 
   services.cron = {

@@ -46,4 +46,20 @@
       ExecStart = "${pkgs.kanshi}/bin/kanshi -c kanshi_config_file";
     };
   };
+
+  # notebook power management
+  powerManagement.powertop.enable = true;
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+    };
+  };
 }

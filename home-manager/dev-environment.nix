@@ -79,7 +79,7 @@
     gource
     kompose
     cobra-cli
-    dbeaver
+    dbeaver-bin
     minio-client
     ipinfo
     sqlite

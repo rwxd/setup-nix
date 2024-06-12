@@ -13,7 +13,7 @@
       zhuangtongfa.material-theme
       redhat.vscode-yaml
       redhat.vscode-xml
-      matklad.rust-analyzer
+      rust-lang.rust-analyzer
       ms-vscode-remote.remote-ssh
       ms-vscode.makefile-tools
       editorconfig.editorconfig

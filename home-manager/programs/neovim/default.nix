@@ -25,7 +25,7 @@
       gopls
       rust-analyzer
       rustup
-      nodePackages.pyright
+      pyright
       gcc
       nodejs
       nodejs-18_x

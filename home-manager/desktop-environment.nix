@@ -54,7 +54,6 @@
     gparted
     gnucash
     openjdk
-    minecraft
     restique
     calibre
     google-chrome

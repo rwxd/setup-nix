@@ -1,6 +1,16 @@
 -- This is necessary for LSPs to "pick up" on .templ files.
 vim.filetype.add({ extension = { templ = "templ" } })
 vim.filetype.add({ pattern = { [".*.html.*.tmpl"] = "html" } })
+vim.filetype.add({
+	pattern = {
+		[".*/tasks/.*.yaml"] = "yaml.ansible",
+		[".*/tasks/.*.yml"] = "yaml.ansible",
+		[".*/handlers/.*.yaml"] = "yaml.ansible",
+		[".*/handlers/.*.yml"] = "yaml.ansible",
+		[".*/site.yml"] = "yaml.ansible",
+		[".*/site.yaml"] = "yaml.ansible",
+	},
+})
 
 local function check_nixos()
 	local f = io.open("/etc/nixos/", "r")
@@ -57,11 +67,13 @@ return {
 					mason = not is_nixos,
 				},
 				phpactor = {
-					mason = not is_nixos,
+					mason = false,
 				},
 				neocmake = {
 					mason = not is_nixos,
 				},
+				ansiblels = {},
+				gitlab_ci_ls = {},
 				html = {
 					mason = not is_nixos,
 					filetypes = { "html", "templ", "htmldjango" },

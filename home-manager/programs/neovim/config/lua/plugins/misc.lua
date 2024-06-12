@@ -5,6 +5,12 @@ return {
 	{
 		"ThePrimeagen/refactoring.nvim",
 	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		opts = {
+			scope = { enabled = false },
+		},
+	},
 	-- {
 	-- 	"vim-test/vim-test",
 	-- 	keys = {
@@ -34,6 +40,14 @@ return {
 		"mbbill/undotree",
 		keys = {
 			{ "<leader>ut", vim.cmd.UndotreeToggle },
+		},
+	},
+	{ "terrastruct/d2-vim", ft = "d2" },
+	{
+		"weirongxu/plantuml-previewer.vim",
+		dependencies = {
+			"tyru/open-browser.vim",
+			"aklt/plantuml-syntax",
 		},
 	},
 }

@@ -44,6 +44,7 @@
       tailwindcss-language-server
       htmx-lsp
       vscode-langservers-extracted
+      nixfmt
     ];
   };
 

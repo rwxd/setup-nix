@@ -107,6 +107,8 @@
     # formatters
     stylua
     nixfmt
+
+    uv
   ];
 
   imports = [

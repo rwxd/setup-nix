@@ -7,7 +7,7 @@ help:
 setup: flake-lock-update ## setup required things
 
 flake-lock: ## lock flakes
-	nix flake lock --show-trace --extra-experimental-features nix-command --extra-experimental-features
+	nix flake lock --show-trace --extra-experimental-features nix-command --extra-experimental-features flakes
 
 flake-lock-update: ## lock flakes & update
 	nix flake lock \

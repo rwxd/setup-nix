@@ -13,8 +13,8 @@ require("lazy").setup({
 		{ import = "plugins" },
 
 		{ import = "lazyvim.plugins.extras.coding.copilot" },
-		{ import = "lazyvim.plugins.extras.editor.trouble-v3" },
 		{ import = "lazyvim.plugins.extras.test.core" },
+		{ import = "lazyvim.plugins.extras.dap.core" },
 		{ import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
 		{ import = "lazyvim.plugins.extras.lang.rust" },

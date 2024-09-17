@@ -50,7 +50,7 @@
   # notebook power management
   powerManagement.powertop.enable = true;
   services.auto-cpufreq = {
-    enable = true;
+    # enable = true;
     settings = {
       battery = {
         governor = "powersave";

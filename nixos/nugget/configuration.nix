@@ -124,9 +124,13 @@ in {
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
   # Enable bluetooth
   hardware.bluetooth = { enable = true; };
@@ -140,9 +144,9 @@ in {
   hardware.opengl = {
     enable = true;
     # enable vulkan
-    driSupport = true;
+    # driSupport = true;
     ## For 32 bit applications
-    driSupport32Bit = true;
+    # driSupport32Bit = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -178,6 +182,7 @@ in {
     dbus-sway-environment
     configure-gtk
     powertop
+    pulseaudio # for pactl, pipewire is still used
   ];
 
   services.cron = {

@@ -61,6 +61,8 @@
     gromit-mpx
     obs-studio
     chatterino2
+    pdfmixtool
+    vdhcoapp
   ];
 
   services.screen-locker = {

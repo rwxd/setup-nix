@@ -90,9 +90,9 @@
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   # enable vulkan
-  hardware.opengl.driSupport = true;
+  # hardware.opengl.driSupport = true;
   ## For 32 bit applications
-  hardware.opengl.driSupport32Bit = true;
+  # hardware.opengl.driSupport32Bit = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "de";

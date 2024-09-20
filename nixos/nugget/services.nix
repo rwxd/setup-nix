@@ -47,19 +47,27 @@
     };
   };
 
+  services.geoclue2.enable = true;
+  services.automatic-timezoned.enable = true;
+
   # notebook power management
   powerManagement.powertop.enable = true;
-  services.auto-cpufreq = {
-    # enable = true;
+  services.power-profiles-daemon.enable = false; # needed for tlp.enable = true
+  services.tlp = {
+    enable = true;
     settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
+      # Platform
+      PLATFORM_PROFILE_ON_BAT = "low-power";
+      PLATFORM_PROFILE_ON_AC = "perfomance";
+
+      # Processor
+      CPU_BOOST_ON_BAT = 0;
+      CPU_BOOST_ON_AC = 1;
+      CPU_HWP_DYN_BOOST_ON_BAT = 0;
+      CPU_HWP_DYN_BOOST_ON_AC = 1;
+
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
     };
   };
 }

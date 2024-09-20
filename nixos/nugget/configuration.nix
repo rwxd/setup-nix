@@ -43,7 +43,6 @@ let
   };
 in {
   imports = [
-    # Include the results of the hardware scan.
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-pc-laptop

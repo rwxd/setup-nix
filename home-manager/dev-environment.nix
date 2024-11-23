@@ -37,11 +37,11 @@
     kustomize
     argocd
     poetry
-    python311
-    python311Packages.pip
-    python311Packages.pipx
-    python311Packages.virtualenv
-    python311Packages.google-api-python-client
+    python313
+    python313Packages.pip
+    python313Packages.pipx
+    python313Packages.virtualenv
+    # python313Packages.google-api-python-client
     vault
     powershell
     terraform
@@ -82,7 +82,8 @@
     dbeaver-bin
     minio-client
     ipinfo
-    sqlite
+    sqlite-interactive
+    sqlite-web
     protobuf
     protoc-gen-go
     fping

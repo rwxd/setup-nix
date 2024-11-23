@@ -71,6 +71,8 @@ in {
       "werist" = "ipams";
       "k" = "kubectl";
       "benchmark-zsh" = "for i in $(seq 1 10); do time $SHELL -i -c exit; done";
+      "download-mp3" =
+        "uvx --no-cache --from yt-dlp[default] yt-dlp --extract-audio --audio-format mp3";
     };
 
     plugins = [

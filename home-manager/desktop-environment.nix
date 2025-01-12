@@ -18,6 +18,7 @@
     libreoffice-qt
     feh
     discord
+    vesktop
     teamspeak_client
     teamspeak5_client
     vlc
@@ -28,7 +29,7 @@
     firejail
     tor
     youtube-dl
-    cryptomator
+    # cryptomator
     pdfarranger
     qtpass
     anki-bin

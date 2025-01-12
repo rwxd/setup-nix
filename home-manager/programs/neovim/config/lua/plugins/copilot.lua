@@ -8,7 +8,7 @@ return {
 			require("copilot").setup({
 				suggestion = {
 					enabled = true,
-					auto_trigger = env_copilot_auto_trigger,
+					auto_trigger = false,
 					debounce = 75,
 					keymap = {
 						jump_prev = "<M-n>",
